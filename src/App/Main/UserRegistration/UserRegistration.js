@@ -4,7 +4,7 @@ class UserRegistration extends React.Component {
   constructor(props) {
     super(props);
     this.state = { step: 0 };
-    this.states = [<p>First step</p>, <p>Second step</p>];
+    this.states = [<p>First step</p>, <p>Second step</p>, <p>Third step</p>];
 
     this.onCompletedRegistration = this.props.registrationCompleted;
 

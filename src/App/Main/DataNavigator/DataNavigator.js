@@ -1,15 +1,19 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import UniversitiesNavigator from "./UniversitiesNavigator/UniversitiesNavigator";
 import CoursesNavigator from "./CoursesNavigator/CoursesNavigator";
+import ChooseNavigator from "./ChooseNavigator/ChooseNavigator";
 
 function DataNavigator() {
   return (
     <div className="DataNavigator">
-      <BrowserRouter>
+      <Switch>
         <Route exact path="/universities" component={UniversitiesNavigator} />
         <Route exact path="/courses" component={CoursesNavigator} />
-      </BrowserRouter>
+
+        {/* THIS IS THE DEFAULT ROUTE*/}
+        <Route component={ChooseNavigator} />
+      </Switch>
     </div>
   );
 }
