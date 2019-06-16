@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import Config from "../../Config/Config";
 
@@ -37,7 +36,7 @@ function Header() {
     <div className="Header w-100">
       <nav
         className="navbar fixed-bottom bg-white"
-        style={{ height: "60px", width: "100vw" }}
+        style={{ height: Config.HEADER_HEIGHT, width: "100vw" }}
       >
         <div className="row w-100 h-100">
           {/*RECENT */}

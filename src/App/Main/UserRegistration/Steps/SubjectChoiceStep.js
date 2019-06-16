@@ -1,6 +1,6 @@
 import React from "react";
 import SearchForm from "./SearchForm";
-import CardList from "./CardList";
+import CardList from "./Utils/CardList";
 
 class SubjectChoiceStep extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class SubjectChoiceStep extends React.Component {
       <div className="w-100 h-100">
         <SearchForm title="Which subject are you interested in?" />
         <hr />
-        <CardList />
+        <CardList nextStep={this.props.nextStep} />
       </div>
     );
   }

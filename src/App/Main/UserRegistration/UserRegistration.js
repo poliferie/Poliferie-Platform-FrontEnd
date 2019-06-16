@@ -5,18 +5,20 @@ class UserRegistration extends React.Component {
   constructor(props) {
     super(props);
     this.state = { step: 0 };
+
+    this.onCompletedRegistration = this.props.registrationCompleted;
+    this.nextStep = this.nextStep.bind(this);
+
     this.states = [
-      <SubjectChoiceStep />,
+      <SubjectChoiceStep nextStep={this.nextStep} />,
       <p>Second step</p>,
       <p>Third step</p>
     ];
-
-    this.onCompletedRegistration = this.props.registrationCompleted;
-
-    this.nextStep = this.nextStep.bind(this);
   }
 
   nextStep() {
+    if (!window.confirm("Are you sure this preferences are correctly set?"))
+      return;
     if (this.state.step + 1 < this.states.length)
       this.setState({ step: this.state.step + 1 });
     else this.onCompletedRegistration();
@@ -26,7 +28,6 @@ class UserRegistration extends React.Component {
     return (
       <div className="UserRegistration w-100 h-100">
         {this.states[this.state.step]}
-        {/*<button onClick={this.nextStep}>next</button> */}
       </div>
     );
   }
