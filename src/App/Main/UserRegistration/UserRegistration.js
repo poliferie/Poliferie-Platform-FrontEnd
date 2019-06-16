@@ -1,10 +1,15 @@
 import React from "react";
+import SubjectChoiceStep from "./Steps/SubjectChoiceStep";
 
 class UserRegistration extends React.Component {
   constructor(props) {
     super(props);
     this.state = { step: 0 };
-    this.states = [<p>First step</p>, <p>Second step</p>, <p>Third step</p>];
+    this.states = [
+      <SubjectChoiceStep />,
+      <p>Second step</p>,
+      <p>Third step</p>
+    ];
 
     this.onCompletedRegistration = this.props.registrationCompleted;
 
@@ -20,7 +25,6 @@ class UserRegistration extends React.Component {
   render() {
     return (
       <div className="UserRegistration">
-        <p>current step {this.state.step}</p>
         {this.states[this.state.step]}
         <button onClick={this.nextStep}>next</button>
       </div>
