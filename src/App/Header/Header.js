@@ -1,21 +1,50 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import Config from "../../Config/Config";
 
 function Header() {
   return (
     <div className="Header">
       <nav className="navbar fixed-bottom container ">
-        <div class="row w-100">
-          <div class="col" align="center">
-            {/*<p>Recent</p>*/}
-            <i class="fas fa-heart" />
+        <div className="row w-100">
+          {/*RECENT */}
+          <div className="col" align="center">
+            <NavLink
+              to={Config.RECENT_PATH}
+              style={{ backgroundColor: "white" }}
+              activeStyle={{ backgroundColor: "orange" }}
+            >
+              <div className="w-100" style={{ backgroundColor: "inherit" }}>
+                <i className="fas fa-heart" />
+              </div>
+            </NavLink>
           </div>
-          <div class="col" align="center">
-            {/*<p>Search</p>*/}
-            <i class="fas fa-search" />
+
+          {/*SEARCH */}
+          <div className="col" align="center">
+            <NavLink
+              to={Config.NAVIGATOR_PATH}
+              style={{ backgroundColor: "white" }}
+              activeStyle={{ backgroundColor: "orange" }}
+            >
+              <div className="w-100" style={{ backgroundColor: "inherit" }}>
+                <i className="fas fa-search" />
+              </div>
+            </NavLink>
           </div>
-          <div class="col" align="center">
-            {/*<p>Profile</p>*/}
-            <i class="fas fa-user " />
+
+          {/*PROFILE */}
+          <div className="col" align="center">
+            <NavLink
+              to={Config.PROFILE_PATH}
+              style={{ backgroundColor: "white" }}
+              activeStyle={{ backgroundColor: "orange" }}
+            >
+              <div className="w-100" style={{ backgroundColor: "inherit" }}>
+                <i className="fas fa-user" />
+              </div>
+            </NavLink>
           </div>
         </div>
       </nav>

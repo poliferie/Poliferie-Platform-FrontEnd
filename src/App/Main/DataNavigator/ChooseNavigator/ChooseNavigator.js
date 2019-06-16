@@ -7,17 +7,17 @@ class ChooseNavigator extends React.Component {
   }
   render() {
     return (
-      <div class="ChooseNavigator">
+      <div className="ChooseNavigator">
         <button
           onClick={() => {
-            this.props.history.push("/universities");
+            this.props.history.push("/nav/uni");
           }}
         >
           Navigate Universities
         </button>
         <button
           onClick={() => {
-            this.props.history.push("/courses");
+            this.props.history.push("/nav/courses");
           }}
         >
           Navigate Courses
