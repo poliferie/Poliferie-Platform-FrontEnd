@@ -9,7 +9,7 @@ import Profile from "./Profile/Profile";
 
 function DataNavigator() {
   return (
-    <div className="DataNavigator">
+    <div className="DataNavigator w-100 h-100">
       <Switch>
         <Route exact path={Config.NAVIGATOR_PATH} component={ChooseNavigator} />
 

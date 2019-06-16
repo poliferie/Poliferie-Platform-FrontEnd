@@ -3,49 +3,51 @@ import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import Config from "../../Config/Config";
 
+class HeaderCell extends React.Component {
+  state = {};
+  render() {
+    return (
+      <div className="col h-100" align="center">
+        <NavLink
+          to={this.props.to}
+          style={{ backgroundColor: "white" }}
+          activeStyle={{ backgroundColor: "orange" }}
+        >
+          <div
+            className="w-100 h-100"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "inherit"
+            }}
+          >
+            <div>
+              <i className={this.props.faClass} />
+            </div>
+          </div>
+        </NavLink>
+      </div>
+    );
+  }
+}
+
 function Header() {
   return (
-    <div className="Header">
-      <nav className="navbar fixed-bottom container ">
-        <div className="row w-100">
+    <div className="Header w-100">
+      <nav
+        className="navbar fixed-bottom bg-white"
+        style={{ height: "60px", width: "100vw" }}
+      >
+        <div className="row w-100 h-100">
           {/*RECENT */}
-          <div className="col" align="center">
-            <NavLink
-              to={Config.RECENT_PATH}
-              style={{ backgroundColor: "white" }}
-              activeStyle={{ backgroundColor: "orange" }}
-            >
-              <div className="w-100" style={{ backgroundColor: "inherit" }}>
-                <i className="fas fa-heart" />
-              </div>
-            </NavLink>
-          </div>
+          <HeaderCell to={Config.RECENT_PATH} faClass="fas fa-heart" />
 
           {/*SEARCH */}
-          <div className="col" align="center">
-            <NavLink
-              to={Config.NAVIGATOR_PATH}
-              style={{ backgroundColor: "white" }}
-              activeStyle={{ backgroundColor: "orange" }}
-            >
-              <div className="w-100" style={{ backgroundColor: "inherit" }}>
-                <i className="fas fa-search" />
-              </div>
-            </NavLink>
-          </div>
+          <HeaderCell to={Config.NAVIGATOR_PATH} faClass="fas fa-search" />
 
           {/*PROFILE */}
-          <div className="col" align="center">
-            <NavLink
-              to={Config.PROFILE_PATH}
-              style={{ backgroundColor: "white" }}
-              activeStyle={{ backgroundColor: "orange" }}
-            >
-              <div className="w-100" style={{ backgroundColor: "inherit" }}>
-                <i className="fas fa-user" />
-              </div>
-            </NavLink>
-          </div>
+          <HeaderCell to={Config.PROFILE_PATH} faClass={"fas fa-user"} />
         </div>
       </nav>
     </div>

@@ -24,9 +24,9 @@ class UserRegistration extends React.Component {
 
   render() {
     return (
-      <div className="UserRegistration">
+      <div className="UserRegistration w-100 h-100">
         {this.states[this.state.step]}
-        <button onClick={this.nextStep}>next</button>
+        {/*<button onClick={this.nextStep}>next</button> */}
       </div>
     );
   }

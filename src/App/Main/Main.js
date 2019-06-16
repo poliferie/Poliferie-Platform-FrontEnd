@@ -17,7 +17,7 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div className="Main">
+      <div className="Main w-100 h-100">
         {this.state.isRegistered ? (
           <DataNavigator />
         ) : (
