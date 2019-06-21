@@ -1,9 +1,9 @@
-import React from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
-import Header from './Header.jsx'
-import DataNavigator from './dataNavigation/DataNavigator'
-import CourseViewer from './dataViewer/CourseViewer'
-import UniversityViewer from './dataViewer/UniversityViewer'
+import React from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+import Header from "./Header.jsx";
+import DataNavigator from "./dataNavigation/DataNavigator";
+import CourseViewer from "./dataViewer/CourseViewer";
+import UniversityViewer from "./dataViewer/UniversityViewer";
 
 const App = () => (
   <div>
@@ -17,6 +17,6 @@ const App = () => (
       <Route render={() => <Redirect to="/dataNavigator" />} />
     </Switch>
   </div>
-)
+);
 
-export default App
+export default App;
