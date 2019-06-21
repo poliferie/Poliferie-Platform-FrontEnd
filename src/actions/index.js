@@ -23,12 +23,14 @@ export const addCourseFilter = (name, filter) => ({
   name: name
 });
 
-export const addUniFilter = (name, filter) => ({
-  type: uniFilterActions.ADD_ELEM,
-  elem: filter,
-  id: nextFilterId++,
-  name: name
-});
+export const addUniFilter = (name, filter) => {
+  return {
+    type: uniFilterActions.ADD_ELEM,
+    elem: filter,
+    id: nextFilterId++,
+    name: name
+  };
+};
 
 /*****  ACTION CONSTANT DECLARATIONS */
 

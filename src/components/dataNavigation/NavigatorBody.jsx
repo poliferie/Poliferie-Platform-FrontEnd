@@ -5,23 +5,38 @@ class NavigatorBody extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    // You can find here filtered universities
-    this.filteredUni = this.props.filteredUni;
-    // You can find here filtered courses
-    this.filteredCourses = this.props.filteredCourses;
   }
+
   render() {
+    // You can find here filtered universities
+    var filteredUni = this.props.filteredUni;
+    // You can find here filtered courses
+    var filteredCourses = this.props.filteredCourses;
+
     return (
-      <div>
-        {/** an example of generating Links with our objects */}
-        {Object.keys(this.filteredUni).map(id => (
-          <Link
-            key={id}
-            to={{ pathname: "/university/" + id, state: this.filteredUni[id] }}
-          >
-            <div key={id}>{this.filteredUni[id].name}</div>
-          </Link>
-        ))}
+      <div className="navigator-body">
+        <div className="filtered-uni">
+          <h2>UNIVERSITIES</h2>
+          {Object.keys(filteredUni).map(id => (
+            <Link
+              key={id}
+              to={{ pathname: "university/" + id, state: filteredUni[id] }}
+            >
+              {JSON.stringify(filteredUni[id])}
+            </Link>
+          ))}
+        </div>
+        <div className="filtered-courses">
+          <h2>COURSES</h2>
+          {Object.keys(filteredCourses).map(id => (
+            <Link
+              key={id}
+              to={{ pathname: "course/" + id, state: filteredCourses[id] }}
+            >
+              {JSON.stringify(filteredCourses[id])}
+            </Link>
+          ))}
+        </div>
       </div>
     );
   }

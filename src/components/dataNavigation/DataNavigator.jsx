@@ -25,29 +25,31 @@ function filter(obj, predicate) {
 
 /** REDUX STATE-TO-PROPS DEFINITION */
 const mapStateToProps = state => {
-  var filteredUni = state.universities;
+  var filteredUni = { ...state.universities };
   var filteredCourses = state.courses;
 
   //Filter universities
   for (var filterName in state.visibilityFilter.universities) {
+    console.log("!!!fname:", state.visibilityFilter.universities[filterName]);
     filteredUni = filter(
-      state.universities,
+      filteredUni,
       state.visibilityFilter.universities[filterName]
     );
+    console.log("filtered uni:", filteredUni);
   }
   //Filter courses
-  for (var filterName in state.visibilityFilter.courses) {
+  for (var filterName1 in state.visibilityFilter.courses) {
     filteredCourses = filter(
-      state.courses,
-      state.visibilityFilter.courses[filterName]
+      filteredCourses,
+      state.visibilityFilter.courses[filterName1]
     );
   }
-
-  return {
+  var ret = {
     rdxState: state,
     filteredUni: filteredUni,
     filteredCourses: filteredCourses
   };
+  return ret;
 };
 
 /** REDUX DISPATCH-TO-PROPS DEFINITION */
@@ -72,9 +74,11 @@ class DataNavigator extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    console.log("navigator dispatch", this.props.dispatch);
+    console.log("the DataNavigator constructor is being called");
   }
   render() {
+    console.log("the DataNavigator render() is being called");
+
     return (
       <div className="DataNavigator">
         <NavigatorHeader

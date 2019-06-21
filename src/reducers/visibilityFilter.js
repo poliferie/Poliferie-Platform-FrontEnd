@@ -1,24 +1,25 @@
 import { uniFilterActions, courseFilterActions } from "../actions";
 
-const visibilityFilter = (
-  state = { courses: [], universities: [] },
-  action
-) => {
-  console.log("filters red", action, state);
+function visibilityFilter(state = { courses: {}, universities: {} }, action) {
+  var name = action.name;
+  var elem = action.elem;
 
   switch (action.type) {
     // ADD UNI FILTER
     case uniFilterActions.ADD_ELEM:
-      state.universities[action.name] = action.elem;
-      return state;
+      state = { ...state };
+      state.universities[name] = elem;
+      break;
     // ADD COURSE FILTER
     case courseFilterActions.ADD_ELEM:
-      state.courses[action.name] = action.elem;
-      return state;
+      state = { ...state };
+      state.courses[name] = elem;
+      break;
     // DEFAULT
     default:
-      return state;
+      break;
   }
-};
+  return state;
+}
 
 export default visibilityFilter;

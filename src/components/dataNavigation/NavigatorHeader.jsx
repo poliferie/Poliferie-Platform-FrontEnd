@@ -5,7 +5,18 @@ class NavigatorHeader extends Component {
     this.state = {};
   }
   render() {
-    return <div>navigation header</div>;
+    return (
+      <div>
+        <button
+          onClick={() =>
+            this.props.addUniFilter("maxstud", e => {
+              return e.students < 160;
+            })
+          }
+        />
+        navigation header
+      </div>
+    );
   }
 }
 

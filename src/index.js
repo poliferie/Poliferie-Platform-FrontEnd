@@ -9,6 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 const state = {
   universities: {
     101: { name: "sapienza", students: 101 },
+    123: { name: "torve", students: 191 },
     102: { name: "romatre", students: 99 }
   },
   courses: {
@@ -16,9 +17,9 @@ const state = {
     102: { name: "mazzpazz", students: 99 }
   },
   visibilityFilter: {
-    courses: [],
+    courses: {},
     universities: {
-      nstud: e => {
+      minstud: e => {
         return e.students > 100;
       }
     }

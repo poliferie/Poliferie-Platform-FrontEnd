@@ -1,23 +1,21 @@
-import { courseActions } from '../actions'
+import { courseActions } from "../actions";
 
 const course = (state = {}, action) => {
-  console.log('courses red', action, state)
-
   switch (action.type) {
     case courseActions.ADD_ELEM:
-      console.log('courses addelem')
+      console.log("courses addelem");
       state = {
         ...state
-      }
-      state[action.id] = action.elem
-      return state
+      };
+      state[action.id] = action.elem;
+      return state;
 
     case courseActions.EMPTY:
-      return {}
+      return {};
 
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default course
+export default course;

@@ -1,21 +1,21 @@
-import { uniActions } from '../actions'
+import { uniActions } from "../actions";
 
 const universities = (state = {}, action) => {
-  console.log('universities red', action, state)
+  console.log("universities red", action, state);
   switch (action.type) {
     case uniActions.ADD_ELEM:
       state = {
         ...state
-      }
-      state[action.id] = action.elem
-      return state
+      };
+      state[action.id] = action.elem;
+      return state;
 
     case uniActions.EMPTY:
-      return {}
+      return {};
 
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default universities
+export default universities;
