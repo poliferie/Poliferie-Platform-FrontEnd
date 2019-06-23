@@ -1,20 +1,26 @@
 import React, { Component } from "react";
+import StudentFilter from "./filters/StudentFilter";
+import StringFilter from "./filters/StringFilter";
+
 class NavigatorHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+
+    this.addCourseFilter = this.props.addCourseFilter;
+    this.addUniFilter = this.props.addUniFilter;
   }
   render() {
     return (
-      <div>
-        <button
-          onClick={() =>
-            this.props.addUniFilter("maxstud", e => {
-              return e.students < 160;
-            })
-          }
+      <div className="NavigatorHeader">
+        <StudentFilter
+          addCourseFilter={this.addCourseFilter}
+          addUniFilter={this.addUniFilter}
         />
-        navigation header
+        <StringFilter
+          addCourseFilter={this.addCourseFilter}
+          addUniFilter={this.addUniFilter}
+        />
       </div>
     );
   }

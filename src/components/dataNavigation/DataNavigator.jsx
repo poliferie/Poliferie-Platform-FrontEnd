@@ -74,11 +74,8 @@ class DataNavigator extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    console.log("the DataNavigator constructor is being called");
   }
   render() {
-    console.log("the DataNavigator render() is being called");
-
     return (
       <div className="DataNavigator">
         <NavigatorHeader
