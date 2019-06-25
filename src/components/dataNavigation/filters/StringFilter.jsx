@@ -22,37 +22,28 @@ class StringFilter extends Component {
   // At least one @clause set to true has to be contained into @elem[@attr],
   // otherwise false is returned
   // If @clause has no elems true is returned
-  filterElemOr(elem, clause, attr) {
-    console.log("filter or", elem, clause, attr);
-
+  filterElemOrClause(elem, clause, attr) {
     // If @clause has no elements set to true we assume filter still not set
     // hence we still allow all elements.
     if (
       Object.keys(clause).length === 0 ||
       !Object.keys(clause).reduce((res, key) => {
-        console.log("1st key reduce", res, key);
         if (res === true) {
-          console.log("res already true");
           return true;
         }
         if (clause[key] === true) {
-          console.log("clause", key, "is true");
           return true;
         }
-        console.log("res not true, key not true, return false");
         return false;
       }, false)
     ) {
-      console.log("clause has no elements");
       return true;
     }
 
+    // Return True if at least one clause is satisfied
     return Object.keys(clause).reduce((res, key) => {
-      console.log("filtering elem", elem, res, key);
       if (res === true) return true;
       if (clause[key] === true && elem[attr].indexOf(key) >= 0) {
-        console.log("elem", elem, "has been accepted");
-
         return true;
       }
       console.log("elem", elem, "not accepted");
@@ -63,7 +54,7 @@ class StringFilter extends Component {
   // Filters @elem considering each @clause elem set to true as an AND string-clause
   // on the attribute @attr of @elem
   // All the @clause-s set to true has to be  contained into@elem[attr]
-  filterElemAnd(elem, clause, attr) {
+  filterElemAndClause(elem, clause, attr) {
     console.log("filter and", elem, clause, attr);
 
     if (
@@ -90,19 +81,17 @@ class StringFilter extends Component {
 
   // Called onClick of @elem, first toggles the this.state of @elem and updates
   // the filters
-  itemClick(elem) {
+  itemClick(event) {
     var state = { ...this.state };
-    state[elem.target.innerText] = this.state[elem.target.innerText]
+    state[event.target.innerText] = this.state[event.target.innerText]
       ? false
       : true;
 
     // filters all uni elements @e by "name" attribute with state as a clause
-    this.setUniStringFilter(e => this.filterElemAnd(e, state, "name"));
+    this.setUniStringFilter(e => this.filterElemAndClause(e, state, "name"));
 
     this.setState(state);
   }
-
-  componentDidUpdate() {}
 
   render() {
     return (

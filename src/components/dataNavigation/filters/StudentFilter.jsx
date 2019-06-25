@@ -8,11 +8,11 @@ class StudentFilter extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  setUniStudentFilter(f) {
-    this.props.addUniFilter("nstudent", f);
+  setUniStudentFilter(lambda) {
+    this.props.addUniFilter("nstudent", lambda);
   }
-  setCourseStudentFilter(f) {
-    this.props.addCourseFilter("nstudent", f);
+  setCourseStudentFilter(lambda) {
+    this.props.addCourseFilter("nstudent", lambda);
   }
 
   handleChange(e) {
@@ -24,7 +24,6 @@ class StudentFilter extends Component {
   }
 
   render() {
-    console.log("rendered");
     return (
       <div className="StudentFilter" style={{ border: "4px solid red" }}>
         <p>Student Filter value {this.state.val}</p>
