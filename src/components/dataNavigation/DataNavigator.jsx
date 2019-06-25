@@ -73,16 +73,26 @@ const mapDispatchToProps = dispatch => ({
 class DataNavigator extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { viewFocus: "uni" };
+
+    this.setViewFocus = this.setViewFocus.bind(this);
   }
+
+  setViewFocus(f) {
+    this.setState({ ...this.state, viewFocus: f });
+  }
+
   render() {
     return (
       <div className="DataNavigator">
         <NavigatorHeader
+          setViewFocus={this.setViewFocus}
+          viewFocus={this.state.viewFocus}
           addCourseFilter={this.props.addCourseFilter}
           addUniFilter={this.props.addUniFilter}
         />
         <NavigatorBody
+          viewFocus={this.state.viewFocus}
           filteredUni={this.props.filteredUni}
           filteredCourses={this.props.filteredCourses}
         />
