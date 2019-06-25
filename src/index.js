@@ -10,7 +10,13 @@ const state = {
   universities: {
     101: { name: "sapienza uni", students: 141 },
     123: { name: "torve", students: 191 },
-    102: { name: "romatre uni", students: 99 }
+    102: { name: "romatre uni", students: 99 },
+    103: { name: "sapienza uni", students: 141 },
+    124: { name: "torve", students: 191 },
+    104: { name: "romatre uni", students: 99 },
+    105: { name: "sapienza uni", students: 141 },
+    125: { name: "torve", students: 191 },
+    106: { name: "romatre uni", students: 99 }
   },
   courses: {
     101: { name: "inginf", students: 101 },
