@@ -46,7 +46,6 @@ class StringFilter extends Component {
       if (clause[key] === true && elem[attr].indexOf(key) >= 0) {
         return true;
       }
-      console.log("elem", elem, "not accepted");
       return false;
     }, false);
   }
@@ -88,7 +87,9 @@ class StringFilter extends Component {
       : true;
 
     // filters all uni elements @e by "name" attribute with state as a clause
-    this.setUniStringFilter(e => this.filterElemAndClause(e, state, "name"));
+    this.setUniStringFilter(e =>
+      this.filterElemAndClause(e.Info, state, "NomeOperativo")
+    );
 
     this.setState(state);
   }

@@ -6,32 +6,18 @@ import App from "./components/App";
 import rootReducer from "./reducers";
 import { BrowserRouter } from "react-router-dom";
 
-import Universities from "./Universities";
+import Universities from "./UniversitiesDSET";
 console.log("@TODO to be used instead of hardocoded data", Universities);
 
 const state = {
-  universities: {
-    101: { name: "sapienza uni", students: 141 },
-    123: { name: "torve", students: 191 },
-    102: { name: "romatre uni", students: 99 },
-    103: { name: "sapienza uni", students: 141 },
-    124: { name: "torve", students: 191 },
-    104: { name: "romatre uni", students: 99 },
-    105: { name: "sapienza uni", students: 141 },
-    125: { name: "torve", students: 191 },
-    106: { name: "romatre uni", students: 99 }
-  },
+  universities: Universities,
   courses: {
     101: { name: "inginf", students: 101 },
     102: { name: "mazzpazz", students: 99 }
   },
   visibilityFilter: {
     courses: {},
-    universities: {
-      nstudent: e => {
-        return e.students > 100;
-      }
-    }
+    universities: {}
   }
 };
 

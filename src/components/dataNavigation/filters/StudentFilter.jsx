@@ -19,7 +19,7 @@ class StudentFilter extends Component {
     console.log("changed val");
     this.setState({ val: e.target.value });
     this.setUniStudentFilter(u => {
-      return u.students > this.state.val;
+      return u.Info.Iscritti > this.state.val;
     });
   }
 

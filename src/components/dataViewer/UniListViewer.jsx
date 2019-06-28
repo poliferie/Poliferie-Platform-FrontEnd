@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import ListItemLink from "./ListItemLink";
 import List from "@material-ui/core/List";
 
@@ -19,9 +18,9 @@ class UniListViewer extends Component {
               key={id}
               icon="UniIcon"
               to={{ pathname: "university/" + id }}
-              primary={JSON.stringify(filteredUni[id].name)}
+              primary={JSON.stringify(filteredUni[id].Info.NomeOperativo)}
               secondary={
-                "Students: " + JSON.stringify(filteredUni[id].students)
+                "Students: " + JSON.stringify(filteredUni[id].Info.Iscritti)
               }
             />
           ))}

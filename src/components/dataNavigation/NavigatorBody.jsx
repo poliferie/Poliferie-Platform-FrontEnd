@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import UniListViewer from "../dataViewer/UniListViewer";
 import CourseListViewer from "../dataViewer/CourseListViewer";
 
