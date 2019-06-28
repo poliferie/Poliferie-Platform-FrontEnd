@@ -6,6 +6,9 @@ import App from "./components/App";
 import rootReducer from "./reducers";
 import { BrowserRouter } from "react-router-dom";
 
+import Universities from "./Universities";
+console.log("@TODO to be used instead of hardocoded data", Universities);
+
 const state = {
   universities: {
     101: { name: "sapienza uni", students: 141 },
