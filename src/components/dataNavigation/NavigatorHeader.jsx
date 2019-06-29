@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import StudentFilter from "./filters/StudentFilter";
 import StringFilter from "./filters/StringFilter";
 import DialogFilter from "./filters/DialogFilter";
+import MinStudentFilter from "./filters/MinStudentFilter";
+import MaxStudentFilter from "./filters/MaxStudentFilter";
+
 class NavigatorHeader extends Component {
   constructor(props) {
     super(props);
@@ -28,6 +31,14 @@ class NavigatorHeader extends Component {
         </button>
 
         <StudentFilter
+          addCourseFilter={this.addCourseFilter}
+          addUniFilter={this.addUniFilter}
+        />
+        <MinStudentFilter
+          addCourseFilter={this.addCourseFilter}
+          addUniFilter={this.addUniFilter}
+        />
+        <MaxStudentFilter
           addCourseFilter={this.addCourseFilter}
           addUniFilter={this.addUniFilter}
         />

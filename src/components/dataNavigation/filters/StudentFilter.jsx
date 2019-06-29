@@ -26,7 +26,7 @@ class StudentFilter extends Component {
   render() {
     return (
       <div className="StudentFilter" style={{ border: "4px solid red" }}>
-        <p>Student Filter value {this.state.val}</p>
+        <p>(probably to be removed) Student Filter value {this.state.val}</p>
         <input
           type="range"
           name="nstud"
