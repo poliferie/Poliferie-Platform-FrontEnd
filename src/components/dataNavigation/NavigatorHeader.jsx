@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import StudentFilter from "./filters/StudentFilter";
 import StringFilter from "./filters/StringFilter";
-
+import DialogFilter from "./filters/DialogFilter";
 class NavigatorHeader extends Component {
   constructor(props) {
     super(props);
@@ -35,6 +35,7 @@ class NavigatorHeader extends Component {
           addCourseFilter={this.addCourseFilter}
           addUniFilter={this.addUniFilter}
         />
+        <DialogFilter />
       </div>
     );
   }
