@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import FilteringSlider from "./FilteringSlider";
 
-class MinStudentFilter extends Component {
+// FILTRO ESEMPIO. SI PUO' CANCELLARE
+class MinMaleStudentFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -9,17 +10,17 @@ class MinStudentFilter extends Component {
 
   render() {
     return (
-      <div className="MinStudentFilter" style={{ border: "4px solid red" }}>
-        <h3>MinStudentFilter</h3>
+      <div className="MinMaleStudentFilter" style={{ border: "4px solid red" }}>
+        <h3>MinMaleStudentFilter</h3>
         <FilteringSlider
-          filterName="min_nstud"
+          filterName="min_malestud"
           min="70"
           max="200"
           startVal="70"
           filteringFunction={function(u) {
             //console.log("Filter name: " + this.filterName);
             //console.log("this.state.val:" + this.state.val);
-            return u.Info.Iscritti >= this.state.val;
+            return u.Info.IscrittiMaschi >= this.state.val;
           }}
           addCourseFilter={this.props.addCourseFilter}
           addUniFilter={this.props.addUniFilter}
@@ -29,4 +30,4 @@ class MinStudentFilter extends Component {
   }
 }
 
-export default MinStudentFilter;
+export default MinMaleStudentFilter;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FilteringSlider from "./FilteringSlider";
 
-class NewStudentFilter extends Component {
+class MaxStudentFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -36,4 +36,4 @@ class NewStudentFilter extends Component {
   }
 }
 
-export default NewStudentFilter;
+export default MaxStudentFilter;
