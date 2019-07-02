@@ -10,7 +10,7 @@ import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
+//import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
 
 const styles = theme => ({
@@ -130,13 +130,13 @@ class DialogFilteringSlider extends Component {
   render() {
     return (
       <div className="FilteringSlider">
-        <Button
+        <IconButton
           variant="outlined"
           color="secondary"
           onClick={this.handleClickOpen}
         >
-          {this.props.filterTitle}
-        </Button>
+          {this.props.icon}
+        </IconButton>
         <Dialog
           onClose={this.handleClose}
           aria-labelledby="customized-dialog-title"
