@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import StudentFilter from "./filters/StudentFilter";
+import StudentFilter from "./filters/non-dialog/StudentFilter";
 import StringFilter from "./filters/StringFilter";
 import DialogFilter from "./filters/DialogFilter";
-import MinStudentFilter from "./filters/MinStudentFilter";
-import MaxStudentFilter from "./filters/MaxStudentFilter";
+import MinStudentFilter from "./filters/non-dialog/MinStudentFilter";
+import MaxStudentFilter from "./filters/non-dialog/MaxStudentFilter";
+import DialogMinStudentFilter from "./filters/DialogMinStudentFilter";
 
 class NavigatorHeader extends Component {
   constructor(props) {
@@ -30,14 +31,6 @@ class NavigatorHeader extends Component {
           Corsi
         </button>
 
-        <StudentFilter
-          addCourseFilter={this.addCourseFilter}
-          addUniFilter={this.addUniFilter}
-        />
-        <MinStudentFilter
-          addCourseFilter={this.addCourseFilter}
-          addUniFilter={this.addUniFilter}
-        />
         <MaxStudentFilter
           addCourseFilter={this.addCourseFilter}
           addUniFilter={this.addUniFilter}
@@ -46,7 +39,10 @@ class NavigatorHeader extends Component {
           addCourseFilter={this.addCourseFilter}
           addUniFilter={this.addUniFilter}
         />
-        <DialogFilter />
+        <DialogMinStudentFilter
+          addCourseFilter={this.addCourseFilter}
+          addUniFilter={this.addUniFilter}
+        />
       </div>
     );
   }

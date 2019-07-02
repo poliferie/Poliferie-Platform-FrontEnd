@@ -41,9 +41,9 @@ class FilteringSlider extends Component {
     }
 
     this.setState({ val: e.target.value, numberVal: e.target.value }, () => {
-      //console.log("In the callback:");
+      console.log("In the callback:");
       //console.dir(this.state);
-      this.setUniStudentFilter(this.props.filteringFunction.bind(this));
+      //this.setUniStudentFilter(this.props.filteringFunction.bind(this));
     });
 
     //console.log("NOT callback:");
@@ -81,6 +81,14 @@ class FilteringSlider extends Component {
           }}
         >
           Remove
+        </button>
+        <button
+          onClick={() => {
+            console.log(this.props.filterName + " applied");
+            this.setUniStudentFilter(this.props.filteringFunction.bind(this));
+          }}
+        >
+          Applica
         </button>
       </div>
     );
