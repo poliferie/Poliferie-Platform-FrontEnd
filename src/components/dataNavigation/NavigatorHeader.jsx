@@ -5,6 +5,7 @@ import DialogFilter from "./filters/DialogFilter";
 import MinStudentFilter from "./filters/non-dialog/MinStudentFilter";
 import MaxStudentFilter from "./filters/non-dialog/MaxStudentFilter";
 import DialogMinStudentFilter from "./filters/DialogMinStudentFilter";
+import { wrap } from "module";
 
 class NavigatorHeader extends Component {
   constructor(props) {
@@ -39,10 +40,21 @@ class NavigatorHeader extends Component {
           addCourseFilter={this.addCourseFilter}
           addUniFilter={this.addUniFilter}
         />
-        <DialogMinStudentFilter
-          addCourseFilter={this.addCourseFilter}
-          addUniFilter={this.addUniFilter}
-        />
+        <div
+          className="filterList"
+          // NEEDED to make the filter icons stand side-by-side, and automatically goes to new line
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            flexDirection: "row",
+            maxWidth: "100%"
+          }}
+        >
+          <DialogMinStudentFilter
+            addCourseFilter={this.addCourseFilter}
+            addUniFilter={this.addUniFilter}
+          />
+        </div>
       </div>
     );
   }
