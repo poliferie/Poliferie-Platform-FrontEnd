@@ -4,7 +4,7 @@ class StringFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.regions = ["uni", "sap"];
+    this.regions = ["uni", "sap", "torv", "roma3"];
 
     this.setUniStringFilter = this.setUniStringFilter.bind(this);
     this.itemClick = this.itemClick.bind(this);
