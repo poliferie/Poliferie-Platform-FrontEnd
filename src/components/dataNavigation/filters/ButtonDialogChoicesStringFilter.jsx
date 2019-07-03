@@ -10,13 +10,6 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import CloseIcon from "@material-ui/icons/Close";
 
-import List from "@material-ui/core/List";
-import Checkbox from "@material-ui/core/Checkbox";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-
 /*
   Props to pass:
   choices
@@ -72,7 +65,7 @@ const DialogActions = withStyles(theme => ({
   }
 }))(MuiDialogActions);
 
-class DialogChoicesStringFilter extends Component {
+class ButtonDialogChoicesStringFilter extends Component {
   handleClickOpen = () => {
     this.setState({
       open: true
@@ -85,25 +78,17 @@ class DialogChoicesStringFilter extends Component {
 
   constructor(props) {
     super(props);
+    this.state = { open: false };
 
     //this.choices = ["uni", "sap", "torv", "roma3"];
     this.choices = this.props.choices;
 
-    var s = { open: false };
-    this.choices.forEach(choice => {
-      s[choice] = false;
-    });
-    this.state = s;
-
     this.setUniStringFilter = this.setUniStringFilter.bind(this);
     this.itemClick = this.itemClick.bind(this);
-    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
 
     this.applyFilter = this.applyFilter.bind(this);
-    this.selectAll = this.selectAll.bind(this);
-    this.selectNone = this.selectNone.bind(this);
+    this.resetFilter = this.resetFilter.bind(this);
     this.removeFilter = this.removeFilter.bind(this);
-
     //this.filteringFunction = this.props.filteringFunction.bind(this);
   }
 
@@ -180,37 +165,23 @@ class DialogChoicesStringFilter extends Component {
   itemClick(event) {
     var state = { ...this.state };
     // Switch state for the target of event
-    state[event.target.innerText] = !this.state[event.target.innerText];
+    state[event.target.innerText] = this.state[event.target.innerText]
+      ? false
+      : true;
 
     this.setState(state, () => console.log(this.state));
   }
 
-  handleCheckboxChange(event) {
-    var state = { ...this.state };
-    // Switch state for the target of event
-    var e = event.target.getAttribute("parentitem");
-    state[e] = !state[e];
-
-    this.setState(state, () => console.log(this.state));
-  }
-
-  selectAll() {
-    var state = { ...this.state };
-    Object.keys(state).forEach(key => {
-      if (key !== "open") state[key] = true;
-    });
-
-    this.setState(state);
-    //this.setUniStringFilter(e => true);
-  }
-
-  selectNone() {
+  resetFilter() {
     var state = { ...this.state };
     Object.keys(state).forEach(key => {
       if (key !== "open") state[key] = false;
     });
 
-    this.setState(state);
+    this.setState(state, () => {
+      console.log(this.state);
+      console.log(state);
+    });
     //this.setUniStringFilter(e => true);
   }
 
@@ -235,6 +206,39 @@ class DialogChoicesStringFilter extends Component {
     );
   }
 
+  /*
+  render() {
+    return (
+      <div className="StringFilter" style={{ border: "4px solid green" }}>
+        <p>{this.props.filterTitle}</p>
+        <ul>
+          {this.choices.map(r => {
+            return (
+              <li
+                key={r}
+                style={{
+                  backgroundColor: this.state[r] ? "lightgreen" : "white"
+                }}
+                onClick={this.itemClick}
+              >
+                {r}
+              </li>
+            );
+          })}
+        </ul>
+        <Button onClick={this.resetFilter} color="primary">
+          Reset
+        </Button>
+        <Button onClick={this.removeFilter} color="primary">
+          Rimuovi
+        </Button>
+        <Button onClick={this.applyFilter} color="primary">
+          Applica
+        </Button>
+      </div>
+    );
+  }*/
+
   render() {
     return (
       <div className="FilteringSlider">
@@ -257,35 +261,42 @@ class DialogChoicesStringFilter extends Component {
             {this.props.filterTitle}
           </DialogTitle>
           <DialogContent dividers>
-            <List component="nav">
+            <div
+              className="filterList"
+              // NEEDED to make the filter icons stand side-by-side, and automatically goes to new line
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                flexDirection: "row",
+                maxWidth: "100%"
+              }}
+            >
               {this.choices.map(r => {
                 return (
-                  <ListItem button onClick={this.itemClick} key={r}>
-                    <ListItemText primary={r} />
-                    <ListItemSecondaryAction>
-                      <Checkbox
-                        edge="end"
-                        //onClick={this.itemClick}
-                        onClick={this.handleCheckboxChange}
-                        checked={this.state[r]}
-                        inputProps={{ parentitem: r }}
-                        key={r}
-                      />
-                    </ListItemSecondaryAction>
-                  </ListItem>
+                  <button
+                    variant="contained"
+                    key={r}
+                    style={{
+                      backgroundColor: this.state[r] ? "#4CAF50" : "#707070",
+                      color: "white",
+                      margin: "0.5vw",
+                      borderRadius: "0.75vw",
+                      border: "none",
+                      display: "inline-block",
+                      padding: "0.6vw"
+                    }}
+                    onClick={this.itemClick}
+                  >
+                    {r}
+                  </button>
                 );
               })}
-            </List>
+            </div>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.selectAll} color="primary">
-              Tutto
+            <Button onClick={this.resetFilter} color="primary">
+              Reset
             </Button>
-            <Button onClick={this.selectNone} color="primary">
-              Nessuno
-            </Button>
-          </DialogActions>
-          <DialogActions>
             <Button onClick={this.removeFilter} color="primary">
               Rimuovi
             </Button>
@@ -299,4 +310,4 @@ class DialogChoicesStringFilter extends Component {
   }
 }
 
-export default DialogChoicesStringFilter;
+export default ButtonDialogChoicesStringFilter;
