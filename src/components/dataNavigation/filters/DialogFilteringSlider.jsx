@@ -117,11 +117,7 @@ class DialogFilteringSlider extends Component {
       return;
     }
 
-    this.setState({ val: e.target.value, numberVal: e.target.value }, () => {
-      console.log("In the callback:");
-      //console.dir(this.state);
-      //this.setUniStudentFilter(this.props.filteringFunction.bind(this));
-    });
+    this.setState({ val: e.target.value, numberVal: e.target.value });
 
     //console.log("NOT callback:");
     //console.dir(this.state);

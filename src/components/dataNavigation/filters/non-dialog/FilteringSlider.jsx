@@ -17,9 +17,7 @@ class FilteringSlider extends Component {
 
     this.filterName = this.props.filterName;
     this.handleChange = this.handleChange.bind(this);
-    //this.filteringFunction = this.props.filteringFunction.bind(this);
-
-    //console.dir(this);
+    this.filteringFunction = this.props.filteringFunction.bind(this);
   }
 
   setUniStudentFilter(lambda) {
@@ -40,14 +38,7 @@ class FilteringSlider extends Component {
       return;
     }
 
-    this.setState({ val: e.target.value, numberVal: e.target.value }, () => {
-      console.log("In the callback:");
-      //console.dir(this.state);
-      //this.setUniStudentFilter(this.props.filteringFunction.bind(this));
-    });
-
-    //console.log("NOT callback:");
-    //console.dir(this.state);
+    this.setState({ val: e.target.value, numberVal: e.target.value });
   }
 
   render() {
@@ -85,7 +76,7 @@ class FilteringSlider extends Component {
         <button
           onClick={() => {
             console.log(this.props.filterName + " applied");
-            this.setUniStudentFilter(this.props.filteringFunction.bind(this));
+            this.setUniStudentFilter(this.filteringFunction);
           }}
         >
           Applica
