@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-import StudentFilter from "./filters/non-dialog/StudentFilter";
-import StringFilter from "./filters/StringFilter";
-import DialogFilter from "./filters/DialogFilter";
-import MinStudentFilter from "./filters/non-dialog/MinStudentFilter";
 import MaxStudentFilter from "./filters/non-dialog/MaxStudentFilter";
 import DialogMinStudentFilter from "./filters/DialogMinStudentFilter";
 import DialogRegionFilter from "./filters/DialogRegionFilter";
@@ -33,14 +29,6 @@ class NavigatorHeader extends Component {
           Corsi
         </button>
 
-        <MaxStudentFilter
-          addCourseFilter={this.addCourseFilter}
-          addUniFilter={this.addUniFilter}
-        />
-        <StringFilter
-          addCourseFilter={this.addCourseFilter}
-          addUniFilter={this.addUniFilter}
-        />
         <div
           className="filterList"
           // NEEDED to make the filter icons stand side-by-side, and automatically goes to new line
