@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import MaxStudentFilter from "./filters/non-dialog/MaxStudentFilter";
 import DialogMinStudentFilter from "./filters/DialogMinStudentFilter";
 import DialogRegionFilter from "./filters/DialogRegionFilter";
+import DialogSoddisfazioneFilter from "./filters/DialogSoddisfazioneFilter";
+import DialogAreeDisciplinariFilter from "./filters/DialogAreeDisciplinariFilter";
 import { wrap } from "module";
 
 class NavigatorHeader extends Component {
@@ -40,6 +42,14 @@ class NavigatorHeader extends Component {
           }}
         >
           <DialogMinStudentFilter
+            addCourseFilter={this.addCourseFilter}
+            addUniFilter={this.addUniFilter}
+          />
+          <DialogSoddisfazioneFilter
+            addCourseFilter={this.addCourseFilter}
+            addUniFilter={this.addUniFilter}
+          />
+          <DialogAreeDisciplinariFilter
             addCourseFilter={this.addCourseFilter}
             addUniFilter={this.addUniFilter}
           />
