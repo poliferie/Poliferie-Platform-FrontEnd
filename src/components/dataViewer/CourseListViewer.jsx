@@ -31,10 +31,11 @@ class CourseListViewer extends Component {
               key={id}
               icon="CourseIcon"
               to={{ pathname: "course/" + id }}
-              primary={JSON.stringify(filteredCourses[id].name)}
-              secondary={
-                "Students: " + JSON.stringify(filteredCourses[id].students)
-              }
+              primary={JSON.stringify(filteredCourses[id].Info.NomeEsteso)}
+              /*secondary={
+                "Students: " + JSON.stringify(filteredCourses[id].Info.students)
+              }*/
+              secondary={"Students: Undefined"}
             />
           ))}
         </List>
