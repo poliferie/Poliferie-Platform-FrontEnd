@@ -25,8 +25,13 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
   icon
   filterType in {"and", "or"}
   filterAttribute
-  addUniFilter
-  addCourseFilter
+  filterAttributePath "Info.Region" to access elem.Info.Region
+  addFilter
+
+
+
+  OLD addUniFilter
+  OLD addCourseFilter
 */
 const styles = theme => ({
   root: {
@@ -95,7 +100,8 @@ class DialogChoicesStringFilter extends Component {
     });
     this.state = s;
 
-    this.setUniStringFilter = this.setUniStringFilter.bind(this);
+    //this.setUniStringFilter = this.setUniStringFilter.bind(this);
+    this.setFilter = this.setFilter.bind(this);
     this.itemClick = this.itemClick.bind(this);
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
 
@@ -104,15 +110,31 @@ class DialogChoicesStringFilter extends Component {
     this.selectNone = this.selectNone.bind(this);
     this.removeFilter = this.removeFilter.bind(this);
 
+    this.filterAttributePath = "e." + this.props.filterAttributePath;
+    console.log(
+      this.props.filterName +
+        " FilterAttributePath: " +
+        this.filterAttributePath
+    );
+
+    console.log("DialogChoicesStringFilter");
+    console.log(this.props);
+
     //this.filteringFunction = this.props.filteringFunction.bind(this);
   }
 
+  setFilter(f) {
+    this.props.addFilter(this.filterName, f);
+  }
+
+  /*
   setUniStringFilter(f) {
     this.props.addUniFilter(this.filterName, f);
   }
   setCourseStringFilter(f) {
     this.props.addCourseFilter(this.filterName, f);
   }
+  */
 
   // Filters @elem considering each @clause elem set to true as an OR string-clause
   // on the attribute @attr of @elem
@@ -140,6 +162,7 @@ class DialogChoicesStringFilter extends Component {
     // Return True if at least one clause is satisfied
     return Object.keys(clause).reduce((res, key) => {
       if (res === true) return true;
+
       if (clause[key] === true && elem[attr].indexOf(key) >= 0) {
         return true;
       }
@@ -214,10 +237,16 @@ class DialogChoicesStringFilter extends Component {
     //this.setUniStringFilter(e => true);
   }
 
+  /*
   removeFilter() {
     this.setUniStringFilter(e => true);
+  }*/
+
+  removeFilter() {
+    this.setFilter(e => true);
   }
 
+  /*
   applyFilter() {
     // filters all uni elements @e by "name" attribute with state as a clause
     this.setUniStringFilter(e =>
@@ -229,6 +258,28 @@ class DialogChoicesStringFilter extends Component {
           )
         : this.filterElemOrClause(
             e.Info,
+            this.state,
+            this.props.filterAttribute
+          )
+    );
+  }
+  */
+
+  applyFilter() {
+    // filters all uni elements @e by "name" attribute with state as a clause
+    var filterAttributePath = this.filterAttributePath;
+    //console.log(eval(inputElement));
+    this.setFilter(e =>
+      this.props.filterType === "and"
+        ? this.filterElemAndClause(
+            eval(filterAttributePath),
+            //e.Info,
+            this.state,
+            this.props.filterAttribute
+          )
+        : this.filterElemOrClause(
+            eval(filterAttributePath),
+            //e.Info,
             this.state,
             this.props.filterAttribute
           )

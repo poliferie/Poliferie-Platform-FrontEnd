@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import DialogFilteringSlider from "./DialogFilteringSlider";
-import SmileyIcon from "@material-ui/icons/SentimentSatisfiedAlt";
+import PplIcon from "@material-ui/icons/SupervisorAccount";
 
 const Icon = () => {
   // This can actually just be put directly into the props of DialogFilter
-  return <SmileyIcon color="primary" />;
+  return <PplIcon color="primary" />;
 };
 
-class DialogOccupazioneFilter extends Component {
+class DialogMinStudentFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -15,25 +15,25 @@ class DialogOccupazioneFilter extends Component {
 
   render() {
     return (
-      <div className="OccupazioneFilter">
+      <div className="MinStudentFilter">
         <DialogFilteringSlider
-          filterName="min_occupation"
-          filterTitle="Filtra per tasso di occupazione"
-          min="0"
-          max="100"
-          startVal="80"
+          filterName="min_nstud"
+          filterTitle="Numero minimo di studenti"
+          min="70"
+          max="200"
+          startVal="70"
           icon={Icon()}
           filteringFunction={function(u) {
             //console.log("Filter name: " + this.filterName);
             //console.log("this.state.val:" + this.state.val);
-            return u.Soddisfazione.Soddisfazione >= this.state.val;
+            return u.Info.Iscritti >= this.state.val;
           }}
-          addCourseFilter={this.props.addCourseFilter}
-          addUniFilter={this.props.addUniFilter}
+          //addCourseFilter={this.props.addCourseFilter}
+          addFilter={this.props.addFilter}
         />
       </div>
     );
   }
 }
 
-export default DialogOccupazioneFilter;
+export default DialogMinStudentFilter;

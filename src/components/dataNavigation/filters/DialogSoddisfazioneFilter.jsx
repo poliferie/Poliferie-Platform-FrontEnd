@@ -28,8 +28,7 @@ class DialogSoddisfazioneFilter extends Component {
             //console.log("this.state.val:" + this.state.val);
             return u.Soddisfazione.Soddisfazione >= this.state.val;
           }}
-          addCourseFilter={this.props.addCourseFilter}
-          addUniFilter={this.props.addUniFilter}
+          addFilter={this.props.addFilter}
         />
       </div>
     );

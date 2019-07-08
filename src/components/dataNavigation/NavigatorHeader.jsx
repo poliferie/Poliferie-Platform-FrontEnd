@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import MaxStudentFilter from "./filters/non-dialog/MaxStudentFilter";
-import DialogMinStudentFilter from "./filters/DialogMinStudentFilter";
-import DialogRegionFilter from "./filters/DialogRegionFilter";
+import DialogMinStudentFilter from "./filters/U_DialogMinStudentFilter";
+import UniDialogRegionFilter from "./filters/U_DialogRegionFilter";
+//import CourseDialogRegionFilter from "./filters/C_DialogRegionFilter";
 import DialogSoddisfazioneFilter from "./filters/DialogSoddisfazioneFilter";
-import DialogAreeDisciplinariFilter from "./filters/DialogAreeDisciplinariFilter";
+import DialogAreeDisciplinariFilter from "./filters/C_DialogAreeDisciplinariFilter";
 import { wrap } from "module";
 
 class NavigatorHeader extends Component {
@@ -14,6 +15,51 @@ class NavigatorHeader extends Component {
     this.addCourseFilter = this.props.addCourseFilter;
     this.addUniFilter = this.props.addUniFilter;
     this.setViewFocus = this.props.setViewFocus;
+    this.renderFilters = this.renderFilters.bind(this);
+  }
+
+  renderFilters(isUniFocus) {
+    //var isUniFocus = this.props.viewFocus === "uni";
+    if (isUniFocus) {
+      return (
+        <div
+          className="filterList"
+          // NEEDED to make the filter icons stand side-by-side, and automatically goes to new line
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            flexDirection: "row",
+            maxWidth: "100%"
+          }}
+        >
+          <DialogMinStudentFilter addFilter={this.addUniFilter} />
+          <DialogSoddisfazioneFilter addFilter={this.addUniFilter} />
+          <UniDialogRegionFilter addFilter={this.addUniFilter} />
+        </div>
+      );
+    } else {
+      return (
+        <div
+          className="filterList"
+          // NEEDED to make the filter icons stand side-by-side, and automatically goes to new line
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            flexDirection: "row",
+            maxWidth: "100%"
+          }}
+        >
+          <DialogSoddisfazioneFilter addFilter={this.addCourseFilter} />
+          <DialogAreeDisciplinariFilter addFilter={this.addCourseFilter} />
+          {
+            //Courses don't have student number
+            //<DialogMinStudentFilter addFilter={this.addCourseFilter} />
+            //Courses don't have a region yet
+            //<CourseDialogRegionFilter addFilter={this.addCourseFilter} />
+          }
+        </div>
+      );
+    }
   }
 
   render() {
@@ -31,33 +77,7 @@ class NavigatorHeader extends Component {
           Corsi
         </button>
 
-        <div
-          className="filterList"
-          // NEEDED to make the filter icons stand side-by-side, and automatically goes to new line
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            flexDirection: "row",
-            maxWidth: "100%"
-          }}
-        >
-          <DialogMinStudentFilter
-            addCourseFilter={this.addCourseFilter}
-            addUniFilter={this.addUniFilter}
-          />
-          <DialogSoddisfazioneFilter
-            addCourseFilter={this.addCourseFilter}
-            addUniFilter={this.addUniFilter}
-          />
-          <DialogAreeDisciplinariFilter
-            addCourseFilter={this.addCourseFilter}
-            addUniFilter={this.addUniFilter}
-          />
-          <DialogRegionFilter
-            addCourseFilter={this.addCourseFilter}
-            addUniFilter={this.addUniFilter}
-          />
-        </div>
+        {this.renderFilters(isUniFocus)}
       </div>
     );
   }

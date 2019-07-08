@@ -40,9 +40,11 @@ class DialogAreeDisciplinariFilter extends Component {
           choices={Areas}
           icon={Icon()}
           filterType="or"
-          filterAttribute="Regione"
-          addCourseFilter={this.props.addCourseFilter}
-          addUniFilter={this.props.addUniFilter}
+          filterAttribute="AreaUniversitalyNome"
+          filterAttributePath="Info"
+          addFilter={this.props.addFilter}
+          //addCourseFilter={this.props.addCourseFilter}
+          //addUniFilter={this.props.addUniFilter}
         />
       </div>
     );

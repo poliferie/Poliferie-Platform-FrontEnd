@@ -99,12 +99,14 @@ class DialogFilteringSlider extends Component {
     //console.dir(this);
   }
 
-  setUniFilter(lambda) {
-    this.props.addUniFilter(this.filterName, lambda);
+  setFilter(lambda) {
+    this.props.addFilter(this.filterName, lambda);
   }
+
+  /*
   setCourseFilter(lambda) {
     this.props.addCourseFilter(this.filterName, lambda);
-  }
+  }*/
 
   handleChange(e) {
     console.log(this.props.filterName + " changed val: " + e.target.value);
@@ -173,7 +175,7 @@ class DialogFilteringSlider extends Component {
             <Button
               onClick={() => {
                 console.log(this.props.filterName + " removed");
-                this.setUniFilter(e => true);
+                this.setFilter(e => true);
               }}
               color="primary"
             >
@@ -182,7 +184,7 @@ class DialogFilteringSlider extends Component {
             <Button
               onClick={() => {
                 console.log(this.props.filterName + " applied");
-                this.setUniFilter(this.props.filteringFunction.bind(this));
+                this.setFilter(this.props.filteringFunction.bind(this));
               }}
               color="primary"
             >
