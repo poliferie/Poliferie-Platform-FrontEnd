@@ -34,6 +34,9 @@ class DialogRegionFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+
+    console.log("DialogRegionFilter");
+    console.log(this.props);
   }
 
   render() {
@@ -46,8 +49,10 @@ class DialogRegionFilter extends Component {
           icon={Icon()}
           filterType="or"
           filterAttribute="Regione"
-          addCourseFilter={this.props.addCourseFilter}
-          addUniFilter={this.props.addUniFilter}
+          filterAttributePath="Info"
+          addFilter={this.props.addFilter}
+          //addCourseFilter={this.props.addCourseFilter}
+          //addUniFilter={this.props.addUniFilter}
         />
       </div>
     );

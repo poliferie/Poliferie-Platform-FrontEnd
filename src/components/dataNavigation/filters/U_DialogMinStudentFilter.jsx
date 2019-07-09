@@ -28,8 +28,8 @@ class DialogMinStudentFilter extends Component {
             //console.log("this.state.val:" + this.state.val);
             return u.Info.Iscritti >= this.state.val;
           }}
-          addCourseFilter={this.props.addCourseFilter}
-          addUniFilter={this.props.addUniFilter}
+          //addCourseFilter={this.props.addCourseFilter}
+          addFilter={this.props.addFilter}
         />
       </div>
     );
