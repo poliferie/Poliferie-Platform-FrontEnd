@@ -28,6 +28,7 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
   filterAttribute
   filterAttributePath "Info.Region" to access elem.Info.Region
   addFilter
+  humanReadableDescription
 
 
 
@@ -323,6 +324,7 @@ class DialogChoicesStringFilter extends Component {
             {this.props.filterTitle}
           </DialogTitle>
           <DialogContent dividers>
+            <p>{this.props.humanReadableDescription}</p>
             <List component="nav">
               {this.choices.map((r, index) => {
                 return (

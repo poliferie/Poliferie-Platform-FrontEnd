@@ -10,8 +10,21 @@ import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
-//import CloseIcon from "@material-ui/icons/Close";
+import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
+
+/*
+parameters:
+  filterName
+  filterTitle
+  min
+  max
+  startVal
+  icon
+  filteringFunction
+  addFilter
+  humanReadableDescription
+*/
 
 const styles = theme => ({
   root: {
@@ -26,7 +39,6 @@ const styles = theme => ({
   }
 });
 
-/* This has the close button in the upper right corner
 const DialogTitle = withStyles(styles)(props => {
   const { children, classes, onClose } = props;
   return (
@@ -41,16 +53,6 @@ const DialogTitle = withStyles(styles)(props => {
           <CloseIcon />
         </IconButton>
       ) : null}
-    </MuiDialogTitle>
-  );
-});
-*/
-
-const DialogTitle = withStyles(styles)(props => {
-  const { children, classes, onClose } = props;
-  return (
-    <MuiDialogTitle disableTypography className={classes.root}>
-      <Typography variant="h6">{children}</Typography>
     </MuiDialogTitle>
   );
 });
@@ -147,6 +149,7 @@ class DialogFilteringSlider extends Component {
             {this.props.filterTitle}
           </DialogTitle>
           <DialogContent dividers>
+            <p>{this.props.humanReadableDescription}</p>
             <p>
               {"Value: "}
               <input

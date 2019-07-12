@@ -30,6 +30,7 @@ class DialogMinStudentFilter extends Component {
           }}
           //addCourseFilter={this.props.addCourseFilter}
           addFilter={this.props.addFilter}
+          humanReadableDescription="Questa è una descrizione di esempio"
         />
       </div>
     );
