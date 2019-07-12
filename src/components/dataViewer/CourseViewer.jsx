@@ -27,8 +27,6 @@ import LanguageIcon from "@material-ui/icons/Language";
 
 
 
-
-
 import CloseIcon from "@material-ui/icons/CancelOutlined";
 import PersonIcon from "@material-ui/icons/People";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
@@ -37,7 +35,7 @@ import LockCloseIcon from "@material-ui/icons/Lock";
 import { Progress } from 'react-sweet-progress';
 import "react-sweet-progress/lib/style.css";
 
-import courses from "../../CoursesDSET"
+import courses from "../../CoursesDSET";
 
 
 const useStyles = theme => ({
@@ -66,6 +64,7 @@ const CloseButton = {
 const flexContainer = {
   display: 'flex',
   flexDirection: 'row',
+  maxWifth: '100%',
   padding: 0,
   maxHeight: 200,
   overflowX: "auto"
@@ -81,6 +80,13 @@ const p_text = {
 };
 
 
+function cleanPercentage(str) {
+  return  str==="null"? "--" : str
+}
+
+function clearText(str) {
+  return  str==="null"? "" : str
+}
 
 class CourseViewer extends Component {
   constructor(props) {
@@ -112,10 +118,10 @@ class CourseViewer extends Component {
 
             </Typography>
             <Typography variant="h6" component="h4">
-              { this.corso.Info.ateneoNomeEsteso}
+              { clearText(this.corso.Info.ateneoNomeEsteso)}
             </Typography>
             <Typography className={classes.pos} color="textSecondary">
-              {this.corso.Info.ateneoRegione}
+              {clearText(this.corso.Info.ateneoRegione)}
             </Typography>
 
             <Typography variant="body2" component="p">
@@ -126,23 +132,23 @@ class CourseViewer extends Component {
 
 
                   <ListItemText style={{whiteSpace: "nowrap"}}
-                      primary={  this.corso.Info.Lingua == "I" ? "Italiano" : "" + this.corso.Info.Lingua == "E" ? "Inglese" : "" + this.corso.Info.Lingua == "M" ? "Multilingua" : ""}
+                      primary={  this.corso.Info.Lingua === "I" ? "Italiano" : "" + this.corso.Info.Lingua === "E" ? "Inglese" : "" + this.corso.Info.Lingua === "M" ? "Multilingua" : ""}
 
                   />
                 </ListItem>
                 <ListItem  >
-                  {this.corso.Info.Statale == "L" ? <LockCloseIcon /> :<LockOpenIcon /> }
+                  {this.corso.Info.Statale === "L" ? <LockCloseIcon /> :<LockOpenIcon /> }
 
                   <ListItemText
-                      primary={  this.corso.Info.Statale == "L" ? "Libera" : "Statale"}
+                      primary={  this.corso.Info.Statale === "L" ? "Libera" : "Statale"}
 
                   />
                 </ListItem>
                 <ListItem  >
-                  {this.corso.Info.testAccesso == "S" ? <AssignmentLateIcon /> :<AssignmentIndIcon /> }
+                  {this.corso.Info.testAccesso === "S" ? <AssignmentLateIcon /> :<AssignmentIndIcon /> }
 
                   <ListItemText style={{whiteSpace: "nowrap"}}
-                      primary={  this.corso.Info.testAccesso == "S" ? "Test" : "No Test"}
+                      primary={  this.corso.Info.testAccesso === "S" ? "Test" : "No Test"}
 
                   />
                 </ListItem>
@@ -157,20 +163,20 @@ class CourseViewer extends Component {
 
                 <ListItem  >
 
-                  {this.corso.Info.requisitoAccesso == "D" ? <BookIcon /> : <SchoolIcon/> }
+                  {this.corso.Info.requisitoAccesso === "D" ? <BookIcon /> : <SchoolIcon/> }
 
                   <ListItemText style={{whiteSpace: "nowrap"}}
-                      primary={  this.corso.Info.requisitoAccesso == "D" ? "Diploma" : "Richiesta Laurea"}
+                      primary={  this.corso.Info.requisitoAccesso === "D" ? "Diploma" : "Richiesta Laurea"}
 
                   />
                 </ListItem>
 
                 <ListItem  >
 
-                  {this.corso.Info.Erogazione == "P" ? <LocationOnIcon /> : <LocationOffIcon/> }
+                  {this.corso.Info.Erogazione === "P" ? <LocationOnIcon /> : <LocationOffIcon/> }
 
                   <ListItemText style={{whiteSpace: "nowrap"}}
-                      primary={  this.corso.Info.Erogazione == "P" ? "In aula" : "Teledidattica"}
+                      primary={  this.corso.Info.Erogazione === "P" ? "In aula" : "Teledidattica"}
 
                   />
                 </ListItem>
@@ -207,19 +213,19 @@ class CourseViewer extends Component {
                 <ListItem style={listItem} >
                   <ListItemText  primary="Generale" />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Soddisfazione.Soddisfazione} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Soddisfazione.Soddisfazione)} min-width={10} />
                   </p>
                 </ListItem>
                 <ListItem>
                   <ListItemText  primary="Docenti" />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Soddisfazione.SoddisfazioneDocenti} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Soddisfazione.SoddisfazioneDocenti)} min-width={10} />
                   </p>
                 </ListItem>
                 <ListItem>
                   <ListItemText  primary="Lavoro" secondary="Da 1 a 10" />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Soddisfazione.lavoroSoddisfazione>0 ? this.corso.Soddisfazione.lavoroSoddisfazione : "--"} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Soddisfazione.lavoroSoddisfazione)} min-width={10} />
                   </p>
                 </ListItem>
 
@@ -237,31 +243,31 @@ class CourseViewer extends Component {
                 <ListItem style={listItem} >
                   <ListItemText  primary="Scelto nuovamente dagli stessi studenti" />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Soddisfazione.iscrizioneNuova} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Soddisfazione.iscrizioneNuova)} min-width={10} />
                   </p>
                 </ListItem>
                 <ListItem>
                   <ListItemText  primary="Utilizzo delle competenze acquisite con la laurea in misura elevata" />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Soddisfazione.lavoroUtilizzoCompetenzeElevato} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Soddisfazione.lavoroUtilizzoCompetenzeElevato)} min-width={10} />
                   </p>
                 </ListItem>
                 <ListItem>
                   <ListItemText  primary="Utilizzo delle competenze acquisite con la laurea in misura ridotta" />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Soddisfazione.lavoroUtilizzoCompetenzeRidotto} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Soddisfazione.lavoroUtilizzoCompetenzeRidotto)} min-width={10} />
                   </p>
                 </ListItem>
                 <ListItem>
                   <ListItemText  primary="Non Utilizzo delle competenze acquisite con la laurea" />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Soddisfazione.lavoroUtilizzoCompetenzeNullo} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Soddisfazione.lavoroUtilizzoCompetenzeNullo)} min-width={10} />
                   </p>
                 </ListItem>
                 <ListItem>
                   <ListItemText  primary="Prosegue gli studi" />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Soddisfazione.preseguireStudi>0 ? this.corso.Soddisfazione.preseguireStudi : "--"} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Soddisfazione.preseguireStudi)} min-width={10} />
                   </p>
                 </ListItem>
 
@@ -285,7 +291,7 @@ class CourseViewer extends Component {
                 <ListItem style={listItem} >
                   <ListItemText  primary="Tasso di disoccupazione" />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Opportunita.occupazioneTassoDisoccupazione } min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Opportunita.occupazioneTassoDisoccupazione)} min-width={10} />
                   </p>
                 </ListItem>
                 <ListItem>
@@ -297,13 +303,13 @@ class CourseViewer extends Component {
                 <ListItem>
                   <ListItemText  primary="Tirocini o stage" secondary="Percentuale di studenti che ne ha usufruito durante il corso" />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Opportunita.tirociniStage} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Opportunita.tirociniStage)} min-width={10} />
                   </p>
                 </ListItem>
                 <ListItem>
                   <ListItemText  primary="Borse di studio" secondary="Percentuale di studenti che ne ha usufruito durante il corso" />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Opportunita.borseStudio} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Opportunita.borseStudio)} min-width={10} />
                   </p>
                 </ListItem>
 
@@ -326,25 +332,25 @@ class CourseViewer extends Component {
                 <ListItem>
                   <ListItemText  primary="I Laureati hanno esperienze di lavoro" />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Opportunita.lavoroTempoPrimoLavoro} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Opportunita.lavoroTempoPrimoLavoro)} min-width={10} />
                   </p>
                 </ListItem>
                 <ListItem>
                   <ListItemText  primary="I Lureati lavorano" />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Opportunita.occupazioneLavoro} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Opportunita.occupazioneLavoro)} min-width={10} />
                   </p>
                 </ListItem>
                 <ListItem>
                   <ListItemText  primary="I Laureati non lavorano ma cercano un impiego" />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Opportunita.occupazioneNoLavoroCerca} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Opportunita.occupazioneNoLavoroCerca)} min-width={10} />
                   </p>
                 </ListItem>
                 <ListItem>
                   <ListItemText  primary="I Laureati non lavorano e non cercano un impiego" />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Opportunita.occupazioneNoLavoroNoCerca} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Opportunita.occupazioneNoLavoroNoCerca)} min-width={10} />
                   </p>
                 </ListItem>
 
@@ -372,7 +378,7 @@ class CourseViewer extends Component {
                       primary="Cittadini Stranieri"
                   />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Opportunita.cittadiniStranieri} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Opportunita.cittadiniStranieri)} min-width={10} />
 
                   </p>
                 </ListItem>
@@ -384,7 +390,7 @@ class CourseViewer extends Component {
                   />
                   <p>
 
-                    <Progress type="circle" width={50} percent={this.corso.Internazionalita.periodiStudioEstero} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Internazionalita.periodiStudioEstero)} min-width={10} />
                   </p>
                 </ListItem>
                 <ListItem style={listItem} >
@@ -393,7 +399,7 @@ class CourseViewer extends Component {
                       primary="Lavora all'estero"
                   />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Mobilita.lavoroAreaEstero} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Mobilita.lavoroAreaEstero)} min-width={10} />
 
                   </p>
                 </ListItem>
@@ -403,7 +409,7 @@ class CourseViewer extends Component {
                       primary="Alloggio a meno di un oa di distanza dall'università"
                   />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Mobilita.alloggioOraViaggio} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Mobilita.alloggioOraViaggio)} min-width={10} />
 
                   </p>
                 </ListItem>
@@ -413,7 +419,7 @@ class CourseViewer extends Component {
                       primary="Residenza in un'altra regione"
                   />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Mobilita.residenzaAltraRegione} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Mobilita.residenzaAltraRegione)} min-width={10} />
 
                   </p>
                 </ListItem>
@@ -430,27 +436,29 @@ class CourseViewer extends Component {
                       primary="Lavoro in area Nord"
                   />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Mobilita.lavoroAreaNord} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Mobilita.lavoroAreaNord)} min-width={10} />
 
                   </p>
                 </ListItem>
+
                 <ListItem style={listItem} >
 
                   <ListItemText
                       primary="Lavora area centro"
                   />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Mobilita.lavoroAreaCentro} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Mobilita.lavoroAreaCentro)} min-width={10} />
 
                   </p>
                 </ListItem>
+
                 <ListItem style={listItem} >
 
                   <ListItemText
                       primary="Lavora area sud"
                   />
                   <p>
-                    <Progress type="circle" width={50} percent={this.corso.Mobilita.lavoroAreaSud} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Mobilita.lavoroAreaSud)} min-width={10} />
 
                   </p>
                 </ListItem>
@@ -470,29 +478,38 @@ class CourseViewer extends Component {
 
               <List dense={false} >
                 <Typography variant="h6">Continuità </Typography>
+
                 <ListItem style={listItem} >
 
                   <ListItemText
-                      primary="Viene scelta una magistralemcoerente"
+                      primary="Posta alla scelta di un corso magistrale coerente"
 
                   />
-                  <Progress type="circle" width={50} percent={this.corso.Continuita.magistraleCoerente} min-width={10} />
+                  <p>
+                  <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Continuita.magistraleCoerente)} min-width={10} />
+                  </p>
                 </ListItem>
+
                 <ListItem style={listItem} >
 
                   <ListItemText
                       primary="Regolarità degli studi"
 
                   />
-                  <Progress type="circle" width={50} percent={this.corso.Continuita.regolaritaStudi} min-width={10} />
+                  <p>
+                  <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Continuita.regolaritaStudi)} min-width={10} />
+                  </p>
                 </ListItem>
+
                 <ListItem style={listItem} >
 
                   <ListItemText
                       primary="Frequenza corso 75% lezioni"
 
                   />
-                  <Progress type="circle" width={50} percent={this.corso.Continuita.frequentatoRegolarmente} min-width={10} />
+                  <p>
+                  <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Continuita.frequentatoRegolarmente)} min-width={10} />
+                  </p>
                 </ListItem>
 
 
@@ -500,14 +517,16 @@ class CourseViewer extends Component {
 
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <List>
+              <List dense={false} >
                 <ListItem style={listItem} >
 
                   <ListItemText
                       primary="Non viene intrapreso un percorso magistrale"
 
                   />
-                  <Progress type="circle" width={50} percent={this.corso.Continuita.magistraleIscrizioneAltroCorso} min-width={10} />
+                  <p>
+                  <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Continuita.magistraleIscrizioneAltroCorso)} min-width={10} />
+                  </p>
                 </ListItem>
                 <ListItem style={listItem} >
 
@@ -515,7 +534,9 @@ class CourseViewer extends Component {
                       primary="Viene scelto un percorso magistrale differente da quello triennale"
 
                   />
-                  <Progress type="circle" width={50} percent={this.corso.Continuita.magistraleNoIscrizioneAltroCorso} min-width={10} />
+                  <p>
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Continuita.magistraleNoIscrizioneAltroCorso)} min-width={10} />
+                  </p>
                 </ListItem>
 
               </List>

@@ -24,3 +24,6 @@ yarn-error.log*
 
 #dataset
 /src/datasets
+
+/src/UniversitiesDSET.jsx
+/src/CoursesDSET.jsx
