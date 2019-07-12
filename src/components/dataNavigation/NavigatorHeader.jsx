@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import MaxStudentFilter from "./filters/non-dialog/MaxStudentFilter";
 import DialogMinStudentFilter from "./filters/U_DialogMinStudentFilter";
 import UniDialogRegionFilter from "./filters/U_DialogRegionFilter";
+import CourseDialogRegionFilter from "./filters/C_DialogRegionFilter";
 //import CourseDialogRegionFilter from "./filters/C_DialogRegionFilter";
 import DialogSoddisfazioneFilter from "./filters/DialogSoddisfazioneFilter";
 import DialogAreeDisciplinariFilter from "./filters/C_DialogAreeDisciplinariFilter";
+import U_DialogAccessoFilter from "./filters/U_DialogAccessoFilter";
 import { wrap } from "module";
 
 class NavigatorHeader extends Component {
@@ -35,6 +37,7 @@ class NavigatorHeader extends Component {
           <DialogMinStudentFilter addFilter={this.addUniFilter} />
           <DialogSoddisfazioneFilter addFilter={this.addUniFilter} />
           <UniDialogRegionFilter addFilter={this.addUniFilter} />
+          <U_DialogAccessoFilter addFilter={this.addUniFilter} />
         </div>
       );
     } else {
@@ -51,6 +54,7 @@ class NavigatorHeader extends Component {
         >
           <DialogSoddisfazioneFilter addFilter={this.addCourseFilter} />
           <DialogAreeDisciplinariFilter addFilter={this.addCourseFilter} />
+          <CourseDialogRegionFilter addFilter={this.addCourseFilter} />
           {
             //Courses don't have student number
             //<DialogMinStudentFilter addFilter={this.addCourseFilter} />

@@ -44,12 +44,13 @@ const mapStateToProps = state => {
     );
   }
 
-  var HOWMANY = 500, c =0,_filteredCourses={};
-  for(  var key in filteredCourses) {
-    if(c>HOWMANY) break;
-    c+=1;
-    _filteredCourses[key]=filteredCourses[key];
-
+  var HOWMANY = 50,
+    c = 0,
+    _filteredCourses = {};
+  for (var key in filteredCourses) {
+    if (c > HOWMANY) break;
+    c += 1;
+    _filteredCourses[key] = filteredCourses[key];
   }
 
   var ret = {
