@@ -7,6 +7,7 @@ import CourseDialogRegionFilter from "./filters/C_DialogRegionFilter";
 import DialogSoddisfazioneFilter from "./filters/DialogSoddisfazioneFilter";
 import DialogAreeDisciplinariFilter from "./filters/C_DialogAreeDisciplinariFilter";
 import U_DialogAccessoFilter from "./filters/U_DialogAccessoFilter";
+import C_DialogLinguaFilter from "./filters/C_DialogLinguaFilter";
 import { wrap } from "module";
 
 class NavigatorHeader extends Component {
@@ -55,6 +56,7 @@ class NavigatorHeader extends Component {
           <DialogSoddisfazioneFilter addFilter={this.addCourseFilter} />
           <DialogAreeDisciplinariFilter addFilter={this.addCourseFilter} />
           <CourseDialogRegionFilter addFilter={this.addCourseFilter} />
+          <C_DialogLinguaFilter addFilter={this.addCourseFilter} />
           {
             //Courses don't have student number
             //<DialogMinStudentFilter addFilter={this.addCourseFilter} />
@@ -70,24 +72,26 @@ class NavigatorHeader extends Component {
     var isUniFocus = this.props.viewFocus === "uni" ? true : false;
     return (
       <div className="NavigatorHeader">
-        <input type="text" name="search" id="search" onKeyDown={(e)=>{
-          
-          if(e.key!=="Enter") return;
+        <input
+          type="text"
+          name="search"
+          id="search"
+          onKeyDown={e => {
+            if (e.key !== "Enter") return;
 
-          console.log("NAVHEAD STRIIING",e,e.target)
-          
-          this.addCourseFilter("navhead",(elem)=>{
-            if(e.target.value.length<=0) return true;
-            return elem.Info.NomeEsteso.indexOf(e.target.value)>0;
-          });
-          
-          this.addUniFilter("navhead",(elem)=>{
-            if(e.target.value.length<=0) return true;
-            return elem.Info.NomeEsteso.indexOf(e.target.value)>0;
+            console.log("NAVHEAD STRIIING", e, e.target);
 
-          });
+            this.addCourseFilter("navhead", elem => {
+              if (e.target.value.length <= 0) return true;
+              return elem.Info.NomeEsteso.indexOf(e.target.value) > 0;
+            });
 
-        }} />
+            this.addUniFilter("navhead", elem => {
+              if (e.target.value.length <= 0) return true;
+              return elem.Info.NomeEsteso.indexOf(e.target.value) > 0;
+            });
+          }}
+        />
 
         <br />
 
