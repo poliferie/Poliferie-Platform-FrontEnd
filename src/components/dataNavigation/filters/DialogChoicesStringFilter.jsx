@@ -20,6 +20,7 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 /*
   Props to pass:
   choices
+  choicesDisplayedNames
   filterName
   filterTitle
   icon
@@ -93,6 +94,14 @@ class DialogChoicesStringFilter extends Component {
 
     //this.choices = ["uni", "sap", "torv", "roma3"];
     this.choices = this.props.choices;
+
+    if (this.props.choicesDisplayedNames) {
+      this.choicesDisplayedNames = this.props.choicesDisplayedNames;
+    } else {
+      this.choicesDisplayedNames = this.choices;
+    }
+
+    //console.log(this.choicesDisplayedNames);
 
     var s = { open: false };
     this.choices.forEach(choice => {
@@ -203,7 +212,13 @@ class DialogChoicesStringFilter extends Component {
   itemClick(event) {
     var state = { ...this.state };
     // Switch state for the target of event
-    state[event.target.innerText] = !this.state[event.target.innerText];
+    //state[event.target.innerText] = !this.state[event.target.innerText];
+
+    var keyToUse =
+      event.target.getAttribute("entrykey") ||
+      event.target.parentElement.getAttribute("entrykey");
+
+    state[keyToUse] = !this.state[keyToUse];
 
     this.setState(state, () => console.log(this.state));
   }
@@ -309,10 +324,18 @@ class DialogChoicesStringFilter extends Component {
           </DialogTitle>
           <DialogContent dividers>
             <List component="nav">
-              {this.choices.map(r => {
+              {this.choices.map((r, index) => {
                 return (
-                  <ListItem button onClick={this.itemClick} key={r}>
-                    <ListItemText primary={r} />
+                  <ListItem
+                    button
+                    onClick={this.itemClick}
+                    key={r}
+                    entrykey={r}
+                  >
+                    <ListItemText
+                      primary={this.choicesDisplayedNames[index]}
+                      entrykey={r}
+                    />
                     <ListItemSecondaryAction>
                       <Checkbox
                         edge="end"
