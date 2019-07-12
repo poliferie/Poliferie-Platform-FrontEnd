@@ -37,6 +37,8 @@ import LockCloseIcon from "@material-ui/icons/Lock";
 import { Progress } from 'react-sweet-progress';
 import "react-sweet-progress/lib/style.css";
 
+import courses from "../../CoursesDSET"
+
 
 const useStyles = theme => ({
   card: {
@@ -88,9 +90,8 @@ class CourseViewer extends Component {
     // shorthand for course id
     this.id = this.props.match.params.id;
 
-    const Courses = '{"Info": {"testAccesso": "N", "Posti": "null", "Lingua": "I", "DurataNominale": "3", "requisitoAccesso": "D", "Erogazione": "P", "Indirizzo": "null", "Descrizione": "null", "Professioni": "null", "Rappresentanti": "null", "NomeEsteso": "Tecniche di laboratorio biomedico (abilitante alla professione sanitaria di Tecnico di laboratorio biomedico)", "AreaDisciplinare": "3", "Label": "L/SNT3", "AreaDisciplinareCodice": "Medicina, Sanità, Psicologia", "AlmalaureaCodice": "580206204800004", "CodiceUniversitaly": "1910", "AreaUniversitalyCodice": "6", "AreaUniversitalyNome": "Scienze mediche", "UniversitalyLabel": "L/SNT3", "ateneoNomeEsteso": "Università degli studi di Roma La Sapienza", "ateneoNomeOperativo": "Roma La Sapienza", "ateneoRegione": "Lazio"}, "Soddisfazione": {"Soddisfazione": "78", "iscrizioneNuova": "57", "SoddisfazioneDocenti": "64", "lavoroUtilizzoCompetenzeElevato": "100", "lavoroUtilizzoCompetenzeRidotto": "null", "lavoroUtilizzoCompetenzeNullo": "null", "lavoroSoddisfazione": null, "preseguireStudi": null}, "Opportunita": {"occupazioneTassoDisoccupazione": "66", "occupazioneLavoro": "23", "occupazioneNoLavoroNoCerca": "null", "occupazioneNoLavoroCerca": "76", "lavoroTempoPrimoLavoro": "1", "tirociniStage": "92", "borseStudio": "7", "esperienzeLavoro": "50", "lavoroRetribuzione": "1459"}, "Mobilita": {"residenzaAltraRegione": "16", "alloggioOraViaggio": "85", "lavoroAreaNord": "null", "lavoroAreaCentro": "100", "lavoroAreaSud": "null", "lavoroAreaEstero": "null"}, "Internazionalita": {"cittadiniStranieri": "null", "periodiStudioEstero": "7"}, "Continuita": {"magistraleCoerente": "83", "magistraleIscrizioneAltroCorso": "38", "magistraleNoIscrizioneAltroCorso": "60", "regolaritaStudi": "83", "frequentatoRegolarmente": "100", "caricoStudio": "92"}}';
 
-    this.corso = JSON.parse(Courses);
+    this.corso = courses[this.id];
   }
 
   render() {

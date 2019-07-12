@@ -30,13 +30,12 @@ const mapStateToProps = state => {
 
   //Filter universities
   for (var filterName in state.visibilityFilter.universities) {
-    console.log("!!!fname:", state.visibilityFilter.universities[filterName]);
     filteredUni = filter(
       filteredUni,
       state.visibilityFilter.universities[filterName]
     );
-    console.log("filtered uni:", filteredUni);
   }
+
   //Filter courses
   for (var filterName1 in state.visibilityFilter.courses) {
     filteredCourses = filter(
@@ -44,10 +43,19 @@ const mapStateToProps = state => {
       state.visibilityFilter.courses[filterName1]
     );
   }
+
+  var HOWMANY = 500, c =0,_filteredCourses={};
+  for(  var key in filteredCourses) {
+    if(c>HOWMANY) break;
+    c+=1;
+    _filteredCourses[key]=filteredCourses[key];
+
+  }
+
   var ret = {
     rdxState: state,
     filteredUni: filteredUni,
-    filteredCourses: filteredCourses
+    filteredCourses: _filteredCourses
   };
   return ret;
 };

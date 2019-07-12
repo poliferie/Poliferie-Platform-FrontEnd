@@ -18,7 +18,7 @@ import PersonIcon from "@material-ui/icons/People";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import LockCloseIcon from "@material-ui/icons/Lock";
 
-
+import uni from "../../UniversitiesDSET"
 
 
 import { Progress } from 'react-sweet-progress';
@@ -68,11 +68,14 @@ class UniversityViewer extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.uni = {};
 
-    const Universities = '{"Info": {"NomeOperativo": "Urbino", "Regione": "Marche", "Iscritti": "14197", "Statale": "S", "NomeEsteso": "Università degli studi \'Carlo Bo\' di Urbino", "Tipologia": "Università", "UniversitalyCodice": "null", "IscrittiMaschi": "5447", "IscrittiFemmine": "8750", "Codice": "4101", "UniversitalyNome": "null"}, "Soddisfazione": {"Soddisfazione": "89", "Aule": "71", "Postazioni": "80", "Biblioteche": "12", "Altre": "21", "SpaziStudio": "40"}, "Costi": {"Tasse": "2454", "TassaRegionale": "141", "TariffaMensa": "3.0"}, "Contributi": {"ContributoMonetario": "1512", "ContributoAlloggio": "483", "PastiGratuiti": "1", "ContributoExtra": "347"}}';
 
-    this.uni = JSON.parse(Universities);
+    // shorthand for course id
+    this.id = this.props.match.params.id;
+
+    
+    console.log(uni);
+    this.uni = uni[this.id];
 
     // Shorthand for uni id
     //this.id = this.props.match.params.id;
