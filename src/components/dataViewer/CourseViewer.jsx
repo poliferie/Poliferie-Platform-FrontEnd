@@ -81,7 +81,7 @@ const p_text = {
 
 
 function cleanPercentage(str) {
-  return  str==="null"? "--" : str
+  return  str==="null" || str===null ? "--" : str
 }
 
 function clearText(str) {
@@ -225,7 +225,7 @@ class CourseViewer extends Component {
                 <ListItem>
                   <ListItemText  primary="Lavoro" secondary="Da 1 a 10" />
                   <p>
-                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Soddisfazione.lavoroSoddisfazione)} min-width={10} />
+                    a<Progress type="circle" width={50} percent={cleanPercentage(this.corso.Soddisfazione.lavoroSoddisfazione)} min-width={10} />
                   </p>
                 </ListItem>
 
