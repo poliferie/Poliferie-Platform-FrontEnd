@@ -66,7 +66,24 @@ class NavigatorHeader extends Component {
     var isUniFocus = this.props.viewFocus === "uni" ? true : false;
     return (
       <div className="NavigatorHeader">
-        <input type="text" name="search" id="search" />
+        <input type="text" name="search" id="search" onKeyDown={(e)=>{
+          
+          if(e.key!=="Enter") return;
+
+          console.log("NAVHEAD STRIIING",e,e.target)
+          
+          this.addCourseFilter("navhead",(elem)=>{
+            if(e.target.value.length<=0) return true;
+            return elem.Info.NomeEsteso.indexOf(e.target.value)>0;
+          });
+          
+          this.addUniFilter("navhead",(elem)=>{
+            if(e.target.value.length<=0) return true;
+            return elem.Info.NomeEsteso.indexOf(e.target.value)>0;
+
+          });
+
+        }} />
 
         <br />
 
