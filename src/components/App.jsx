@@ -7,7 +7,7 @@ import UniversityViewer from "./dataViewer/UniversityViewer";
 
 const App = () => (
   <div>
-    <Header />
+    {/*<Header />*/}
     <Switch>
       <Route exact path="/dataNavigator" component={DataNavigator} />
       <Route exact path="/course/:id" component={CourseViewer} />
