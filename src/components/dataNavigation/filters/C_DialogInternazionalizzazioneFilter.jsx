@@ -26,12 +26,12 @@ class DialogInternazionalizzazioneFilter extends Component {
           filteringFunction={function(u) {
             //console.log("Filter name: " + this.filterName);
             //console.log("this.state.val:" + this.state.val);
-            return (
-              parseFloat(u.Internazionalita.periodiStudioEstero) >=
-              parseFloat(this.state.val)
-            );
+            var objVal =
+              parseFloat(u.Internazionalita.periodiStudioEstero) || 0;
+            return objVal >= parseFloat(this.state.val);
           }}
           addFilter={this.props.addFilter}
+          humanReadableDescription="Questa è una descrizione di esempio"
         />
       </div>
     );

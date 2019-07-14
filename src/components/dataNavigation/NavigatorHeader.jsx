@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import U_DialogMinStudentFilter from "./filters/U_DialogMinStudentFilter";
 import U_DialogRegionFilter from "./filters/U_DialogRegionFilter";
 import U_DialogAccessoFilter from "./filters/U_DialogAccessoFilter";
+//import U_DialogBorseStudioFilter from "./filters/U_DialogBorseStudioFilter";
 
 import DialogSoddisfazioneFilter from "./filters/DialogSoddisfazioneFilter";
 

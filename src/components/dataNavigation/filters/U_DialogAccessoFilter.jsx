@@ -32,8 +32,7 @@ class U_DialogAccessoFilter extends Component {
           filterAttribute="Statale"
           filterAttributePath="Info"
           addFilter={this.props.addFilter}
-          //addCourseFilter={this.props.addCourseFilter}
-          //addUniFilter={this.props.addUniFilter}
+          humanReadableDescription="Questa è una descrizione di esempio"
         />
       </div>
     );

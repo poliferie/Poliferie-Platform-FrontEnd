@@ -27,12 +27,12 @@ class DialogStipendioFilter extends Component {
             //console.log("Filter name: " + this.filterName);
             //console.log("this.state.val:" + this.state.val);
             //console.log("u.Opportunita.lavoroRetribuzione:" + u.Opportunita.lavoroRetribuzione);
-            return (
-              parseFloat(u.Opportunita.lavoroRetribuzione) >=
-              parseFloat(this.state.val)
-            );
+            var objVal = parseFloat(u.Opportunita.lavoroRetribuzione) || 0;
+
+            return objVal >= parseFloat(this.state.val);
           }}
           addFilter={this.props.addFilter}
+          humanReadableDescription="Questa è una descrizione di esempio"
         />
       </div>
     );

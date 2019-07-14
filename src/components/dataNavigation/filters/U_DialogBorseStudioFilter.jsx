@@ -26,12 +26,12 @@ class DialogBorseStudioFilter extends Component {
           filteringFunction={function(u) {
             //console.log("Filter name: " + this.filterName);
             //console.log("this.state.val:" + this.state.val);
-            return (
-              parseFloat(u.Soddisfazione.Soddisfazione) >=
-              parseFloat(this.state.val)
-            );
+            var objVal = parseFloat(u.Opportunita.borseDistudio) || 0;
+
+            return objVal >= parseFloat(this.state.val);
           }}
           addFilter={this.props.addFilter}
+          humanReadableDescription="Questa è una descrizione di esempio"
         />
       </div>
     );
