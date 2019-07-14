@@ -64,6 +64,14 @@ const p_text = {
   fontSize: '20px'
 };
 
+function cleanPercentage(str) {
+  return  str || "--"
+}
+
+function clearText(str) {
+  return  str || ""
+}
+
 class UniversityViewer extends Component {
   constructor(props) {
     super(props);
@@ -82,6 +90,8 @@ class UniversityViewer extends Component {
     // but I've figured out a way to directly pass elem to be shown
     // that will be enough for all our use-cases.
     this.elem = this.props.location.state;
+    {console.log("@@@@@@")}
+    console.log(this.elem)
 
   }
 
@@ -120,10 +130,10 @@ class UniversityViewer extends Component {
                 />
               </ListItem>
               <ListItem>
-                {this.uni.Info.Statale == "L" ? <LockCloseIcon /> :<LockOpenIcon /> }
+                {this.uni.Info.Statale === "L" ? <LockCloseIcon /> :<LockOpenIcon /> }
 
                 <ListItemText
-                    primary={  this.uni.Info.Statale == "L" ? "Libera" : "Statale"}
+                    primary={  this.uni.Info.Statale === "L" ? "Privata" : "Statale"}
 
                 />
               </ListItem>
@@ -158,19 +168,19 @@ class UniversityViewer extends Component {
               <ListItem style={listItem} >
                 <ListItemText  primary="Generale" />
                 <p>
-                  <Progress type="circle" width={50} percent={this.uni.Soddisfazione.Soddisfazione} min-width={10} />
+                  <Progress type="circle" width={50} percent={cleanPercentage(this.uni.Soddisfazione.Soddisfazione)} min-width={10} />
                 </p>
               </ListItem>
               <ListItem>
                 <ListItemText  primary="Aule" />
                 <p>
-                  <Progress type="circle" width={50} percent={this.uni.Soddisfazione.Aule} min-width={10} />
+                  <Progress type="circle" width={50} percent={cleanPercentage(this.uni.Soddisfazione.Aule)} min-width={10} />
                 </p>
               </ListItem>
               <ListItem>
                 <ListItemText  primary="Biblioteche" />
                 <p>
-                  <Progress type="circle" width={50} percent={this.uni.Soddisfazione.Biblioteche} min-width={10} />
+                  <Progress type="circle" width={50} percent={cleanPercentage(this.uni.Soddisfazione.Biblioteche)} min-width={10} />
                 </p>
               </ListItem>
 
@@ -188,19 +198,19 @@ class UniversityViewer extends Component {
             <ListItem style={listItem} >
               <ListItemText  primary="Postazioni" />
               <p>
-                <Progress type="circle" width={50} percent={this.uni.Soddisfazione.Postazioni} min-width={10} />
+                <Progress type="circle" width={50} percent={cleanPercentage(this.uni.Soddisfazione.Postazioni)} min-width={10} />
               </p>
             </ListItem>
             <ListItem>
               <ListItemText  primary="Spazi comuni di studio" />
               <p>
-                <Progress type="circle" width={50} percent={this.uni.Soddisfazione.SpaziStudio} min-width={10} />
+                <Progress type="circle" width={50} percent={cleanPercentage(this.uni.Soddisfazione.SpaziStudio)} min-width={10} />
               </p>
             </ListItem>
             <ListItem>
               <ListItemText  primary="Altri servizi" />
               <p>
-                <Progress type="circle" width={50} percent={this.uni.Soddisfazione.SpaziStudio} min-width={10} />
+                <Progress type="circle" width={50} percent={cleanPercentage(this.uni.Soddisfazione.SpaziStudio)} min-width={10} />
               </p>
             </ListItem>
 
@@ -228,7 +238,7 @@ class UniversityViewer extends Component {
                   primary="Tassa media"
               />
               <p style={p_text}>
-                {this.uni.Costi.Tasse}
+                {this.uni.Costi.Tasse}€
               </p>
             </ListItem>
             <ListItem>
@@ -237,7 +247,7 @@ class UniversityViewer extends Component {
                   primary="Tassa regionale"
               />
               <p style={p_text}>
-                {this.uni.Costi.TassaRegionale}
+                {this.uni.Costi.TassaRegionale}€
               </p>
             </ListItem>
 
@@ -253,7 +263,7 @@ class UniversityViewer extends Component {
 
               />
               <p style={p_text}>
-                {this.uni.Soddisfazione.SpaziStudio}
+                {this.uni.Costi.TariffaMensa}€
               </p>
             </ListItem>
           </Typography>
@@ -276,7 +286,7 @@ class UniversityViewer extends Component {
                     primary="Contributo monetario"
                     secondary="Contributo in denaro annuale	"
                 />
-                <p style={p_text}> {this.uni.Contributi.ContributoMonetario}</p>
+                <p style={p_text}> {this.uni.Contributi.ContributoMonetario}€</p>
               </ListItem>
               <ListItem>
 
@@ -284,7 +294,7 @@ class UniversityViewer extends Component {
                     primary="Contributo per alloggio"
                     secondary="Contributo valore equivalente dell'affitto "
                 />
-                <p style={p_text}> {this.uni.Contributi.ContributoAlloggio}</p>
+                <p style={p_text}> {this.uni.Contributi.ContributoAlloggio}€</p>
               </ListItem>
 
 
@@ -311,7 +321,7 @@ class UniversityViewer extends Component {
 
                 />
                 <p style={p_text}>
-                  {this.uni.Contributi.ContributoExtra}
+                  {this.uni.Contributi.ContributoExtra}€
                 </p>
               </ListItem>
             </List>
