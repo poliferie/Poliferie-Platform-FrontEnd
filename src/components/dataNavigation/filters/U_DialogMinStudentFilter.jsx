@@ -26,7 +26,8 @@ class DialogMinStudentFilter extends Component {
           filteringFunction={function(u) {
             //console.log("Filter name: " + this.filterName);
             //console.log("this.state.val:" + this.state.val);
-            return u.Info.Iscritti >= this.state.val;
+            //console.log("u.Info.Iscritti:" + u.Info.Iscritti);
+            return parseInt(u.Info.Iscritti) >= parseInt(this.state.val);
           }}
           //addCourseFilter={this.props.addCourseFilter}
           addFilter={this.props.addFilter}

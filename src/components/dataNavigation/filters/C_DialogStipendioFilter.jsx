@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import DialogFilteringSlider from "./DialogFilteringSlider";
-import SmileyIcon from "@material-ui/icons/SentimentSatisfiedAlt";
+import EuroIcon from "@material-ui/icons/EuroSymbol";
 
 const Icon = () => {
   // This can actually just be put directly into the props of DialogFilter
-  return <SmileyIcon color="primary" />;
+  return <EuroIcon color="primary" />;
 };
 
 class DialogStipendioFilter extends Component {
@@ -15,10 +15,10 @@ class DialogStipendioFilter extends Component {
 
   render() {
     return (
-      <div className="SoddisfazioneFilter">
+      <div className="StipendioFilter">
         <DialogFilteringSlider
-          filterName="min_satisfaction"
-          filterTitle="Filtra per soddisfazione"
+          filterName="min_salary"
+          filterTitle="Stipendio netto minimo"
           min="0"
           max="100"
           startVal="80"
@@ -26,7 +26,11 @@ class DialogStipendioFilter extends Component {
           filteringFunction={function(u) {
             //console.log("Filter name: " + this.filterName);
             //console.log("this.state.val:" + this.state.val);
-            return u.Soddisfazione.Soddisfazione >= this.state.val;
+            //console.log("u.Opportunita.lavoroRetribuzione:" + u.Opportunita.lavoroRetribuzione);
+            return (
+              parseFloat(u.Opportunita.lavoroRetribuzione) >=
+              parseFloat(this.state.val)
+            );
           }}
           addFilter={this.props.addFilter}
         />

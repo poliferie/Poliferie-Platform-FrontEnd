@@ -43,7 +43,7 @@ class DialogRegionFilter extends Component {
     return (
       <div className="MinStudentFilter">
         <DialogChoicesStringFilter
-          filterName="region"
+          filterName="u_region"
           filterTitle="Regioni"
           choices={Regions}
           icon={Icon()}

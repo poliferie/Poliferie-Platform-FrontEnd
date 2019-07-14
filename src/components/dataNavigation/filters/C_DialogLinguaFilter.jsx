@@ -15,7 +15,7 @@ class C_DialogLinguaFilter extends Component {
     super(props);
     this.state = {};
 
-    console.log("U_DialogLinguaFilter");
+    console.log("C_DialogLinguaFilter");
     console.log(this.props);
   }
 

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import DialogFilteringSlider from "./DialogFilteringSlider";
-import SmileyIcon from "@material-ui/icons/SentimentSatisfiedAlt";
+import WorkIcon from "@material-ui/icons/Work";
 
 const Icon = () => {
   // This can actually just be put directly into the props of DialogFilter
-  return <SmileyIcon color="primary" />;
+  return <WorkIcon color="primary" />;
 };
 
-class DialogBorseStudioFilter extends Component {
+class DialogOccupazioneFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -15,10 +15,10 @@ class DialogBorseStudioFilter extends Component {
 
   render() {
     return (
-      <div className="BorseStudioFilter">
+      <div className="OccupazioneFilter">
         <DialogFilteringSlider
-          filterName="perc_borsestudio"
-          filterTitle="Borse di studio"
+          filterName="min_occupation"
+          filterTitle="Filtra per occupazione"
           min="0"
           max="100"
           startVal="80"
@@ -27,7 +27,7 @@ class DialogBorseStudioFilter extends Component {
             //console.log("Filter name: " + this.filterName);
             //console.log("this.state.val:" + this.state.val);
             return (
-              parseFloat(u.Soddisfazione.Soddisfazione) >=
+              parseFloat(u.Opportunita.occupazioneLavoro) >=
               parseFloat(this.state.val)
             );
           }}
@@ -38,4 +38,4 @@ class DialogBorseStudioFilter extends Component {
   }
 }
 
-export default DialogBorseStudioFilter;
+export default DialogOccupazioneFilter;

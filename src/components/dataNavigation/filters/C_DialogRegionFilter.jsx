@@ -35,7 +35,7 @@ class DialogRegionFilter extends Component {
     super(props);
     this.state = {};
 
-    console.log("DialogRegionFilter");
+    console.log("C_DialogRegionFilter");
     console.log(this.props);
   }
 
@@ -43,7 +43,7 @@ class DialogRegionFilter extends Component {
     return (
       <div className="DialogRegionFilter">
         <DialogChoicesStringFilter
-          filterName="region"
+          filterName="c_region"
           filterTitle="Regioni"
           choices={Regions}
           icon={Icon()}

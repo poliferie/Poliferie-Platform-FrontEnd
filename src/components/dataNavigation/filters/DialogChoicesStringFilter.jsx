@@ -121,10 +121,17 @@ class DialogChoicesStringFilter extends Component {
     this.removeFilter = this.removeFilter.bind(this);
 
     this.filterAttributePath = "e." + this.props.filterAttributePath;
+
+    this.filterName = this.props.filterName;
+    this.filterTitle = this.props.filterTitle;
+    this.filterType = this.props.filterType;
+    this.filterAttribute = this.props.filterAttribute;
+    this.addFilter = this.props.addFilter;
+
+    this.icon = this.props.icon;
+    this.humanReadableDescription = this.props.humanReadableDescription;
     console.log(
-      this.props.filterName +
-        " FilterAttributePath: " +
-        this.filterAttributePath
+      this.filterName + " FilterAttributePath: " + this.filterAttributePath
     );
 
     console.log("DialogChoicesStringFilter");
@@ -134,7 +141,8 @@ class DialogChoicesStringFilter extends Component {
   }
 
   setFilter(f) {
-    this.props.addFilter(this.filterName, f);
+    //this.props.addFilter(this.filterName, f);
+    this.addFilter(this.filterName, f);
   }
 
   /*
@@ -286,18 +294,18 @@ class DialogChoicesStringFilter extends Component {
     var filterAttributePath = this.filterAttributePath;
     //console.log(eval(inputElement));
     this.setFilter(e =>
-      this.props.filterType === "and"
+      this.filterType === "and"
         ? this.filterElemAndClause(
             eval(filterAttributePath),
             //e.Info,
             this.state,
-            this.props.filterAttribute
+            this.filterAttribute
           )
         : this.filterElemOrClause(
             eval(filterAttributePath),
             //e.Info,
             this.state,
-            this.props.filterAttribute
+            this.filterAttribute
           )
     );
   }
@@ -310,7 +318,7 @@ class DialogChoicesStringFilter extends Component {
           color="secondary"
           onClick={this.handleClickOpen}
         >
-          {this.props.icon}
+          {this.icon}
         </IconButton>
         <Dialog
           onClose={this.handleClose}
@@ -321,10 +329,10 @@ class DialogChoicesStringFilter extends Component {
             id={this.filterName + "-dialog-title"}
             onClose={this.handleClose}
           >
-            {this.props.filterTitle}
+            {this.filterTitle}
           </DialogTitle>
           <DialogContent dividers>
-            <p>{this.props.humanReadableDescription}</p>
+            <p>{this.humanReadableDescription}</p>
             <List component="nav">
               {this.choices.map((r, index) => {
                 return (

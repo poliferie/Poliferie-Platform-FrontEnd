@@ -26,7 +26,10 @@ class DialogSoddisfazioneFilter extends Component {
           filteringFunction={function(u) {
             //console.log("Filter name: " + this.filterName);
             //console.log("this.state.val:" + this.state.val);
-            return u.Soddisfazione.Soddisfazione >= this.state.val;
+            return (
+              parseFloat(u.Soddisfazione.Soddisfazione) >=
+              parseFloat(this.state.val)
+            );
           }}
           addFilter={this.props.addFilter}
         />
