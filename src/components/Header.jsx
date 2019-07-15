@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
+import HeaderDialog from "./HeaderDialog";
+
+
+
 
 class Header extends Component {
   constructor(props) {
@@ -9,13 +14,14 @@ class Header extends Component {
     return (
       <div
         style={{
-          width: "100vw",
-          border: "3px solid red",
+          width: "90vw",
+          
           position: "fixed",
-          bottom: 0
+          bottom: 0,
+          
         }}
       >
-        Menu
+        <HeaderDialog></HeaderDialog>
       </div>
     );
   }
