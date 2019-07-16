@@ -1,11 +1,4 @@
 import React, { Component } from "react";
-import DialogFilteringSlider from "./DialogFilteringSlider";
-import EuroIcon from "@material-ui/icons/EuroSymbol";
-
-const Icon = () => {
-  // This can actually just be put directly into the props of DialogFilter
-  return <EuroIcon color="primary" />;
-};
 
 /*
   Props to pass:
@@ -20,7 +13,6 @@ class StringLookupFilter extends Component {
 
     this.state = { phrase: "" };
 
-    //this.isUniFocus = this.props.isUniFocus;
     this.addUniFilter = this.props.addUniFilter;
     this.addCourseFilter = this.props.addCourseFilter;
     this.id = "search";
@@ -29,10 +21,8 @@ class StringLookupFilter extends Component {
   }
 
   handleKeyPress(e) {
-    console.log(e);
     if (e.key !== "Enter") return;
-    if (e.target) console.log("e.target! e.target = " + e.target);
-    console.log(this);
+
     if (e.target && e.target.id === this.id) {
       this.setState({ phrase: e.target.value }, () =>
         this.applySearch(this.props.isUniFocus)
@@ -43,25 +33,7 @@ class StringLookupFilter extends Component {
   applySearch(isUniFocus) {
     console.log("Making new filter. Phrase: " + this.state.phrase);
 
-    /*if (isUniFocus) {
-      this.addUniFilter("navhead_string", elem => {
-        console.log("Applying Navhead filter");
-
-        if (this.state.phrase.length <= 0) return true;
-        return elem.Info.NomeEsteso.includes(this.state.phrase);
-      });
-    } else {
-      this.addCourseFilter("navhead_string", elem => {
-        console.log("Applying Navhead filter");
-
-        if (this.state.phrase.length <= 0) return true;
-        return elem.Info.NomeEsteso.includes(this.state.phrase);
-      });
-    }*/
-
     this.addUniFilter("navhead_string", elem => {
-      //console.log("Applying Navhead filter");
-
       if (!isUniFocus || this.state.phrase.length <= 0) return true;
       return elem.Info.NomeEsteso.toLowerCase().includes(
         this.state.phrase.toLowerCase()
@@ -69,8 +41,6 @@ class StringLookupFilter extends Component {
     });
 
     this.addCourseFilter("navhead_string", elem => {
-      //console.log("Applying Navhead filter");
-
       if (isUniFocus || this.state.phrase.length <= 0) return true;
       return elem.Info.NomeEsteso.toLowerCase().includes(
         this.state.phrase.toLowerCase()

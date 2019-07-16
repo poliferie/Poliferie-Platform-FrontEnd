@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-//import { thisExpression } from "@babel/types";
-//import { EPERM } from "constants";
 
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-//import Divider from "@material-ui/core/Divider";
+
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
@@ -96,19 +94,11 @@ class DialogFilteringSlider extends Component {
 
     this.filterName = this.props.filterName;
     this.handleChange = this.handleChange.bind(this);
-    //this.filteringFunction = this.props.filteringFunction.bind(this);
-
-    //console.dir(this);
   }
 
   setFilter(lambda) {
     this.props.addFilter(this.filterName, lambda);
   }
-
-  /*
-  setCourseFilter(lambda) {
-    this.props.addCourseFilter(this.filterName, lambda);
-  }*/
 
   handleChange(e) {
     console.log(this.props.filterName + " changed val: " + e.target.value);
@@ -122,9 +112,6 @@ class DialogFilteringSlider extends Component {
     }
 
     this.setState({ val: e.target.value, numberVal: e.target.value });
-
-    //console.log("NOT callback:");
-    //console.dir(this.state);
   }
 
   render() {

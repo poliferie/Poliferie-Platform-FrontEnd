@@ -93,7 +93,6 @@ class DialogChoicesStringFilter extends Component {
   constructor(props) {
     super(props);
 
-    //this.choices = ["uni", "sap", "torv", "roma3"];
     this.choices = this.props.choices;
 
     if (this.props.choicesDisplayedNames) {
@@ -110,7 +109,6 @@ class DialogChoicesStringFilter extends Component {
     });
     this.state = s;
 
-    //this.setUniStringFilter = this.setUniStringFilter.bind(this);
     this.setFilter = this.setFilter.bind(this);
     this.itemClick = this.itemClick.bind(this);
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
@@ -136,23 +134,11 @@ class DialogChoicesStringFilter extends Component {
 
     console.log("DialogChoicesStringFilter");
     console.log(this.props);
-
-    //this.filteringFunction = this.props.filteringFunction.bind(this);
   }
 
   setFilter(f) {
-    //this.props.addFilter(this.filterName, f);
     this.addFilter(this.filterName, f);
   }
-
-  /*
-  setUniStringFilter(f) {
-    this.props.addUniFilter(this.filterName, f);
-  }
-  setCourseStringFilter(f) {
-    this.props.addCourseFilter(this.filterName, f);
-  }
-  */
 
   // Filters @elem considering each @clause elem set to true as an OR string-clause
   // on the attribute @attr of @elem
