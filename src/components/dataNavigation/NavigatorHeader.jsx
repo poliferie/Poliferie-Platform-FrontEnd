@@ -70,22 +70,44 @@ class NavigatorHeader extends Component {
           }}
         >
           <DialogSoddisfazioneFilter addFilter={this.addCourseFilter} />
-          {
-            //WARNING Courses don't have a campo regione yet
-          }
           <C_DialogRegionFilter addFilter={this.addCourseFilter} />
           <C_DialogAreeDisciplinariFilter addFilter={this.addCourseFilter} />
           <C_DialogLinguaFilter addFilter={this.addCourseFilter} />
           <C_DialogOccupazioneFilter addFilter={this.addCourseFilter} />
-          {
-            //WARNING Courses don't have a campo stipendio yet
-          }
           <C_DialogStipendioFilter addFilter={this.addCourseFilter} />
           <C_DialogInternazionalizzazioneFilter
             addFilter={this.addCourseFilter}
           />
+          {
+            //Courses don't have student number
+            //<DialogMinStudentFilter addFilter={this.addCourseFilter} />
+            //Courses don't have a region yet
+            //<CourseDialogRegionFilter addFilter={this.addCourseFilter} />
+          }
         </div>
       );
+    }
+  }
+
+  applySearch(e, isUniFocus) {
+    if (e.key !== "Enter") return;
+
+    console.log("NAVHEAD STRIING", e, e.target);
+
+    if (isUniFocus) {
+      this.addUniFilter("navhead_string", elem => {
+        console.log("Applying Navhead filter");
+        if (((e.target || {}).value || {}).length <= 0) return true;
+        //return elem.Info.NomeEsteso.indexOf((e.target || {}).value) > 0;
+        return elem.Info.NomeEsteso.includes((e.target || {}).value);
+      });
+    } else {
+      this.addCourseFilter("navhead_string", elem => {
+        console.log("Applying Navhead filter");
+        if (((e.target || {}).value || {}).length <= 0) return true;
+        //return elem.Info.NomeEsteso.indexOf((e.target || {}).value) > 0;
+        return elem.Info.NomeEsteso.includes((e.target || {}).value);
+      });
     }
   }
 
@@ -98,6 +120,43 @@ class NavigatorHeader extends Component {
           addUniFilter={this.addUniFilter}
           isUniFocus={isUniFocus}
         />
+        {/*<input
+          type="text"
+          name="search"
+          id="search"
+          style={{
+            width: "96%",
+            height: "20px",
+            margin: "5px 0px 10px 0px",
+            border: "1px solid rgba(0, 0, 0, 0.23)",
+            borderRadius: "5px",
+            padding: "10px",
+            fontSize: "15px"
+          }}
+          placeholder={
+            isUniFocus
+              ? "Cerca università per nome o descrizione"
+              : "Cerca corsi per nome o descrizione o professioni"
+          }
+          /*onKeyDown={e => {
+            if (e.key !== "Enter") return;
+
+            console.log("NAVHEAD STRIIING", e, e.target);
+
+            if (isUniFocus) {
+              this.addUniFilter("navhead", elem => {
+                if (((e.target || {}).value || {}).length <= 0) return true;
+                return elem.Info.NomeEsteso.indexOf((e.target || {}).value) > 0;
+              });
+            } else {
+              this.addCourseFilter("navhead", elem => {
+                if (((e.target || {}).value || {}).length <= 0) return true;
+                return elem.Info.NomeEsteso.indexOf((e.target || {}).value) > 0;
+              });
+            }
+          }}*\/
+          onKeyPress={e => this.applySearch(e, isUniFocus)}
+        />*/}
 
         <br />
 
