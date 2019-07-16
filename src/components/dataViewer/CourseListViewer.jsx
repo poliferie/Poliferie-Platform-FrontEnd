@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import List from "@material-ui/core/List";
 import ListItemLink from "./ListItemLink";
 
+//ICONS
+import ParentUniIcon from "@material-ui/icons/AccountBalance";
+
 const useStyles = theme => ({
   root: {
     width: "100%",
@@ -29,7 +32,14 @@ class CourseListViewer extends Component {
           {Object.keys(filteredCourses).map(id => (
             <ListItemLink
               key={id}
-              icon="CourseIcon"
+              //icon="CourseIcon"
+              icon={
+                <div style={{ textAlign: "center", width: "4.5em" }}>
+                  <ParentUniIcon />
+
+                  <div>{"Univ. erogante"}</div>
+                </div>
+              }
               to={{ pathname: "course/" + id }}
               primary={JSON.stringify(filteredCourses[id].Info.NomeEsteso)}
               /*secondary={
