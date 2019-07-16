@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import TextField from '@material-ui/core/TextField';
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import TextField from "@material-ui/core/TextField";
 //import MaxStudentFilter from "./filters/non-dialog/MaxStudentFilter";
 
 import U_DialogMinStudentFilter from "./filters/U_DialogMinStudentFilter";
@@ -18,6 +18,8 @@ import C_DialogOccupazioneFilter from "./filters/C_DialogOccupazioneFilter";
 import C_DialogStipendioFilter from "./filters/C_DialogStipendioFilter";
 import C_DialogInternazionalizzazioneFilter from "./filters/C_DialogInternazionalizzazioneFilter";
 import C_DialogLinguaFilter from "./filters/C_DialogLinguaFilter";
+
+import NavHeadFilter from "./filters/NavHeadFilter";
 
 //import { wrap } from "module";
 
@@ -37,7 +39,6 @@ class NavigatorHeader extends Component {
     //var isUniFocus = this.props.viewFocus === "uni";
     if (isUniFocus) {
       return (
-
         <div
           className="filterList"
           // NEEDED to make the filter icons stand side-by-side, and automatically goes to new line
@@ -46,7 +47,7 @@ class NavigatorHeader extends Component {
             flexWrap: "wrap",
             flexDirection: "row",
             maxWidth: "100%",
-              marginTop:"10px"
+            marginTop: "10px"
           }}
         >
           <DialogSoddisfazioneFilter addFilter={this.addUniFilter} />
@@ -57,7 +58,6 @@ class NavigatorHeader extends Component {
       );
     } else {
       return (
-         
         <div
           className="filterList"
           // NEEDED to make the filter icons stand side-by-side, and automatically goes to new line
@@ -66,7 +66,7 @@ class NavigatorHeader extends Component {
             flexWrap: "wrap",
             flexDirection: "row",
             maxWidth: "100%",
-              marginTop:"10px"
+            marginTop: "10px"
           }}
         >
           <DialogSoddisfazioneFilter addFilter={this.addCourseFilter} />
@@ -96,12 +96,14 @@ class NavigatorHeader extends Component {
 
     if (isUniFocus) {
       this.addUniFilter("navhead_string", elem => {
+        console.log("Applying Navhead filter");
         if (((e.target || {}).value || {}).length <= 0) return true;
         //return elem.Info.NomeEsteso.indexOf((e.target || {}).value) > 0;
         return elem.Info.NomeEsteso.includes((e.target || {}).value);
       });
     } else {
       this.addCourseFilter("navhead_string", elem => {
+        console.log("Applying Navhead filter");
         if (((e.target || {}).value || {}).length <= 0) return true;
         //return elem.Info.NomeEsteso.indexOf((e.target || {}).value) > 0;
         return elem.Info.NomeEsteso.includes((e.target || {}).value);
@@ -113,12 +115,29 @@ class NavigatorHeader extends Component {
     var isUniFocus = this.props.viewFocus === "uni" ? true : false;
     return (
       <div className="NavigatorHeader">
-        <input
+        <NavHeadFilter
+          addCourseFilter={this.addCourseFilter}
+          addUniFilter={this.addUniFilter}
+          isUniFocus={isUniFocus}
+        />
+        {/*<input
           type="text"
           name="search"
           id="search"
-          style={{width:"96%", height:'20px', margin:"5px 0px 10px 0px", border: "1px solid rgba(0, 0, 0, 0.23)", borderRadius:"5px", padding:"10px", fontSize:"15px"}}
-          placeholder={ isUniFocus ? "Cerca università per nome o descrizione" : "Cerca corsi per nome o descrizione o professioni"}
+          style={{
+            width: "96%",
+            height: "20px",
+            margin: "5px 0px 10px 0px",
+            border: "1px solid rgba(0, 0, 0, 0.23)",
+            borderRadius: "5px",
+            padding: "10px",
+            fontSize: "15px"
+          }}
+          placeholder={
+            isUniFocus
+              ? "Cerca università per nome o descrizione"
+              : "Cerca corsi per nome o descrizione o professioni"
+          }
           /*onKeyDown={e => {
             if (e.key !== "Enter") return;
 
@@ -135,18 +154,26 @@ class NavigatorHeader extends Component {
                 return elem.Info.NomeEsteso.indexOf((e.target || {}).value) > 0;
               });
             }
-          }}*/
-          //onKeyPress={e => this.applySearch(e, isUniFocus)}
-        />
+          }}*\/
+          onKeyPress={e => this.applySearch(e, isUniFocus)}
+        />*/}
 
         <br />
 
-          <ButtonGroup fullWidth aria-label="Full width outlined button group">
-              <Button disabled={isUniFocus} onClick={() => this.setViewFocus("uni")}>Università</Button>
-              <Button disabled={!isUniFocus} onClick={() => this.setViewFocus("crs")} >Corsi</Button>
-          </ButtonGroup>
-
-
+        <ButtonGroup fullWidth aria-label="Full width outlined button group">
+          <Button
+            disabled={isUniFocus}
+            onClick={() => this.setViewFocus("uni")}
+          >
+            Università
+          </Button>
+          <Button
+            disabled={!isUniFocus}
+            onClick={() => this.setViewFocus("crs")}
+          >
+            Corsi
+          </Button>
+        </ButtonGroup>
 
         {this.renderFilters(isUniFocus)}
       </div>
