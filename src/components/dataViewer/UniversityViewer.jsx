@@ -42,9 +42,7 @@ const useStyles = theme => ({
 });
 
 const CloseButton = {
-  position: "absolute",
-  top: 10,
-  right: 10
+float:"right"
 };
 
 const flexContainer = {
@@ -102,6 +100,12 @@ class UniversityViewer extends Component {
 
     return (
       <Card className={classes.card}>
+          <Button
+              style={CloseButton}
+              onClick={() => this.props.history.goBack()}
+          >
+              <CloseIcon fontSize="large" style={{ color: "#f25e5e" }} />
+          </Button>
         <CardContent>
           <Typography
             variant="h5"
@@ -145,15 +149,7 @@ class UniversityViewer extends Component {
 
         </CardContent>
 
-        <CardActions>
 
-          <Button
-            style={CloseButton}
-            onClick={() => this.props.history.goBack()}
-          >
-            <CloseIcon fontSize="large" style={{ color: "#f25e5e" }} />
-          </Button>
-        </CardActions>
 
         <ExpansionPanel>
           <ExpansionPanelSummary

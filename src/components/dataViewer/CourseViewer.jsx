@@ -40,7 +40,8 @@ import courses from "../../CoursesDSET";
 
 const useStyles = theme => ({
   card: {
-    minWidth: 275
+    minWidth: 275,
+    position: "relative"
   },
   bullet: {
     display: "inline-block",
@@ -56,9 +57,7 @@ const useStyles = theme => ({
 });
 
 const CloseButton = {
-  position: "absolute",
-  top: 10,
-  right: 10
+float:"right"
 };
 
 const flexContainer = {
@@ -103,10 +102,16 @@ class CourseViewer extends Component {
   render() {
     const classes = useStyles();
     const { goBack } = this.props.history;
-    const bull = <span className={classes.bullet}>•</span>;
+
 
     return (
         <Card className={classes.card}>
+          <Button
+              style={CloseButton}
+              onClick={() => this.props.history.goBack()}
+          >
+            <CloseIcon fontSize="large" style={{ color: "#f25e5e" }} />
+          </Button>
           <CardContent>
             <Typography
                 variant="h5"
@@ -193,15 +198,7 @@ class CourseViewer extends Component {
 
           </CardContent>
 
-          <CardActions>
 
-            <Button
-                style={CloseButton}
-                onClick={() => this.props.history.goBack()}
-            >
-              <CloseIcon fontSize="large" style={{ color: "#f25e5e" }} />
-            </Button>
-          </CardActions>
 
           <ExpansionPanel>
             <ExpansionPanelSummary
@@ -228,7 +225,7 @@ class CourseViewer extends Component {
                 <ListItem>
                   <ListItemText  primary="Lavoro" secondary="Da 1 a 10" />
                   <p>
-                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Soddisfazione.LavoroSoddisfazione)} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Soddisfazione.lavoroSoddisfazione)} min-width={10} />
                   </p>
                 </ListItem>
 
