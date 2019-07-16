@@ -19,8 +19,8 @@ class DialogMinStudentFilter extends Component {
         <DialogFilteringSlider
           filterName="min_nstud"
           filterTitle="Numero minimo di studenti"
-          min="70"
-          max="200"
+          min="100"
+          max="100000"
           startVal="70"
           icon={Icon()}
           filteringFunction={function(u) {
@@ -32,7 +32,7 @@ class DialogMinStudentFilter extends Component {
           }}
           //addCourseFilter={this.props.addCourseFilter}
           addFilter={this.props.addFilter}
-          humanReadableDescription="QTi piacerebbe studiare in una facoltà con pochi o molti studenti? "
+          humanReadableDescription="Ti piacerebbe studiare in una facoltà con pochi o molti studenti? "
         />
       </div>
     );

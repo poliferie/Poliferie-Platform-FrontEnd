@@ -151,7 +151,7 @@ class DialogFilteringSlider extends Component {
           <DialogContent dividers>
             <p>{this.props.humanReadableDescription}</p>
             <p>
-              {"Value: "}
+              {"Valore: "}
               <input
                 type="number"
                 id={this.props.filterName + "NumberInput"}

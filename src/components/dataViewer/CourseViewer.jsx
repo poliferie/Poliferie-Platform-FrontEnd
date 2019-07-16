@@ -152,6 +152,9 @@ class CourseViewer extends Component {
 
                   />
                 </ListItem>
+
+              </List>
+                  <List style={flexContainer}>
                 <ListItem  >
                   <ClockIcon />
 
@@ -225,7 +228,7 @@ class CourseViewer extends Component {
                 <ListItem>
                   <ListItemText  primary="Lavoro" secondary="Da 1 a 10" />
                   <p>
-                    a<Progress type="circle" width={50} percent={cleanPercentage(this.corso.Soddisfazione.lavoroSoddisfazione)} min-width={10} />
+                    <Progress type="circle" width={50} percent={cleanPercentage(this.corso.Soddisfazione.LavoroSoddisfazione)} min-width={10} />
                   </p>
                 </ListItem>
 

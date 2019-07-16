@@ -45,7 +45,7 @@ class FilteringSlider extends Component {
     return (
       <div className="FilteringSlider">
         <p>
-          {"Value: "}
+          {"Valore: "}
           <input
             type="number"
             id={this.props.filterName + "NumberInput"}
