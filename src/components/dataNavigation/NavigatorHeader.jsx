@@ -37,6 +37,7 @@ class NavigatorHeader extends Component {
     //var isUniFocus = this.props.viewFocus === "uni";
     if (isUniFocus) {
       return (
+
         <div
           className="filterList"
           // NEEDED to make the filter icons stand side-by-side, and automatically goes to new line
@@ -44,7 +45,8 @@ class NavigatorHeader extends Component {
             display: "flex",
             flexWrap: "wrap",
             flexDirection: "row",
-            maxWidth: "100%"
+            maxWidth: "100%",
+              marginTop:"10px"
           }}
         >
           <DialogSoddisfazioneFilter addFilter={this.addUniFilter} />
@@ -55,6 +57,7 @@ class NavigatorHeader extends Component {
       );
     } else {
       return (
+         
         <div
           className="filterList"
           // NEEDED to make the filter icons stand side-by-side, and automatically goes to new line
@@ -62,7 +65,8 @@ class NavigatorHeader extends Component {
             display: "flex",
             flexWrap: "wrap",
             flexDirection: "row",
-            maxWidth: "100%"
+            maxWidth: "100%",
+              marginTop:"10px"
           }}
         >
           <DialogSoddisfazioneFilter addFilter={this.addCourseFilter} />
