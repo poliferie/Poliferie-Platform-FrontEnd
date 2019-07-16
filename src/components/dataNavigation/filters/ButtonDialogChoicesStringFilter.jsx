@@ -241,7 +241,9 @@ class ButtonDialogChoicesStringFilter extends Component {
 
   render() {
     return (
+
       <div className="FilteringSlider">
+
         <IconButton
           variant="outlined"
           color="secondary"
@@ -261,6 +263,7 @@ class ButtonDialogChoicesStringFilter extends Component {
             {this.props.filterTitle}
           </DialogTitle>
           <DialogContent dividers>
+
             <div
               className="filterList"
               // NEEDED to make the filter icons stand side-by-side, and automatically goes to new line
@@ -271,6 +274,7 @@ class ButtonDialogChoicesStringFilter extends Component {
                 maxWidth: "100%"
               }}
             >
+
               {this.choices.map(r => {
                 return (
                   <button

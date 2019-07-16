@@ -36,7 +36,7 @@ class UniListViewer extends Component {
     var filteredUni = this.props.filteredUni;
     return (
       <div className="filtered-uni">
-        <h2>UNIVERSITIES</h2>
+        <h2 className="h2_titolo">Università</h2>
         <List>
           {Object.keys(filteredUni).map(id => (
             <ListItemLink

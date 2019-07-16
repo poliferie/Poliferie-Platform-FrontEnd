@@ -24,7 +24,7 @@ class CourseListViewer extends Component {
 
     return (
       <div className="filtered-courses">
-        <h2>COURSES</h2>
+        <h2 className="h2_titolo">Corsi</h2>
         <List>
           {Object.keys(filteredCourses).map(id => (
             <ListItemLink

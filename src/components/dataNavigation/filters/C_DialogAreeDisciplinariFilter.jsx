@@ -8,21 +8,21 @@ const Icon = () => {
 };
 
 const Areas = [
-  "Area1",
-  "Area2",
-  "Area3",
-  "Area4",
-  "Area5",
-  "Area6",
-  "Area7",
-  "Area8",
-  "Area9",
-  "Area10",
-  "Area11",
-  "Area12",
-  "Area13",
-  "Area14",
-  "Area15"
+  "Scienze Naturali e Applicate",
+  "Chimica e Farmacia",
+  "Medicina, Sanità, Psicologia",
+  "Ingegneria Civile, Ambientale, dei Trasporti",
+  "Architettura e Design",
+  "Economica, Finanza, Statistica",
+  "Politica, Società, Diritto",
+  "Lettere, Lingue, Filosofia",
+  "Educazione e Sport",
+  "Difesa e Sicurezza",
+  "Storia e Beni culturali",
+  "Discipline artisitche",
+  "Ingegneria industriale",
+  "Ingegneria dell'informazione",
+  "Agraria e Veterinaria"
 ];
 
 class DialogAreeDisciplinariFilter extends Component {

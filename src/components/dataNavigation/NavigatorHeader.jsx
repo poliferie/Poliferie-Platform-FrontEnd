@@ -88,7 +88,7 @@ class NavigatorHeader extends Component {
   applySearch(e, isUniFocus) {
     if (e.key !== "Enter") return;
 
-    console.log("NAVHEAD STRIIING", e, e.target);
+    console.log("NAVHEAD STRIING", e, e.target);
 
     if (isUniFocus) {
       this.addUniFilter("navhead_string", elem => {
@@ -113,7 +113,8 @@ class NavigatorHeader extends Component {
           type="text"
           name="search"
           id="search"
-          style={{width:"99%", height:'36px', margin:"5px 0px 10px 0px", border: "1px solid rgba(0, 0, 0, 0.23)", borderRadius:"5px"}}
+          style={{width:"96%", height:'20px', margin:"5px 0px 10px 0px", border: "1px solid rgba(0, 0, 0, 0.23)", borderRadius:"5px", padding:"10px", fontSize:"15px"}}
+          placeholder={ isUniFocus ? "Cerca università per nome o descrizione" : "Cerca corsi per nome o descrizione o professioni"}
           /*onKeyDown={e => {
             if (e.key !== "Enter") return;
 
