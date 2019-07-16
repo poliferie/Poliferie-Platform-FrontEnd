@@ -106,11 +106,16 @@ class HeaderDialog extends Component {
             id={this.filterName + "-dialog-title"}
             onClose={this.handleClose}
           >
-              <p>Help Ttle</p>
+              <p>Help</p>
           </DialogTitle>
           <DialogContent dividers>
             <div>
-                <p>lOREMiosdjajds</p>
+                <p>Questo è la pagina di help dell'applicazione Poliferie.</p>
+                <p>Utilizza il cerca in alto e premi invio per cercare tutti i corsi o le università che contengono la parola cercata</p>
+                <p>Selezionando Università o Corsi sceglierai quali contenuti analizzare, se università o corsi.</p>
+                <p>Le icone sotto alla selezione università/corso permettono di impostare dei filtri. Clicca su ogni icona per avere una descrizione del campo che verrà filtrato. Cliccando Applica o Rimuovi scegli l'azione relativa al filtro</p>
+                <p>Cerca nella lista di elementi l'università od il corso che ti interessa. Cliccandoci potrai visualizzare ulteriori informazioni</p>
+                
             </div>
           </DialogContent>
         </Dialog>
