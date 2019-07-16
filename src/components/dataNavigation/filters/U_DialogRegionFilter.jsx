@@ -51,7 +51,7 @@ class DialogRegionFilter extends Component {
           filterAttribute="Regione"
           filterAttributePath="Info"
           addFilter={this.props.addFilter}
-          humanReadableDescription="Questa è una descrizione di esempio"
+          humanReadableDescription="In quale parte dell'Italia ti piacerebbe studiare? Seleziona una o più regioni"
         />
       </div>
     );

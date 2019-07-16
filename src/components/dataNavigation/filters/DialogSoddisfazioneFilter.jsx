@@ -31,7 +31,7 @@ class DialogSoddisfazioneFilter extends Component {
             return objVal >= parseFloat(this.state.val);
           }}
           addFilter={this.props.addFilter}
-          humanReadableDescription="Questa è una descrizione di esempio"
+          humanReadableDescription="Questo valore indica quanto gli studenti che ti hanno preceduto sono stati complessivamente soddisfatti, su una scala che va da 1 a 100"
         />
       </div>
     );

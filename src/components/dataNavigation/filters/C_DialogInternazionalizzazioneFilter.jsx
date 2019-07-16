@@ -31,7 +31,7 @@ class DialogInternazionalizzazioneFilter extends Component {
             return objVal >= parseFloat(this.state.val);
           }}
           addFilter={this.props.addFilter}
-          humanReadableDescription="Questa è una descrizione di esempio"
+          humanReadableDescription="Questa valore indica, su una scala da 1 a 100, quanto il corso permette di avere possibilità di studio all'estero"
         />
       </div>
     );

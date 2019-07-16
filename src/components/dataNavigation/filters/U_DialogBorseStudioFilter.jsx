@@ -31,7 +31,7 @@ class DialogBorseStudioFilter extends Component {
             return objVal >= parseFloat(this.state.val);
           }}
           addFilter={this.props.addFilter}
-          humanReadableDescription="Questa è una descrizione di esempio"
+          humanReadableDescription="Questo filtro permette di filtrare le università che erogano più borse di studio rispetto alle altre"
         />
       </div>
     );

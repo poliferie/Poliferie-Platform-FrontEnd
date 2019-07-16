@@ -32,7 +32,7 @@ class DialogStipendioFilter extends Component {
             return objVal >= parseFloat(this.state.val);
           }}
           addFilter={this.props.addFilter}
-          humanReadableDescription="Questa è una descrizione di esempio"
+          humanReadableDescription="Quanto ti piacerebbe guadagnare? Questo valore ti permette de decidere una cifra minima dello stipendio mensile netto che potresti dopo aver concluso uno specifico corso di laurea "
         />
       </div>
     );
