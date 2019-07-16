@@ -71,7 +71,7 @@ const flexContainer = {
 };
 
 const listItem = {
-  minWidth: "80vw"
+  minWidth: "80%"
 };
 
 

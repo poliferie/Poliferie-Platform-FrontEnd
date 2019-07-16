@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import TextField from '@material-ui/core/TextField';
 //import MaxStudentFilter from "./filters/non-dialog/MaxStudentFilter";
 
 import U_DialogMinStudentFilter from "./filters/U_DialogMinStudentFilter";
@@ -109,6 +113,7 @@ class NavigatorHeader extends Component {
           type="text"
           name="search"
           id="search"
+          style={{width:"99%", height:'36px', margin:"5px 0px 10px 0px", border: "1px solid rgba(0, 0, 0, 0.23)", borderRadius:"5px"}}
           /*onKeyDown={e => {
             if (e.key !== "Enter") return;
 
@@ -131,12 +136,12 @@ class NavigatorHeader extends Component {
 
         <br />
 
-        <button disabled={isUniFocus} onClick={() => this.setViewFocus("uni")}>
-          Università
-        </button>
-        <button disabled={!isUniFocus} onClick={() => this.setViewFocus("crs")}>
-          Corsi
-        </button>
+          <ButtonGroup fullWidth aria-label="Full width outlined button group">
+              <Button disabled={isUniFocus} onClick={() => this.setViewFocus("uni")}>Università</Button>
+              <Button disabled={!isUniFocus} onClick={() => this.setViewFocus("crs")} >Corsi</Button>
+          </ButtonGroup>
+
+
 
         {this.renderFilters(isUniFocus)}
       </div>
