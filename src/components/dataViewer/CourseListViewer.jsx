@@ -34,14 +34,18 @@ class CourseListViewer extends Component {
               key={id}
               //icon="CourseIcon"
               icon={
-                <div style={{ textAlign: "center", width: "4.5em" }}>
+                <div style={{ textAlign: "center", width: "5em" }}>
                   <ParentUniIcon />
 
-                  <div>{"Univ. erogante"}</div>
+                  <div>
+                    {filteredCourses[id].Info.ateneoNomeEsteso
+                      ? filteredCourses[id].Info.ateneoNomeEsteso
+                      : ""}
+                  </div>
                 </div>
               }
               to={{ pathname: "course/" + id }}
-              primary={JSON.stringify(filteredCourses[id].Info.NomeEsteso)}
+              primary={filteredCourses[id].Info.NomeEsteso}
               /*secondary={
                 "Students: " + JSON.stringify(filteredCourses[id].Info.students)
               }*/

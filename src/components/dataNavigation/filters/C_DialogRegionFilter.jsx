@@ -48,7 +48,7 @@ class DialogRegionFilter extends Component {
           choices={Regions}
           icon={Icon()}
           filterType="or"
-          filterAttribute="Regione"
+          filterAttribute="ateneoRegione"
           filterAttributePath="Info"
           addFilter={this.props.addFilter}
           humanReadableDescription="In quale parte dell'Italia ti piacerebbe studiare? Seleziona una o più regioni"
