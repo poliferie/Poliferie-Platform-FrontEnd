@@ -17,7 +17,7 @@ class DialogSoddisfazioneFilter extends Component {
       <div className="SoddisfazioneFilter">
         <DialogFilteringSlider
           filterName="min_satisfaction"
-          filterTitle="Filtra per soddisfazione"
+          filterTitle="Soddisfazione"
           min="0"
           max="100"
           startVal="80"

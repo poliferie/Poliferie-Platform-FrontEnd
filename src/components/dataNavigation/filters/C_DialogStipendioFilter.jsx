@@ -20,8 +20,8 @@ class DialogStipendioFilter extends Component {
           filterName="min_salary"
           filterTitle="Stipendio netto minimo"
           min="0"
-          max="100"
-          startVal="80"
+          max="3000"
+          startVal="1000"
           icon={Icon()}
           filteringFunction={function(u) {
             //console.log("Filter name: " + this.filterName);
