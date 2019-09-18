@@ -19,7 +19,7 @@ import C_DialogStipendioFilter from "./filters/C_DialogStipendioFilter";
 import C_DialogInternazionalizzazioneFilter from "./filters/C_DialogInternazionalizzazioneFilter";
 import C_DialogLinguaFilter from "./filters/C_DialogLinguaFilter";
 
-import NavHeadFilter from "./filters/NavHeadFilter";
+import StringLookupFilter from "./filters/StringLookupFilter";
 
 //import { wrap } from "module";
 
@@ -115,7 +115,7 @@ class NavigatorHeader extends Component {
     var isUniFocus = this.props.viewFocus === "uni" ? true : false;
     return (
       <div className="NavigatorHeader">
-        <NavHeadFilter
+        <StringLookupFilter
           addCourseFilter={this.addCourseFilter}
           addUniFilter={this.addUniFilter}
           isUniFocus={isUniFocus}
