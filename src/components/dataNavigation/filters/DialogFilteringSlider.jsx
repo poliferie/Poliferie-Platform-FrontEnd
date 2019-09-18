@@ -166,9 +166,9 @@ class DialogFilteringSlider extends Component {
               onClick={() => {
                 console.log(this.props.filterName + " removed");
                 this.setFilter(e => true);
+                this.handleClose();
               }}
-              color="primary"
-            >
+              color="primary">
               Rimuovi
             </Button>
             <Button
@@ -176,8 +176,7 @@ class DialogFilteringSlider extends Component {
                 this.setFilter(this.props.filteringFunction.bind(this));
                 this.handleClose();
               }}
-              color="primary"
-            >
+              color="primary">
               Applica
             </Button>
           </DialogActions>

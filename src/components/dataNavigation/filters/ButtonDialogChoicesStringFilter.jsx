@@ -194,15 +194,15 @@ class ButtonDialogChoicesStringFilter extends Component {
     this.setUniStringFilter(e =>
       this.props.filterType === "and"
         ? this.filterElemAndClause(
-            e.Info,
-            this.state,
-            this.props.filterAttribute
-          )
+          e.Info,
+          this.state,
+          this.props.filterAttribute
+        )
         : this.filterElemOrClause(
-            e.Info,
-            this.state,
-            this.props.filterAttribute
-          )
+          e.Info,
+          this.state,
+          this.props.filterAttribute
+        )
     );
   }
 
@@ -301,10 +301,20 @@ class ButtonDialogChoicesStringFilter extends Component {
             <Button onClick={this.resetFilter} color="primary">
               Reset
             </Button>
-            <Button onClick={this.removeFilter} color="primary">
+            <Button 
+              onClick={() => {
+                this.removeFilter();
+                this.handleClose();
+              }}
+              color="primary">
               Rimuovi
-            </Button>
-            <Button onClick={()=>{this.applyFilter;                 this.handleClose();}} color="primary">
+            </Button> 
+            <Button 
+              onClick={() => {
+                this.applyFilter();
+                this.handleClose();
+              }}
+              color="primary">
               Applica
             </Button>
           </DialogActions>
