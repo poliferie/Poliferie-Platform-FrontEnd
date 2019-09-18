@@ -304,7 +304,7 @@ class ButtonDialogChoicesStringFilter extends Component {
             <Button onClick={this.removeFilter} color="primary">
               Rimuovi
             </Button>
-            <Button onClick={this.applyFilter} color="primary">
+            <Button onClick={()=>{this.applyFilter;                 this.handleClose();}} color="primary">
               Applica
             </Button>
           </DialogActions>

@@ -4,7 +4,7 @@ import FlightIcon from "@material-ui/icons/Flight";
 
 const Icon = () => {
   // This can actually just be put directly into the props of DialogFilter
-  return <FlightIcon color="primary" />;
+  return <FlightIcon color="#ea4242" />;
 };
 
 class DialogInternazionalizzazioneFilter extends Component {

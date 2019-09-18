@@ -3,7 +3,7 @@ import DialogChoicesStringFilter from "./DialogChoicesStringFilter";
 import LocationIcon from "@material-ui/icons/LocationOn";
 
 const Icon = () => {
-  return <LocationIcon color="primary" />;
+  return <LocationIcon color="#ea4242" />;
 };
 
 const Regions = [

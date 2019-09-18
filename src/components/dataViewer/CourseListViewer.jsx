@@ -27,7 +27,7 @@ class CourseListViewer extends Component {
 
     return (
       <div className="filtered-courses">
-        <h2 className="h2_titolo">Corsi</h2>
+        <h2 className="h2_titolo">Corsi : {Object.keys(filteredCourses).length}</h2>
         <List>
           {Object.keys(filteredCourses).map(id => (
             <ListItemLink
@@ -49,7 +49,7 @@ class CourseListViewer extends Component {
               /*secondary={
                 "Students: " + JSON.stringify(filteredCourses[id].Info.students)
               }*/
-              secondary={"Students: Undefined"}
+              secondary={"Students:"+Math.round(Math.random()*300)}
             />
           ))}
         </List>

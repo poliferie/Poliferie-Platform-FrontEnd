@@ -3,7 +3,7 @@ import DialogFilteringSlider from "./DialogFilteringSlider";
 import PplIcon from "@material-ui/icons/SupervisorAccount";
 
 const Icon = () => {
-  return <PplIcon color="primary" />;
+  return <PplIcon color="#ea4242" />;
 };
 
 class DialogMinStudentFilter extends Component {

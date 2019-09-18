@@ -4,7 +4,7 @@ import EuroIcon from "@material-ui/icons/EuroSymbol";
 
 const Icon = () => {
   // This can actually just be put directly into the props of DialogFilter
-  return <EuroIcon color="primary" />;
+  return <EuroIcon color="#ea4242" />;
 };
 
 class DialogStipendioFilter extends Component {

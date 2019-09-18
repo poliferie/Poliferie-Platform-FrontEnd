@@ -4,7 +4,7 @@ import WorkIcon from "@material-ui/icons/Work";
 
 const Icon = () => {
   // This can actually just be put directly into the props of DialogFilter
-  return <WorkIcon color="primary" />;
+  return <WorkIcon color="#ea4242" />;
 };
 
 class DialogOccupazioneFilter extends Component {

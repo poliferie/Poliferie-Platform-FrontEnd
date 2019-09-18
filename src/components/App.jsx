@@ -8,12 +8,12 @@ import UniversityViewer from "./dataViewer/UniversityViewer";
 const App = () => (
   <div style={{maxWidth:'500px',margin:'auto'}}>
     <Switch>
-      <Route exact path="/dataNavigator" component={DataNavigator} />
+      <Route exact path="/" component={DataNavigator} />
       <Route exact path="/course/:id" component={CourseViewer} />
       <Route exact path="/university/:id" component={UniversityViewer} />
 
       {/* Default Route */}
-      <Route render={() => <Redirect to="/dataNavigator" />} />
+      <Route render={() => <Redirect to="/" />} />
     </Switch>
 
   {/*<Header />*/}

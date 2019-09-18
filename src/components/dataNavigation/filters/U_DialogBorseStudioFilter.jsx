@@ -3,7 +3,7 @@ import DialogFilteringSlider from "./DialogFilteringSlider";
 import SmileyIcon from "@material-ui/icons/SentimentSatisfiedAlt";
 
 const Icon = () => {
-  return <SmileyIcon color="primary" />;
+  return <SmileyIcon color="#ea4242" />;
 };
 
 class DialogBorseStudioFilter extends Component {

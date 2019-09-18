@@ -4,7 +4,7 @@ import TIcon from "@material-ui/icons/Translate";
 
 const Icon = () => {
   // This can actually just be put directly into the props of DialogFilter
-  return <TIcon color="primary" />;
+  return <TIcon color="#ea4242" />;
 };
 
 const choicesCode = ["I", "E", "P"];

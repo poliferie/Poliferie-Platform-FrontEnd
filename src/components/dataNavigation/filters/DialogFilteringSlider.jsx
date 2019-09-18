@@ -173,8 +173,8 @@ class DialogFilteringSlider extends Component {
             </Button>
             <Button
               onClick={() => {
-                console.log(this.props.filterName + " applied");
                 this.setFilter(this.props.filteringFunction.bind(this));
+                this.handleClose();
               }}
               color="primary"
             >

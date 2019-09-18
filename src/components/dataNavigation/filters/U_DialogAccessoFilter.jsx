@@ -3,7 +3,7 @@ import DialogChoicesStringFilter from "./DialogChoicesStringFilter";
 import LockIcon from "@material-ui/icons/Lock";
 
 const Icon = () => {
-  return <LockIcon color="primary" />;
+  return <LockIcon color="#ea4242" />;
 };
 
 const choicesCode = ["L", "S"];
