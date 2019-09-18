@@ -56,7 +56,7 @@ const DialogActions = withStyles(theme => ({
   }
 }))(MuiDialogActions);
 
-class HeaderDialog extends Component {
+class HelperDialog extends Component {
   handleClickOpen = (e) => {
     console.log("called",e)
     e.stopPropagation();
@@ -78,7 +78,7 @@ class HeaderDialog extends Component {
 
   render() {
     return (
-      <div className="HeaderDialog" >
+      <div className="HelperDialog" >
         
         {/*<IconButton
           variant="outlined"
@@ -124,4 +124,4 @@ class HeaderDialog extends Component {
   }
 }
 
-export default HeaderDialog;
+export default HelperDialog;

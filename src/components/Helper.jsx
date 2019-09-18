@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import HeaderDialog from "./HeaderDialog";
+import HelperDialog from "./HelperDialog";
 
 
 
 
-class Header extends Component {
+class Helper extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -20,10 +20,10 @@ class Header extends Component {
           
         }}
       >
-        <HeaderDialog></HeaderDialog>
+        <HelperDialog></HelperDialog>
       </div>
     );
   }
 }
 
-export default Header;
+export default Helper;
