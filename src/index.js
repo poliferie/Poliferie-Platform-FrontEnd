@@ -15,12 +15,16 @@ const state = {
   courses: Courses,
   visibilityFilter: {
     courses: {},
-    universities: {}
+    universities: {},
+    viewFocus: 'uni'
   }
 };
 
-const store = createStore(rootReducer, state);
+//Allows to use the Redux browser devtools (only for development)
+const store = createStore(rootReducer, state, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+//const store = createStore(rootReducer, state);
 console.log("store", store);
+
 render(
   <Provider store={store}>
     <BrowserRouter>

@@ -32,6 +32,15 @@ export const addUniFilter = (name, filter) => {
   };
 };
 
+//view is "uni" or "crs"
+export const toggleViewFocus = view => {
+  return {
+    type: headerActions.TOGGLE_VIEW,
+    elem: view,
+    id: nextFilterId++
+  };
+};
+
 /*****  ACTION CONSTANT DECLARATIONS */
 
 export const uniFilterActions = {
@@ -51,4 +60,8 @@ export const uniActions = {
 export const courseActions = {
   ADD_ELEM: "course-add",
   EMPTY: "course-empty"
+};
+
+export const headerActions = {
+  TOGGLE_VIEW: "toggle-view-focus"
 };

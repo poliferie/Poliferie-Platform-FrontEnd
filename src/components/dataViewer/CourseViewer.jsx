@@ -103,12 +103,11 @@ class CourseViewer extends Component {
     const classes = useStyles();
     const { goBack } = this.props.history;
 
-
     return (
         <Card className={classes.card}>
           <Button
               style={CloseButton}
-              onClick={() => this.props.history.goBack()}
+              onClick={() => goBack()}
           >
             <CloseIcon fontSize="large" style={{ color: "#f25e5e" }} />
           </Button>

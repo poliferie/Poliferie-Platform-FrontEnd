@@ -4,7 +4,8 @@ import {
   addCourse,
   addUniversity,
   addCourseFilter,
-  addUniFilter
+  addUniFilter,
+  toggleViewFocus
 } from "../../actions";
 
 import NavigatorBody from "./NavigatorBody";
@@ -75,6 +76,9 @@ const mapDispatchToProps = dispatch => ({
   },
   addUniFilter: (name, elem) => {
     dispatch(addUniFilter(name, elem));
+  },
+  toggleViewFocus: elem => {
+    dispatch(toggleViewFocus(elem));
   }
 });
 
@@ -82,26 +86,29 @@ const mapDispatchToProps = dispatch => ({
 class DataNavigator extends Component {
   constructor(props) {
     super(props);
-    this.state = { viewFocus: "uni" };
+    //this.state = { viewFocus: "uni" };
 
-    this.setViewFocus = this.setViewFocus.bind(this);
+    //this.setViewFocus = this.setViewFocus.bind(this);
   }
 
-  setViewFocus(f) {
+  /*setViewFocus(f) {
     this.setState({ ...this.state, viewFocus: f });
-  }
+  }*/
 
   render() {
     return (
       <div className="DataNavigator">
         <NavigatorHeader
-          setViewFocus={this.setViewFocus}
-          viewFocus={this.state.viewFocus}
+          //setViewFocus={this.setViewFocus}
+          setViewFocus={this.props.toggleViewFocus}
+          //viewFocus={this.state.viewFocus}
+          viewFocus={this.props.rdxState.visibilityFilter.viewFocus}
           addCourseFilter={this.props.addCourseFilter}
           addUniFilter={this.props.addUniFilter}
         />
         <NavigatorBody
-          viewFocus={this.state.viewFocus}
+          //viewFocus={this.state.viewFocus}
+          viewFocus={this.props.rdxState.visibilityFilter.viewFocus}
           filteredUni={this.props.filteredUni}
           filteredCourses={this.props.filteredCourses}
         />

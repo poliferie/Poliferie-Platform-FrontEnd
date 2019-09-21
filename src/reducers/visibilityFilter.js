@@ -1,4 +1,4 @@
-import { uniFilterActions, courseFilterActions } from "../actions";
+import { uniFilterActions, courseFilterActions, headerActions } from "../actions";
 
 function visibilityFilter(state = { courses: {}, universities: {} }, action) {
   var name = action.name;
@@ -16,6 +16,10 @@ function visibilityFilter(state = { courses: {}, universities: {} }, action) {
       state.courses[name] = elem;
       break;
     // DEFAULT
+    case headerActions.TOGGLE_VIEW:
+      state = { ...state };
+      state.viewFocus = elem;
+      break;
     default:
       break;
   }
