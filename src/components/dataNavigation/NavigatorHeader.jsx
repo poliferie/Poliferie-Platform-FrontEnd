@@ -47,7 +47,7 @@ class NavigatorHeader extends Component {
             flexWrap: "wrap",
             flexDirection: "row",
             maxWidth: "100%",
-            marginTop: "10px"
+            marginTop: "0px"
           }}
         >
           <DialogSoddisfazioneFilter addFilter={this.addUniFilter} />
@@ -115,11 +115,7 @@ class NavigatorHeader extends Component {
     var isUniFocus = this.props.viewFocus === "uni" ? true : false;
     return (
       <div className="NavigatorHeader">
-        <StringLookupFilter
-          addCourseFilter={this.addCourseFilter}
-          addUniFilter={this.addUniFilter}
-          isUniFocus={isUniFocus}
-        />
+
         {/*<input
           type="text"
           name="search"
@@ -158,24 +154,30 @@ class NavigatorHeader extends Component {
           onKeyPress={e => this.applySearch(e, isUniFocus)}
         />*/}
 
-        <br />
+          <ButtonGroup fullWidth aria-label="Full width outlined button group">
+              <Button
+                  disabled={isUniFocus}
+                  onClick={() => this.setViewFocus("uni")}
+              >
+                  Università
+              </Button>
+              <Button
+                  disabled={!isUniFocus}
+                  onClick={() => this.setViewFocus("crs")}
+              >
+                  Corsi
+              </Button>
+          </ButtonGroup>
 
-        <ButtonGroup fullWidth aria-label="Full width outlined button group">
-          <Button
-            disabled={isUniFocus}
-            onClick={() => this.setViewFocus("uni")}
-          >
-            Università
-          </Button>
-          <Button
-            disabled={!isUniFocus}
-            onClick={() => this.setViewFocus("crs")}
-          >
-            Corsi
-          </Button>
-        </ButtonGroup>
+          <StringLookupFilter
+              addCourseFilter={this.addCourseFilter}
+              addUniFilter={this.addUniFilter}
+              isUniFocus={isUniFocus}
+          />
 
         {this.renderFilters(isUniFocus)}
+
+
       </div>
     );
   }

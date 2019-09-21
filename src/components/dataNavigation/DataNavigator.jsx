@@ -45,7 +45,7 @@ const mapStateToProps = state => {
     );
   }
 
-  var HOWMANY = 160,
+  var HOWMANY = 70,
     c = 0,
     _filteredCourses = {};
   for (var key in filteredCourses) {

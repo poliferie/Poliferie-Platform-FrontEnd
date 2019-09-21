@@ -4,9 +4,14 @@ import Helper from "./Helper.jsx";
 import DataNavigator from "./dataNavigation/DataNavigator";
 import CourseViewer from "./dataViewer/CourseViewer";
 import UniversityViewer from "./dataViewer/UniversityViewer";
+import Navbar from "./Navbar";
 
 const App = () => (
-  <div style={{maxWidth:'500px',margin:'auto'}}>
+
+
+  <div >
+      <Navbar></Navbar>
+      <div style={{maxWidth:'500px',margin:'auto'}}>
     <Switch>
       <Route exact path="/" component={DataNavigator} />
       <Route exact path="/course/:id" component={CourseViewer} />
@@ -18,7 +23,7 @@ const App = () => (
 
   {/*<Header />*/}
   <Helper />
-  </div>
+      </div>  </div>
 );
 
 export default App;
