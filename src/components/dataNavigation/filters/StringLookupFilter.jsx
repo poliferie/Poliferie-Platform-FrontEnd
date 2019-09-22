@@ -57,11 +57,13 @@ class StringLookupFilter extends Component {
         style={{
           width: "calc(100% - 22px)",
           height: "20px",
-          margin: "5px 0px 0px 0px",
+          margin: "10px 0px 0px 0px",
           border: "1px solid rgba(0, 0, 0, 0.23)",
           borderRadius: "5px",
           padding: "10px",
-          fontSize: "15px"
+          fontSize: "15px",
+          borderRadius:"30px",
+
         }}
         placeholder={
           this.props.isUniFocus

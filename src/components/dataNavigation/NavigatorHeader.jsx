@@ -23,6 +23,28 @@ import StringLookupFilter from "./filters/StringLookupFilter";
 
 //import { wrap } from "module";
 
+const STYLE_RED = {
+    borderRadius:"30px",
+    backgroundColor:"#EA4242",
+    color:"white",
+    alignContent:"left",
+    paddingLeft: "15px !important"
+};
+
+const STYLE_WHITE_LEFT = {
+    borderTopLeftRadius: "30px",
+    borderBottomLeftRadius: "30px",
+    paddingLeft: "15px !important"
+
+}
+
+const STYLE_WHITE_RIGHT = {
+    borderTopRightRadius: "30px",
+    borderBottomRightRadius: "30px",
+    paddingLeft: "35px !important"
+
+}
+
 class NavigatorHeader extends Component {
   constructor(props) {
     super(props);
@@ -154,16 +176,23 @@ class NavigatorHeader extends Component {
           onKeyPress={e => this.applySearch(e, isUniFocus)}
         />*/}
 
-          <ButtonGroup fullWidth aria-label="Full width outlined button group">
+
+
+          <ButtonGroup fullWidth aria-label="Full width outlined button group" style={{marginTop:"10px"}}>
               <Button
                   disabled={isUniFocus}
                   onClick={() => this.setViewFocus("uni")}
+                  style={isUniFocus ? {... STYLE_RED, marginRight: "-15px"} : {... STYLE_WHITE_LEFT, marginRight: "-15px"}}
+
+
+
               >
                   Università
               </Button>
               <Button
                   disabled={!isUniFocus}
                   onClick={() => this.setViewFocus("crs")}
+                  style={isUniFocus ? {... STYLE_WHITE_RIGHT} : {... STYLE_RED}}
               >
                   Corsi
               </Button>
