@@ -29,19 +29,22 @@ const STYLE_RED = {
     color:"white",
     alignContent:"left",
     paddingLeft: "15px !important"
+
 };
 
 const STYLE_WHITE_LEFT = {
     borderTopLeftRadius: "30px",
     borderBottomLeftRadius: "30px",
-    paddingLeft: "15px !important"
+    paddingLeft: "15px !important",
+    color: "#CCCCCC"
 
 }
 
 const STYLE_WHITE_RIGHT = {
     borderTopRightRadius: "30px",
     borderBottomRightRadius: "30px",
-    paddingLeft: "35px !important"
+    paddingLeft: "35px !important",
+    color: "#CCCCCC"
 
 }
 
