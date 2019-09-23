@@ -4,6 +4,7 @@ import ListItemLink from "./ListItemLink";
 
 //ICONS
 import ParentUniIcon from "@material-ui/icons/AccountBalance";
+import Button from "@material-ui/core/Button";
 
 const useStyles = theme => ({
   root: {
@@ -19,17 +20,39 @@ const useStyles = theme => ({
 class CourseListViewer extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      a:0,
+      b:50
+    };
   }
+
+
+  goDown = () => {
+    console.log("goDown")
+    this.setState({ a: this.a+50, b:this.b+50 });
+  };
+
 
   render() {
     var filteredCourses = this.props.filteredCourses;
+    var filteredCoursesNumber = Object.keys(filteredCourses).length;
+
+
+    function firstN(obj, a,b) {
+      return Object.keys(obj) //get the keys out
+          .sort() //this will ensure consistent ordering of what you will get back. If you want something in non-aphabetical order, you will need to supply a custom sorting function
+          .slice(a, b) //get the first N
+          .reduce(function(memo, current) { //generate a new object out of them
+            memo[current] = obj[current]
+            return memo;
+          }, {})
+    }
 
     return (
       <div className="filtered-courses">
-        <h2 className="h2_titolo">Corsi : {Object.keys(filteredCourses).length}</h2>
+        <h2 className="h2_titolo">Corsi : {filteredCoursesNumber>50 ? "50 di "+filteredCoursesNumber : filteredCoursesNumber}</h2>
         <List>
-          {Object.keys(filteredCourses).map(id => (
+          {Object.keys(firstN(filteredCourses,this.a,this.b)).map(id => (
             <ListItemLink
               key={id}
               //icon="CourseIcon"
@@ -53,7 +76,9 @@ class CourseListViewer extends Component {
             />
           ))}
         </List>
+        <Button onClick={() => { this.goDown() }} style={{padding:"20px", border:"2px solid red"}}> DOWN </Button>
       </div>
+
     );
   }
 }

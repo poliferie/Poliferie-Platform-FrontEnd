@@ -28,7 +28,8 @@ const STYLE_RED = {
     backgroundColor:"#EA4242",
     color:"white",
     alignContent:"left",
-    paddingLeft: "15px !important"
+    paddingLeft: "15px !important",
+    border:"0px"
 
 };
 
@@ -43,7 +44,7 @@ const STYLE_WHITE_LEFT = {
 const STYLE_WHITE_RIGHT = {
     borderTopRightRadius: "30px",
     borderBottomRightRadius: "30px",
-    paddingLeft: "35px !important",
+    paddingLeft: "15px !important",
     color: "#CCCCCC"
 
 }
@@ -197,7 +198,7 @@ class NavigatorHeader extends Component {
                   onClick={() => this.setViewFocus("crs")}
                   style={isUniFocus ? {... STYLE_WHITE_RIGHT} : {... STYLE_RED}}
               >
-                  Corsi
+                  <text style={isUniFocus ? {paddingLeft:"10px"}:{}}>Corsi</text>
               </Button>
           </ButtonGroup>
 
