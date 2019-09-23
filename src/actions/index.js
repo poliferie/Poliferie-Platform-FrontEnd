@@ -32,6 +32,22 @@ export const addUniFilter = (name, filter) => {
   };
 };
 
+export const removeCourseFilter = (name) => {
+  return {
+    type: courseFilterActions.REMOVE_ELEM,
+    id: nextFilterId++,
+    name: name
+  };
+};
+
+export const removeUniFilter = (name) => {
+  return {
+    type: uniFilterActions.REMOVE_ELEM,
+    id: nextFilterId++,
+    name: name
+  };
+};
+
 //view is "uni" or "crs"
 export const toggleViewFocus = view => {
   return {
@@ -45,10 +61,12 @@ export const toggleViewFocus = view => {
 
 export const uniFilterActions = {
   ADD_ELEM: "uni-filter-add",
+  REMOVE_ELEM: "uni-filter-remove",
   EMPTY: "uni-filter-empty"
 };
 export const courseFilterActions = {
   ADD_ELEM: "course-filter-add",
+  REMOVE_ELEM: "course-filter-remove",
   EMPTY: "course-filter-empty"
 };
 

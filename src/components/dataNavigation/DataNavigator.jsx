@@ -5,6 +5,8 @@ import {
   addUniversity,
   addCourseFilter,
   addUniFilter,
+  removeCourseFilter,
+  removeUniFilter,
   toggleViewFocus
 } from "../../actions";
 
@@ -63,24 +65,33 @@ const mapStateToProps = state => {
 };
 
 /** REDUX DISPATCH-TO-PROPS DEFINITION */
-const mapDispatchToProps = dispatch => ({
-  dispatch: dispatch,
-  addCourse: elem => {
-    dispatch(addCourse(elem));
-  },
-  addUniversity: elem => {
-    dispatch(addUniversity(elem));
-  },
-  addCourseFilter: (name, elem) => {
-    dispatch(addCourseFilter(name, elem));
-  },
-  addUniFilter: (name, elem) => {
-    dispatch(addUniFilter(name, elem));
-  },
-  toggleViewFocus: elem => {
-    dispatch(toggleViewFocus(elem));
-  }
-});
+const mapDispatchToProps = dispatch => {
+  console.log("CALLED DISPATCHING FUNCTION", dispatch);
+  return ({
+    dispatch: dispatch,
+    addCourse: elem => {
+      dispatch(addCourse(elem));
+    },
+    addUniversity: elem => {
+      dispatch(addUniversity(elem));
+    },
+    addCourseFilter: (name, elem) => {
+      dispatch(addCourseFilter(name, elem));
+    },
+    addUniFilter: (name, elem) => {
+      dispatch(addUniFilter(name, elem));
+    },
+    removeCourseFilter: (name) => {
+      dispatch(removeCourseFilter(name));
+    },
+    removeUniFilter: (name) => {
+      dispatch(removeUniFilter(name));
+    },
+    toggleViewFocus: elem => {
+      dispatch(toggleViewFocus(elem));
+    }
+  });
+};
 
 /** COMPONENT DEFINITION */
 class DataNavigator extends Component {
@@ -105,6 +116,8 @@ class DataNavigator extends Component {
           viewFocus={this.props.rdxState.visibilityFilter.viewFocus}
           addCourseFilter={this.props.addCourseFilter}
           addUniFilter={this.props.addUniFilter}
+          removeCourseFilter={this.props.removeCourseFilter}
+          removeUniFilter={this.props.removeUniFilter}
         />
         <NavigatorBody
           //viewFocus={this.state.viewFocus}
