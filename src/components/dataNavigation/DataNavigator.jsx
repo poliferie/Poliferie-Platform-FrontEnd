@@ -47,8 +47,8 @@ const mapStateToProps = state => {
     );
   }
 
-  var HOWMANY = 3000,
-    c = 0,
+  var HOWMANY = 150,
+    c = 1,
     _filteredCourses = {};
   for (var key in filteredCourses) {
     if (c > HOWMANY) break;
@@ -97,30 +97,21 @@ const mapDispatchToProps = dispatch => {
 class DataNavigator extends Component {
   constructor(props) {
     super(props);
-    //this.state = { viewFocus: "uni" };
-
-    //this.setViewFocus = this.setViewFocus.bind(this);
   }
-
-  /*setViewFocus(f) {
-    this.setState({ ...this.state, viewFocus: f });
-  }*/
 
   render() {
     return (
       <div className="DataNavigator">
         <NavigatorHeader
-          //setViewFocus={this.setViewFocus}
           setViewFocus={this.props.toggleViewFocus}
-          //viewFocus={this.state.viewFocus}
           viewFocus={this.props.rdxState.visibilityFilter.viewFocus}
+          //TODO pass dispatch functions to nested components in a better way (React context/connect())
           addCourseFilter={this.props.addCourseFilter}
           addUniFilter={this.props.addUniFilter}
           removeCourseFilter={this.props.removeCourseFilter}
           removeUniFilter={this.props.removeUniFilter}
         />
         <NavigatorBody
-          //viewFocus={this.state.viewFocus}
           viewFocus={this.props.rdxState.visibilityFilter.viewFocus}
           filteredUni={this.props.filteredUni}
           filteredCourses={this.props.filteredCourses}

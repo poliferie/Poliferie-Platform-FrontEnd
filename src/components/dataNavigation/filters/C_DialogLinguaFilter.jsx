@@ -32,6 +32,7 @@ class C_DialogLinguaFilter extends Component {
           filterAttribute="Lingua"
           filterAttributePath="Info"
           addFilter={this.props.addFilter}
+          removeFilter={this.props.removeFilter}
           humanReadableDescription="In quale lingua vorresti che il corso di studi fosse erogato?"
         />
       </div>

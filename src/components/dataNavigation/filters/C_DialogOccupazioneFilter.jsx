@@ -32,6 +32,7 @@ class DialogOccupazioneFilter extends Component {
             return objVal >= parseFloat(this.state.val);
           }}
           addFilter={this.props.addFilter}
+          removeFilter={this.props.removeFilter}
           humanReadableDescription="Questo valore indica la percentuale di studenti che ha trovato lavoro dopo aver concluso il suo periodo di studi"
         />
       </div>

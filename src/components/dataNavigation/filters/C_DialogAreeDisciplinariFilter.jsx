@@ -43,8 +43,7 @@ class DialogAreeDisciplinariFilter extends Component {
           filterAttribute="AreaDisciplinareCodice"
           filterAttributePath="Info"
           addFilter={this.props.addFilter}
-          //addCourseFilter={this.props.addCourseFilter}
-          //addUniFilter={this.props.addUniFilter}
+          removeFilter={this.props.removeFilter}
         />
       </div>
     );

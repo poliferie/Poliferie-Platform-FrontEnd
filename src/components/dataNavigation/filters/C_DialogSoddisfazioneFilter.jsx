@@ -6,7 +6,7 @@ const Icon = () => {
   return <SmileyIcon color="#ea4242" />;
 };
 
-class DialogSoddisfazioneFilter extends Component {
+class C_DialogSoddisfazioneFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -16,7 +16,7 @@ class DialogSoddisfazioneFilter extends Component {
     return (
       <div className="SoddisfazioneFilter">
         <DialogFilteringSlider
-          filterName="min_satisfaction"
+          filterName="c_min_satisfaction"
           filterTitle="Soddisfazione"
           min="0"
           max="100"
@@ -28,6 +28,7 @@ class DialogSoddisfazioneFilter extends Component {
             return objVal >= parseFloat(this.state.val);
           }}
           addFilter={this.props.addFilter}
+          removeFilter={this.props.removeFilter}
           humanReadableDescription="Questo valore indica quanto gli studenti che ti hanno preceduto sono stati complessivamente soddisfatti, su una scala che va da 1 a 100"
         />
       </div>
@@ -35,4 +36,4 @@ class DialogSoddisfazioneFilter extends Component {
   }
 }
 
-export default DialogSoddisfazioneFilter;
+export default C_DialogSoddisfazioneFilter;

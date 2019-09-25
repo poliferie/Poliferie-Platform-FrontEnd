@@ -116,7 +116,6 @@ class DialogChoicesStringFilter extends Component {
     this.applyFilter = this.applyFilter.bind(this);
     this.selectAll = this.selectAll.bind(this);
     this.selectNone = this.selectNone.bind(this);
-    this.removeFilter = this.removeFilter.bind(this);
 
     this.filterAttributePath = "e." + this.props.filterAttributePath;
 
@@ -125,6 +124,9 @@ class DialogChoicesStringFilter extends Component {
     this.filterType = this.props.filterType;
     this.filterAttribute = this.props.filterAttribute;
     this.addFilter = this.props.addFilter;
+    this.removeFilter = this.props.removeFilter;
+
+    //this.removeFilter = this.removeFilter.bind(this);
 
     this.icon = this.props.icon;
     this.humanReadableDescription = this.props.humanReadableDescription;
@@ -247,33 +249,9 @@ class DialogChoicesStringFilter extends Component {
     //this.setUniStringFilter(e => true);
   }
 
-  /*
-  removeFilter() {
-    this.setUniStringFilter(e => true);
-  }*/
-
-  removeFilter() {
+  /*removeFilter() {
     this.setFilter(e => true);
-  }
-
-  /*
-  applyFilter() {
-    // filters all uni elements @e by "name" attribute with state as a clause
-    this.setUniStringFilter(e =>
-      this.props.filterType === "and"
-        ? this.filterElemAndClause(
-            e.Info,
-            this.state,
-            this.props.filterAttribute
-          )
-        : this.filterElemOrClause(
-            e.Info,
-            this.state,
-            this.props.filterAttribute
-          )
-    );
-  }
-  */
+  }*/
 
   applyFilter() {
     // filters all uni elements @e by "name" attribute with state as a clause
@@ -358,7 +336,7 @@ class DialogChoicesStringFilter extends Component {
           <DialogActions>
             <Button 
               onClick={() => {
-                this.removeFilter();
+                this.removeFilter(this.filterName);
                 this.handleClose();
               }}
               color="primary">

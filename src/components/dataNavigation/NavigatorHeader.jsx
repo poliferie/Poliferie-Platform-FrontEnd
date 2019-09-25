@@ -10,7 +10,8 @@ import U_DialogRegionFilter from "./filters/U_DialogRegionFilter";
 import U_DialogAccessoFilter from "./filters/U_DialogAccessoFilter";
 //import U_DialogBorseStudioFilter from "./filters/U_DialogBorseStudioFilter";
 
-import DialogSoddisfazioneFilter from "./filters/DialogSoddisfazioneFilter";
+import U_DialogSoddisfazioneFilter from "./filters/U_DialogSoddisfazioneFilter";
+import C_DialogSoddisfazioneFilter from "./filters/C_DialogSoddisfazioneFilter";
 
 import C_DialogRegionFilter from "./filters/C_DialogRegionFilter";
 import C_DialogAreeDisciplinariFilter from "./filters/C_DialogAreeDisciplinariFilter";
@@ -78,7 +79,7 @@ class NavigatorHeader extends Component {
             marginTop: "0px"
           }}
         >
-          <DialogSoddisfazioneFilter addFilter={this.addUniFilter} removeFilter={this.removeUniFilter} />
+          <U_DialogSoddisfazioneFilter addFilter={this.addUniFilter} removeFilter={this.removeUniFilter} /> 
           <U_DialogRegionFilter addFilter={this.addUniFilter} removeFilter={this.removeUniFilter} />
           <U_DialogAccessoFilter addFilter={this.addUniFilter} removeFilter={this.removeUniFilter} />
           <U_DialogMinStudentFilter addFilter={this.addUniFilter} removeFilter={this.removeUniFilter} />
@@ -97,13 +98,13 @@ class NavigatorHeader extends Component {
             marginTop: "10px"
           }}
         >
-          <DialogSoddisfazioneFilter addFilter={this.addCourseFilter} removeFilter={this.addCourseFilter} />
-          <C_DialogRegionFilter addFilter={this.addCourseFilter} removeFilter={this.addCourseFilter}/>
-          <C_DialogAreeDisciplinariFilter addFilter={this.addCourseFilter} removeFilter={this.addCourseFilter}/>
-          <C_DialogLinguaFilter addFilter={this.addCourseFilter} removeFilter={this.addCourseFilter}/>
-          <C_DialogOccupazioneFilter addFilter={this.addCourseFilter} removeFilter={this.addCourseFilter}/>
-          <C_DialogStipendioFilter addFilter={this.addCourseFilter} removeFilter={this.addCourseFilter}/>
-          <C_DialogInternazionalizzazioneFilter addFilter={this.addCourseFilter} removeFilter={this.addCourseFilter} />
+          <C_DialogSoddisfazioneFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter} />
+          <C_DialogRegionFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter}/>
+          <C_DialogAreeDisciplinariFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter}/>
+          <C_DialogLinguaFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter}/>
+          <C_DialogOccupazioneFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter}/>
+          <C_DialogStipendioFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter}/>
+          <C_DialogInternazionalizzazioneFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter} />
           {
             //Courses don't have student number
             //<DialogMinStudentFilter addFilter={this.addCourseFilter} />

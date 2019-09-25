@@ -79,6 +79,15 @@ class DialogFilteringSlider extends Component {
     this.setState({ open: false });
   };
 
+  //TODO Implement disable/enable button logic (filter enabled/disabled UI)
+  disableButton = () => {
+    
+  };
+
+  enableButton = () => {
+
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -93,12 +102,16 @@ class DialogFilteringSlider extends Component {
     };
 
     this.filterName = this.props.filterName;
+    this.filteringFunction = this.props.filteringFunction;
+    this.addFilter = this.props.addFilter;
+    this.removeFilter = this.props.removeFilter;
+
     this.handleChange = this.handleChange.bind(this);
   }
 
-  setFilter(lambda) {
+  /*setFilter(lambda) {
     this.props.addFilter(this.filterName, lambda);
-  }
+  }*/
 
   handleChange(e) {
     console.log(this.props.filterName + " changed val: " + e.target.value);
@@ -165,7 +178,9 @@ class DialogFilteringSlider extends Component {
             <Button
               onClick={() => {
                 console.log(this.props.filterName + " removed");
-                this.setFilter(e => true);
+                //this.setFilter(e => true);
+                this.removeFilter(this.filterName);
+                //this.disableButton();
                 this.handleClose();
               }}
               color="primary">
@@ -173,7 +188,9 @@ class DialogFilteringSlider extends Component {
             </Button>
             <Button
               onClick={() => {
-                this.setFilter(this.props.filteringFunction.bind(this));
+                //this.setFilter(this.props.filteringFunction.bind(this));
+                this.addFilter(this.filterName, this.filteringFunction.bind(this));
+                //this.enableButton();
                 this.handleClose();
               }}
               color="primary">
