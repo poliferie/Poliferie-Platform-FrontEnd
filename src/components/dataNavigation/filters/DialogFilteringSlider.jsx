@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -68,6 +69,22 @@ const DialogActions = withStyles(theme => ({
   }
 }))(MuiDialogActions);
 
+const mapStateToProps = (state, ownProps) => {
+  let filter, localState = {};
+  let allFilters = { ...state.visibilityFilter };
+  let key = ownProps.filterName;
+  
+  if(allFilters.viewFocus === 'uni')
+    filter = allFilters.universities[key];
+  else
+    filter = allFilters.courses[key];
+
+  if(filter)
+    localState[key] = filter;
+
+  return localState;
+};
+
 class DialogFilteringSlider extends Component {
   handleClickOpen = () => {
     this.setState({
@@ -79,8 +96,14 @@ class DialogFilteringSlider extends Component {
     this.setState({ open: false });
   };
 
-  /*FIXME At each Uni/Course view toggle the view reloads and the active filters are lost.
-  A solution might be to read the redux store to check if the filter is undefined*/
+  checkFilterStatus = () => {
+    let key = this.props.filterName;
+    if(this.props[key])
+      this.enableButton();
+    else
+      this.disableButton();
+  };
+
   disableButton = () => {
     this.setState({buttonStyle: 'secondary'});
   };
@@ -109,11 +132,12 @@ class DialogFilteringSlider extends Component {
     this.removeFilter = this.props.removeFilter;
 
     this.handleChange = this.handleChange.bind(this);
+    this.checkFilterStatus = this.checkFilterStatus.bind(this);
   }
 
-  /*setFilter(lambda) {
-    this.props.addFilter(this.filterName, lambda);
-  }*/
+  componentDidMount() {
+    this.checkFilterStatus();
+  }
 
   handleChange(e) {
     console.log(this.props.filterName + " changed val: " + e.target.value);
@@ -180,7 +204,6 @@ class DialogFilteringSlider extends Component {
             <Button
               onClick={() => {
                 console.log(this.props.filterName + " removed");
-                //this.setFilter(e => true);
                 this.removeFilter(this.filterName);
                 this.disableButton();
                 this.handleClose();
@@ -190,7 +213,6 @@ class DialogFilteringSlider extends Component {
             </Button>
             <Button
               onClick={() => {
-                //this.setFilter(this.props.filteringFunction.bind(this));
                 this.addFilter(this.filterName, this.filteringFunction.bind(this));
                 this.enableButton();
                 this.handleClose();
@@ -205,4 +227,6 @@ class DialogFilteringSlider extends Component {
   }
 }
 
-export default DialogFilteringSlider;
+export default connect(
+  mapStateToProps
+)(DialogFilteringSlider);

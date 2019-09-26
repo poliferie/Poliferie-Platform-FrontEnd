@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import Button from "@material-ui/core/Button";
 import { isPipelinePrimaryTopicReference } from "@babel/types";
 import Dialog from "@material-ui/core/Dialog";
@@ -35,6 +37,7 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
   OLD addUniFilter
   OLD addCourseFilter
 */
+
 const styles = theme => ({
   root: {
     margin: 0,
@@ -79,6 +82,22 @@ const DialogActions = withStyles(theme => ({
   }
 }))(MuiDialogActions);
 
+const mapStateToProps = (state, ownProps) => {
+  let filter, localState = {};
+  let allFilters = { ...state.visibilityFilter };
+  let key = ownProps.filterName;
+  
+  if(allFilters.viewFocus === 'uni')
+    filter = allFilters.universities[key];
+  else
+    filter = allFilters.courses[key];
+
+  if(filter)
+    localState[key] = filter;
+
+  return localState;
+};
+
 class DialogChoicesStringFilter extends Component {
   handleClickOpen = () => {
     this.setState({
@@ -90,8 +109,14 @@ class DialogChoicesStringFilter extends Component {
     this.setState({ open: false });
   };
 
-  /*FIXME At each Uni/Course view toggle the view reloads and the active filters are lost.
-    A solution might be to read the redux store to check if the filter is undefined*/
+  checkFilterStatus = () => {
+    let key = this.props.filterName;
+    if(this.props[key])
+      this.enableButton();
+    else
+      this.disableButton();
+  };
+
   disableButton = () => {
     this.setState({buttonStyle: 'secondary'});
   };
@@ -139,8 +164,6 @@ class DialogChoicesStringFilter extends Component {
     this.addFilter = this.props.addFilter;
     this.removeFilter = this.props.removeFilter;
 
-    //this.removeFilter = this.removeFilter.bind(this);
-
     this.icon = this.props.icon;
     this.humanReadableDescription = this.props.humanReadableDescription;
     console.log(
@@ -149,6 +172,10 @@ class DialogChoicesStringFilter extends Component {
 
     console.log("DialogChoicesStringFilter");
     console.log(this.props);
+  }
+
+  componentDidMount() {
+    this.checkFilterStatus();
   }
 
   setFilter(f) {
@@ -350,8 +377,8 @@ class DialogChoicesStringFilter extends Component {
           <DialogActions>
             <Button 
               onClick={() => {
-                this.disableButton();
                 this.removeFilter(this.filterName);
+                this.disableButton();
                 this.handleClose();
               }}
               color="primary">
@@ -360,8 +387,8 @@ class DialogChoicesStringFilter extends Component {
 
             <Button
                 onClick={() => {
-                  this.enableButton();
                   this.applyFilter();
+                  this.enableButton();
                   this.handleClose();
                 }}
                 color="primary">
@@ -374,4 +401,6 @@ class DialogChoicesStringFilter extends Component {
   }
 }
 
-export default DialogChoicesStringFilter;
+export default connect(
+  mapStateToProps
+)(DialogChoicesStringFilter);
