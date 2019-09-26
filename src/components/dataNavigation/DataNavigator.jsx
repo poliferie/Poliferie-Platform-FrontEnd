@@ -66,7 +66,6 @@ const mapStateToProps = state => {
 
 /** REDUX DISPATCH-TO-PROPS DEFINITION */
 const mapDispatchToProps = dispatch => {
-  console.log("CALLED DISPATCHING FUNCTION", dispatch);
   return ({
     dispatch: dispatch,
     addCourse: elem => {
@@ -105,7 +104,8 @@ class DataNavigator extends Component {
         <NavigatorHeader
           setViewFocus={this.props.toggleViewFocus}
           viewFocus={this.props.rdxState.visibilityFilter.viewFocus}
-          //TODO pass dispatch functions to nested components in a better way (React context/connect())
+          /*TODO pass dispatch functions to nested components in a better way (React context/connect())
+            using mapStateToProps and mapDispatchToProps in DialogChoices/FilteringSlider to dispatch*/
           addCourseFilter={this.props.addCourseFilter}
           addUniFilter={this.props.addUniFilter}
           removeCourseFilter={this.props.removeCourseFilter}

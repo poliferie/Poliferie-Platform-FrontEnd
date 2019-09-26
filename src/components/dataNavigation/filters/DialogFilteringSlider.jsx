@@ -79,18 +79,20 @@ class DialogFilteringSlider extends Component {
     this.setState({ open: false });
   };
 
-  //TODO Implement disable/enable button logic (filter enabled/disabled UI)
+  /*FIXME At each Uni/Course view toggle the view reloads and the active filters are lost.
+  A solution might be to read the redux store to check if the filter is undefined*/
   disableButton = () => {
-    
+    this.setState({buttonStyle: 'secondary'});
   };
 
   enableButton = () => {
-
+    this.setState({buttonStyle: 'primary'});
   };
 
   constructor(props) {
     super(props);
     this.state = {
+      buttonStyle: 'secondary',
       open: false,
       val:
         this.props.startVal ||
@@ -132,7 +134,7 @@ class DialogFilteringSlider extends Component {
       <div className="FilteringSlider">
         <IconButton
           variant="outlined"
-          color="secondary"
+          color={this.state.buttonStyle}
           onClick={this.handleClickOpen}
         >
           {this.props.icon}
@@ -180,7 +182,7 @@ class DialogFilteringSlider extends Component {
                 console.log(this.props.filterName + " removed");
                 //this.setFilter(e => true);
                 this.removeFilter(this.filterName);
-                //this.disableButton();
+                this.disableButton();
                 this.handleClose();
               }}
               color="primary">
@@ -190,7 +192,7 @@ class DialogFilteringSlider extends Component {
               onClick={() => {
                 //this.setFilter(this.props.filteringFunction.bind(this));
                 this.addFilter(this.filterName, this.filteringFunction.bind(this));
-                //this.enableButton();
+                this.enableButton();
                 this.handleClose();
               }}
               color="primary">

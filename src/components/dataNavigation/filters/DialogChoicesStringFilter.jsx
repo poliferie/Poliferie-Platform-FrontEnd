@@ -90,6 +90,16 @@ class DialogChoicesStringFilter extends Component {
     this.setState({ open: false });
   };
 
+  /*FIXME At each Uni/Course view toggle the view reloads and the active filters are lost.
+    A solution might be to read the redux store to check if the filter is undefined*/
+  disableButton = () => {
+    this.setState({buttonStyle: 'secondary'});
+  };
+
+  enableButton = () => {
+    this.setState({buttonStyle: 'primary'});
+  };
+
   constructor(props) {
     super(props);
 
@@ -103,7 +113,10 @@ class DialogChoicesStringFilter extends Component {
 
     //console.log(this.choicesDisplayedNames);
 
-    var s = { open: false };
+    var s = { 
+      open: false,
+      buttonStyle: 'secondary' 
+    };
     this.choices.forEach(choice => {
       s[choice] = false;
     });
@@ -232,7 +245,7 @@ class DialogChoicesStringFilter extends Component {
   selectAll() {
     var state = { ...this.state };
     Object.keys(state).forEach(key => {
-      if (key !== "open") state[key] = true;
+      if (key !== "open" && key !== "buttonStyle") state[key] = true;
     });
 
     this.setState(state);
@@ -242,7 +255,7 @@ class DialogChoicesStringFilter extends Component {
   selectNone() {
     var state = { ...this.state };
     Object.keys(state).forEach(key => {
-      if (key !== "open") state[key] = false;
+      if (key !== "open" && key !== "buttonStyle") state[key] = false;
     });
 
     this.setState(state);
@@ -279,7 +292,7 @@ class DialogChoicesStringFilter extends Component {
       <div className="FilteringSlider">
         <IconButton
           variant="outlined"
-          color="secondary"
+          color={this.state.buttonStyle}
           onClick={this.handleClickOpen}
         >
           {this.icon}
@@ -312,6 +325,7 @@ class DialogChoicesStringFilter extends Component {
                     />
                     <ListItemSecondaryAction>
                       <Checkbox
+                        color="primary"
                         edge="end"
                         //onClick={this.itemClick}
                         onClick={this.handleCheckboxChange}
@@ -336,6 +350,7 @@ class DialogChoicesStringFilter extends Component {
           <DialogActions>
             <Button 
               onClick={() => {
+                this.disableButton();
                 this.removeFilter(this.filterName);
                 this.handleClose();
               }}
@@ -345,6 +360,7 @@ class DialogChoicesStringFilter extends Component {
 
             <Button
                 onClick={() => {
+                  this.enableButton();
                   this.applyFilter();
                   this.handleClose();
                 }}
