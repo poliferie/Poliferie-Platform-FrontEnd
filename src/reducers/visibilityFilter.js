@@ -36,6 +36,8 @@ function visibilityFilter(state = { courses: {}, universities: {} }, action) {
       state = { ...state };
       state.viewFocus = elem;
       break;
+
+    //TODO Add reducers to EMPTY Course and Uni filters
       
     //Default
     default:

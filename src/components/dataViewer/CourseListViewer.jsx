@@ -6,7 +6,7 @@ import ListItemLink from "./ListItemLink";
 import ParentUniIcon from "@material-ui/icons/AccountBalance";
 import Button from "@material-ui/core/Button";
 
-const useStyles = theme => ({
+/*const useStyles = theme => ({
   root: {
     width: "100%",
     maxWidth: 360,
@@ -15,7 +15,7 @@ const useStyles = theme => ({
   inline: {
     display: "inline"
   }
-});
+});*/
 
 class CourseListViewer extends Component {
   constructor(props) {

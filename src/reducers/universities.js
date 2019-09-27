@@ -1,7 +1,6 @@
 import { uniActions } from "../actions";
 
 const universities = (state = {}, action) => {
-  console.log("universities red", action, state);
   switch (action.type) {
     case uniActions.ADD_ELEM:
       state = {

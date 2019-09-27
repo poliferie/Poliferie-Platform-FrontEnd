@@ -4,7 +4,7 @@ import BookIcon from "@material-ui/icons/ImportContacts";
 
 const Icon = () => {
   // This can actually just be put directly into the props of DialogFilter
-  return <BookIcon color="#ea4242" />;
+  return <BookIcon />;
 };
 
 const Areas = [

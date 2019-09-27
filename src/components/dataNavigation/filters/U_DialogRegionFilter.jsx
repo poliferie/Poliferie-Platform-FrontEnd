@@ -3,7 +3,7 @@ import DialogChoicesStringFilter from "./DialogChoicesStringFilter";
 import LocationIcon from "@material-ui/icons/LocationOn";
 
 const Icon = () => {
-  return <LocationIcon color="#ea4242" />;
+  return <LocationIcon />;
 };
 
 const Regions = [
@@ -33,9 +33,6 @@ class DialogRegionFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-
-    console.log("DialogRegionFilter");
-    console.log(this.props);
   }
 
   render() {

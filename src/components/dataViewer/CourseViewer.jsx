@@ -3,7 +3,7 @@ import Card from "@material-ui/core/Card";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import CardActions from "@material-ui/core/CardActions";
+//import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -12,7 +12,7 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ClockIcon from "@material-ui/icons/AccessTime";
-import PriorityHighIcon from "@material-ui/icons/PriorityHigh";
+//import PriorityHighIcon from "@material-ui/icons/PriorityHigh";
 
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import AssignmentLateIcon from "@material-ui/icons/AssignmentLate";
@@ -25,10 +25,8 @@ import LocationOffIcon from "@material-ui/icons/LocationOff";
 
 import LanguageIcon from "@material-ui/icons/Language";
 
-
-
 import CloseIcon from "@material-ui/icons/CancelOutlined";
-import PersonIcon from "@material-ui/icons/People";
+//import PersonIcon from "@material-ui/icons/People";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import LockCloseIcon from "@material-ui/icons/Lock";
 
@@ -36,7 +34,6 @@ import { Progress } from 'react-sweet-progress';
 import "react-sweet-progress/lib/style.css";
 
 import courses from "../../CoursesDSET";
-
 
 const useStyles = theme => ({
   card: {

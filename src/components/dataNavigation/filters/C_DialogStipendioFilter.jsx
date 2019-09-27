@@ -4,7 +4,7 @@ import EuroIcon from "@material-ui/icons/EuroSymbol";
 
 const Icon = () => {
   // This can actually just be put directly into the props of DialogFilter
-  return <EuroIcon color="#ea4242" />;
+  return <EuroIcon />;
 };
 
 class DialogStipendioFilter extends Component {
@@ -24,11 +24,7 @@ class DialogStipendioFilter extends Component {
           startVal="1000"
           icon={Icon()}
           filteringFunction={function(u) {
-            //console.log("Filter name: " + this.filterName);
-            //console.log("this.state.val:" + this.state.val);
-            //console.log("u.Opportunita.lavoroRetribuzione:" + u.Opportunita.lavoroRetribuzione);
             var objVal = parseFloat(u.Opportunita.lavoroRetribuzione) || 0;
-
             return objVal >= parseFloat(this.state.val);
           }}
           addFilter={this.props.addFilter}

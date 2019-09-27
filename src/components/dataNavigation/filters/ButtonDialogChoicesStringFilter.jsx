@@ -153,10 +153,10 @@ class ButtonDialogChoicesStringFilter extends Component {
         return true;
       }, true)
     ) {
-      console.log("accepted");
+      //accepted
       return true;
     }
-    console.log("refused");
+    //refused
     return false;
   }
 
@@ -169,7 +169,7 @@ class ButtonDialogChoicesStringFilter extends Component {
       ? false
       : true;
 
-    this.setState(state, () => console.log(this.state));
+    this.setState(state);
   }
 
   resetFilter() {
@@ -178,10 +178,7 @@ class ButtonDialogChoicesStringFilter extends Component {
       if (key !== "open") state[key] = false;
     });
 
-    this.setState(state, () => {
-      console.log(this.state);
-      console.log(state);
-    });
+    this.setState(state);
     //this.setUniStringFilter(e => true);
   }
 

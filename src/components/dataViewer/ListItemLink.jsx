@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+
 class ListItemLink extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +15,9 @@ class ListItemLink extends React.Component {
   ));
 
   render() {
-    const { icon, primary, secondary, to } = this.props;
+    const { icon, secondary } = this.props;
+    //const { primary, to } = this.props;
+    
     return (
       <li>
         <ListItem button component={this.renderLink}>

@@ -140,10 +140,7 @@ class DialogFilteringSlider extends Component {
   }
 
   handleChange(e) {
-    console.log(this.props.filterName + " changed val: " + e.target.value);
-
     if (!e.target.validity.valid) {
-      console.log("Not a valid value. Nothing to update");
       // Update value for number input, but do not use it to filter. Needed to avoid dumb behaviour
       if (e.target.type === "number")
         this.setState({ ...this.state, numberVal: e.target.value });
@@ -203,7 +200,6 @@ class DialogFilteringSlider extends Component {
           <DialogActions>
             <Button
               onClick={() => {
-                console.log(this.props.filterName + " removed");
                 this.removeFilter(this.filterName);
                 this.disableButton();
                 this.handleClose();

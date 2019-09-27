@@ -3,7 +3,7 @@ import DialogChoicesStringFilter from "./DialogChoicesStringFilter";
 import LockIcon from "@material-ui/icons/Lock";
 
 const Icon = () => {
-  return <LockIcon color="#ea4242" />;
+  return <LockIcon />;
 };
 
 const choicesCode = ["L", "S"];
@@ -13,9 +13,6 @@ class U_DialogAccessoFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-
-    console.log("DialogRegionFilter");
-    console.log(this.props);
   }
 
   render() {

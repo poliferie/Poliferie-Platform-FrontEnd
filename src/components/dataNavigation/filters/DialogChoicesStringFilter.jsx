@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Button from "@material-ui/core/Button";
-import { isPipelinePrimaryTopicReference } from "@babel/types";
+//import { isPipelinePrimaryTopicReference } from "@babel/types";
 import Dialog from "@material-ui/core/Dialog";
 import { withStyles } from "@material-ui/core/styles";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
@@ -15,7 +15,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import List from "@material-ui/core/List";
 import Checkbox from "@material-ui/core/Checkbox";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
+//import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 
@@ -136,8 +136,6 @@ class DialogChoicesStringFilter extends Component {
       this.choicesDisplayedNames = this.choices;
     }
 
-    //console.log(this.choicesDisplayedNames);
-
     var s = { 
       open: false,
       buttonStyle: 'secondary' 
@@ -166,12 +164,6 @@ class DialogChoicesStringFilter extends Component {
 
     this.icon = this.props.icon;
     this.humanReadableDescription = this.props.humanReadableDescription;
-    console.log(
-      this.filterName + " FilterAttributePath: " + this.filterAttributePath
-    );
-
-    console.log("DialogChoicesStringFilter");
-    console.log(this.props);
   }
 
   componentDidMount() {
@@ -237,10 +229,10 @@ class DialogChoicesStringFilter extends Component {
         return true;
       }, true)
     ) {
-      console.log("accepted");
+      //accepted
       return true;
     }
-    console.log("refused");
+    //refused
     return false;
   }
 
@@ -257,7 +249,7 @@ class DialogChoicesStringFilter extends Component {
 
     state[keyToUse] = !this.state[keyToUse];
 
-    this.setState(state, () => console.log(this.state));
+    this.setState(state);
   }
 
   handleCheckboxChange(event) {
@@ -266,7 +258,7 @@ class DialogChoicesStringFilter extends Component {
     var e = event.target.getAttribute("parentitem");
     state[e] = !state[e];
 
-    this.setState(state, () => console.log(this.state));
+    this.setState(state);
   }
 
   selectAll() {
@@ -296,7 +288,7 @@ class DialogChoicesStringFilter extends Component {
   applyFilter() {
     // filters all uni elements @e by "name" attribute with state as a clause
     var filterAttributePath = this.filterAttributePath;
-    //console.log(eval(inputElement));
+    //TODO Change eval functions to something that does not generate warnings
     this.setFilter(e =>
       this.filterType === "and"
         ? this.filterElemAndClause(

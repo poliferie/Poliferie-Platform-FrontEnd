@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import Grid from "@material-ui/core/Grid";
+//import { wrap } from "module";
+//import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import TextField from "@material-ui/core/TextField";
+//import TextField from "@material-ui/core/TextField";
 //import MaxStudentFilter from "./filters/non-dialog/MaxStudentFilter";
 
 import U_DialogMinStudentFilter from "./filters/U_DialogMinStudentFilter";
@@ -21,8 +22,6 @@ import C_DialogInternazionalizzazioneFilter from "./filters/C_DialogInternaziona
 import C_DialogLinguaFilter from "./filters/C_DialogLinguaFilter";
 
 import StringLookupFilter from "./filters/StringLookupFilter";
-
-//import { wrap } from "module";
 
 const STYLE_RED = {
     borderRadius:"30px",
@@ -61,7 +60,6 @@ class NavigatorHeader extends Component {
     this.removeUniFilter = this.props.removeUniFilter;
     this.setViewFocus = this.props.setViewFocus;
     this.renderFilters = this.renderFilters.bind(this);
-    //this.applySearch = this.applySearch;
   }
 
   renderFilters(isUniFocus) {
@@ -116,93 +114,44 @@ class NavigatorHeader extends Component {
     }
   }
 
-  applySearch(e, isUniFocus) {
+  /*applySearch(e, isUniFocus) {
     if (e.key !== "Enter") return;
-
-    console.log("NAVHEAD STRIING", e, e.target);
 
     if (isUniFocus) {
       this.addUniFilter("navhead_string", elem => {
-        console.log("Applying Navhead filter");
         if (((e.target || {}).value || {}).length <= 0) return true;
         //return elem.Info.NomeEsteso.indexOf((e.target || {}).value) > 0;
         return elem.Info.NomeEsteso.includes((e.target || {}).value);
       });
     } else {
       this.addCourseFilter("navhead_string", elem => {
-        console.log("Applying Navhead filter");
         if (((e.target || {}).value || {}).length <= 0) return true;
         //return elem.Info.NomeEsteso.indexOf((e.target || {}).value) > 0;
         return elem.Info.NomeEsteso.includes((e.target || {}).value);
       });
     }
-  }
+  }*/
 
   render() {
     var isUniFocus = this.props.viewFocus === "uni" ? true : false;
     return (
       <div className="NavigatorHeader">
-
-        {/*<input
-          type="text"
-          name="search"
-          id="search"
-          style={{
-            width: "96%",
-            height: "20px",
-            margin: "5px 0px 10px 0px",
-            border: "1px solid rgba(0, 0, 0, 0.23)",
-            borderRadius: "5px",
-            padding: "10px",
-            fontSize: "15px"
-          }}
-          placeholder={
-            isUniFocus
-              ? "Cerca università per nome o descrizione"
-              : "Cerca corsi per nome o descrizione o professioni"
-          }
-          /*onKeyDown={e => {
-            if (e.key !== "Enter") return;
-
-            console.log("NAVHEAD STRIIING", e, e.target);
-
-            if (isUniFocus) {
-              this.addUniFilter("navhead", elem => {
-                if (((e.target || {}).value || {}).length <= 0) return true;
-                return elem.Info.NomeEsteso.indexOf((e.target || {}).value) > 0;
-              });
-            } else {
-              this.addCourseFilter("navhead", elem => {
-                if (((e.target || {}).value || {}).length <= 0) return true;
-                return elem.Info.NomeEsteso.indexOf((e.target || {}).value) > 0;
-              });
-            }
-          }}*\/
-          onKeyPress={e => this.applySearch(e, isUniFocus)}
-        />*/}
-
-
-
           <ButtonGroup fullWidth aria-label="Full width outlined button group" style={{marginTop:"10px"}}>
               <Button
                   disabled={isUniFocus}
                   onClick={() => this.setViewFocus("uni")}
-                  style={isUniFocus ? {... STYLE_RED, marginRight: "-15px"} : {... STYLE_WHITE_LEFT, marginRight: "-15px"}}
-
-
-
+                  style={isUniFocus ? { ...STYLE_RED, marginRight: "-15px" } : { ...STYLE_WHITE_LEFT, marginRight: "-15px" }}
               >
                   Università
               </Button>
               <Button
                   disabled={!isUniFocus}
                   onClick={() => this.setViewFocus("crs")}
-                  style={isUniFocus ? {... STYLE_WHITE_RIGHT} : {... STYLE_RED}}
+                  style={isUniFocus ? { ...STYLE_WHITE_RIGHT } : { ...STYLE_RED }}
               >
-                  <text style={isUniFocus ? {paddingLeft:"10px"}:{}}>Corsi</text>
+                  <span style={isUniFocus ? {paddingLeft:"10px"}:{}}>Corsi</span>
               </Button>
           </ButtonGroup>
-
           <StringLookupFilter
               addCourseFilter={this.addCourseFilter}
               addUniFilter={this.addUniFilter}
@@ -210,8 +159,6 @@ class NavigatorHeader extends Component {
           />
 
         {this.renderFilters(isUniFocus)}
-
-
       </div>
     );
   }

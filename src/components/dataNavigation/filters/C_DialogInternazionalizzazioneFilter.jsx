@@ -4,7 +4,7 @@ import FlightIcon from "@material-ui/icons/Flight";
 
 const Icon = () => {
   // This can actually just be put directly into the props of DialogFilter
-  return <FlightIcon color="#ea4242" />;
+  return <FlightIcon />;
 };
 
 class DialogInternazionalizzazioneFilter extends Component {
@@ -24,8 +24,6 @@ class DialogInternazionalizzazioneFilter extends Component {
           startVal="50"
           icon={Icon()}
           filteringFunction={function(u) {
-            //console.log("Filter name: " + this.filterName);
-            //console.log("this.state.val:" + this.state.val);
             var objVal =
               parseFloat(u.Internazionalita.periodiStudioEstero) || 0;
             return objVal >= parseFloat(this.state.val);

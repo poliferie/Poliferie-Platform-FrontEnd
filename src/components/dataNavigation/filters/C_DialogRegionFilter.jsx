@@ -4,7 +4,7 @@ import LocationIcon from "@material-ui/icons/LocationOn";
 
 const Icon = () => {
   // This can actually just be put directly into the props of DialogFilter
-  return <LocationIcon color="#ea4242" />;
+  return <LocationIcon />;
 };
 
 const Regions = [
@@ -34,9 +34,6 @@ class DialogRegionFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-
-    console.log("C_DialogRegionFilter");
-    console.log(this.props);
   }
 
   render() {

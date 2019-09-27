@@ -59,7 +59,7 @@ class StringLookupFilter extends Component {
           height: "20px",
           margin: "10px 0px 0px 0px",
           border: "1px solid rgba(0, 0, 0, 0.23)",
-          borderRadius: "5px",
+          //borderRadius: "5px",
           padding: "10px",
           fontSize: "15px",
           borderRadius:"30px",

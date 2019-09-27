@@ -3,7 +3,7 @@ import Card from "@material-ui/core/Card";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import CardActions from "@material-ui/core/CardActions";
+//import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -12,14 +12,12 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-
 import CloseIcon from "@material-ui/icons/CancelOutlined";
 import PersonIcon from "@material-ui/icons/People";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import LockCloseIcon from "@material-ui/icons/Lock";
 
 import uni from "../../UniversitiesDSET"
-
 
 import { Progress } from 'react-sweet-progress';
 import "react-sweet-progress/lib/style.css";
@@ -57,7 +55,6 @@ const listItem = {
   minWidth: "80%"
 };
 
-
 const p_text = {
   fontSize: '20px'
 };
@@ -66,21 +63,18 @@ function cleanPercentage(str) {
   return  str || "--"
 }
 
-function clearText(str) {
+/*function clearText(str) {
   return  str || ""
-}
+}*/
 
 class UniversityViewer extends Component {
   constructor(props) {
     super(props);
     this.state = {};
 
-
     // shorthand for course id
     this.id = this.props.match.params.id;
-
     
-    console.log(uni);
     this.uni = uni[this.id];
 
     // Shorthand for uni id
@@ -88,15 +82,10 @@ class UniversityViewer extends Component {
     // but I've figured out a way to directly pass elem to be shown
     // that will be enough for all our use-cases.
     this.elem = this.props.location.state;
-    {console.log("@@@@@@")}
-    console.log(this.elem)
-
   }
 
   render() {
     const classes = useStyles();
-
-
 
     return (
       <Card className={classes.card}>

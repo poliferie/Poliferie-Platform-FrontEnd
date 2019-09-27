@@ -4,7 +4,7 @@ import WorkIcon from "@material-ui/icons/Work";
 
 const Icon = () => {
   // This can actually just be put directly into the props of DialogFilter
-  return <WorkIcon color="#ea4242" />;
+  return <WorkIcon />;
 };
 
 class DialogOccupazioneFilter extends Component {
@@ -24,11 +24,7 @@ class DialogOccupazioneFilter extends Component {
           startVal="80"
           icon={Icon()}
           filteringFunction={function(u) {
-            //console.log("Filter name: " + this.filterName);
-            //console.log("this.state.val:" + this.state.val);
-
             var objVal = parseFloat(u.Opportunita.occupazioneLavoro) || 0;
-
             return objVal >= parseFloat(this.state.val);
           }}
           addFilter={this.props.addFilter}

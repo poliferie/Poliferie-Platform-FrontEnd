@@ -17,17 +17,17 @@ class UniListViewer extends Component {
   lockIcon(id) {
     if (this.props.filteredUni[id].Info.Statale === "L") {
       return (
-        <div>
+        <span>
           <LockCloseIcon style={{ marginBottom: "-0.25em" }} />
           {"Privata"}
-        </div>
+        </span>
       );
     } else {
       return (
-        <div>
+        <span>
           <LockOpenIcon style={{ marginBottom: "-0.25em" }} />
           {"Pubblica"}
-        </div>
+        </span>
       );
     }
   }
@@ -52,7 +52,7 @@ class UniListViewer extends Component {
               //primary={JSON.stringify(filteredUni[id].Info.NomeEsteso)}
               primary={filteredUni[id].Info.NomeEsteso}
               secondary={
-                <div
+                <span
                   style={{
                     display: "flex",
                     flexWrap: "wrap",
@@ -60,14 +60,14 @@ class UniListViewer extends Component {
                     maxWidth: "100%"
                   }}
                 >
-                  <div style={{ width: "6em" }}>
+                  <span style={{ width: "6em" }}>
                     <PplIcon style={{ marginBottom: "-0.25em" }} />
                     {JSON.parse(filteredUni[id].Info.Iscritti)
                       ? filteredUni[id].Info.Iscritti
                       : "--"}
-                  </div>
+                  </span>
                   {this.lockIcon(id)}
-                </div>
+                </span>
               }
             />
           ))}
