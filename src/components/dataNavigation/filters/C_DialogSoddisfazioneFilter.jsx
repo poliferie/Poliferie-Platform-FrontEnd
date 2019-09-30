@@ -27,8 +27,6 @@ class C_DialogSoddisfazioneFilter extends Component {
 
             return objVal >= parseFloat(this.state.val);
           }}
-          addFilter={this.props.addFilter}
-          removeFilter={this.props.removeFilter}
           humanReadableDescription="Questo valore indica quanto gli studenti che ti hanno preceduto sono stati complessivamente soddisfatti, su una scala che va da 1 a 100"
         />
       </div>

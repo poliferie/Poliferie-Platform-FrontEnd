@@ -12,6 +12,13 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
 
+import {
+  addCourseFilter,
+  addUniFilter,
+  removeCourseFilter,
+  removeUniFilter
+} from "../../../actions";
+
 /*
 parameters:
   filterName
@@ -72,6 +79,7 @@ const DialogActions = withStyles(theme => ({
 const mapStateToProps = (state, ownProps) => {
   let filter, localState = {};
   let allFilters = { ...state.visibilityFilter };
+  localState = {viewFocus: allFilters.viewFocus};
   let key = ownProps.filterName;
   
   if(allFilters.viewFocus === 'uni')
@@ -83,6 +91,23 @@ const mapStateToProps = (state, ownProps) => {
     localState[key] = filter;
 
   return localState;
+};
+
+const mapDispatchToProps = dispatch => {
+  return({
+    addCourseFilter: (name, elem) => {
+      dispatch(addCourseFilter(name, elem));
+    },
+    addUniFilter: (name, elem) => {
+      dispatch(addUniFilter(name, elem));
+    },
+    removeCourseFilter: (name) => {
+      dispatch(removeCourseFilter(name));
+    },
+    removeUniFilter: (name) => {
+      dispatch(removeUniFilter(name));
+    }
+  })
 };
 
 class DialogFilteringSlider extends Component {
@@ -128,8 +153,6 @@ class DialogFilteringSlider extends Component {
 
     this.filterName = this.props.filterName;
     this.filteringFunction = this.props.filteringFunction;
-    this.addFilter = this.props.addFilter;
-    this.removeFilter = this.props.removeFilter;
 
     this.handleChange = this.handleChange.bind(this);
     this.checkFilterStatus = this.checkFilterStatus.bind(this);
@@ -137,6 +160,13 @@ class DialogFilteringSlider extends Component {
 
   componentDidMount() {
     this.checkFilterStatus();
+    if(this.props.viewFocus === 'uni') {
+      this.addFilter = this.props.addUniFilter;
+      this.removeFilter = this.props.removeUniFilter;
+    } else {
+      this.addFilter = this.props.addCourseFilter;
+      this.removeFilter = this.props.removeCourseFilter;
+    }
   }
 
   handleChange(e) {
@@ -224,5 +254,6 @@ class DialogFilteringSlider extends Component {
 }
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(DialogFilteringSlider);

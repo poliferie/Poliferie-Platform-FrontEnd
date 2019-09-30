@@ -27,8 +27,6 @@ class DialogStipendioFilter extends Component {
             var objVal = parseFloat(u.Opportunita.lavoroRetribuzione) || 0;
             return objVal >= parseFloat(this.state.val);
           }}
-          addFilter={this.props.addFilter}
-          removeFilter={this.props.removeFilter}
           humanReadableDescription="Quanto ti piacerebbe guadagnare? Questo valore ti permette de decidere una cifra minima dello stipendio mensile netto che potresti dopo aver concluso uno specifico corso di laurea "
         />
       </div>

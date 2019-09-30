@@ -77,10 +77,10 @@ class NavigatorHeader extends Component {
             marginTop: "0px"
           }}
         >
-          <U_DialogSoddisfazioneFilter addFilter={this.addUniFilter} removeFilter={this.removeUniFilter} /> 
-          <U_DialogRegionFilter addFilter={this.addUniFilter} removeFilter={this.removeUniFilter} />
-          <U_DialogAccessoFilter addFilter={this.addUniFilter} removeFilter={this.removeUniFilter} />
-          <U_DialogMinStudentFilter addFilter={this.addUniFilter} removeFilter={this.removeUniFilter} />
+          <U_DialogSoddisfazioneFilter /> 
+          <U_DialogRegionFilter />
+          <U_DialogAccessoFilter />
+          <U_DialogMinStudentFilter />
         </div>
       );
     } else {
@@ -96,13 +96,13 @@ class NavigatorHeader extends Component {
             marginTop: "10px"
           }}
         >
-          <C_DialogSoddisfazioneFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter} />
-          <C_DialogRegionFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter}/>
-          <C_DialogAreeDisciplinariFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter}/>
-          <C_DialogLinguaFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter}/>
-          <C_DialogOccupazioneFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter}/>
-          <C_DialogStipendioFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter}/>
-          <C_DialogInternazionalizzazioneFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter} />
+          <C_DialogSoddisfazioneFilter />
+          <C_DialogRegionFilter/>
+          <C_DialogAreeDisciplinariFilter/>
+          <C_DialogLinguaFilter/>
+          <C_DialogOccupazioneFilter/>
+          <C_DialogStipendioFilter/>
+          <C_DialogInternazionalizzazioneFilter />
           {
             //Courses don't have student number
             //<DialogMinStudentFilter addFilter={this.addCourseFilter} />

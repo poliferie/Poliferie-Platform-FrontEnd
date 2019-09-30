@@ -26,8 +26,6 @@ class DialogMinStudentFilter extends Component {
             var objVal = parseFloat(u.Info.Iscritti) || 0;
             return objVal >= parseInt(this.state.val);
           }}
-          addFilter={this.props.addFilter}
-          removeFilter={this.props.removeFilter}
           humanReadableDescription="Ti piacerebbe studiare in una facoltà con pochi o molti studenti? "
         />
       </div>
