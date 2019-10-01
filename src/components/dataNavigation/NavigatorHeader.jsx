@@ -23,6 +23,9 @@ import C_DialogLinguaFilter from "./filters/C_DialogLinguaFilter";
 
 import StringLookupFilter from "./filters/StringLookupFilter";
 
+import IconButton from "@material-ui/core/IconButton";
+import HighlightOff from "@material-ui/icons/HighlightOff";
+
 const STYLE_RED = {
     borderRadius:"30px",
     backgroundColor:"#EA4242",
@@ -81,6 +84,14 @@ class NavigatorHeader extends Component {
           <U_DialogRegionFilter />
           <U_DialogAccessoFilter />
           <U_DialogMinStudentFilter />
+
+          <IconButton
+            color="primary"
+            onClick={this.props.emptyUniFilters}
+          >
+            <HighlightOff />
+          </IconButton>
+
         </div>
       );
     } else {
@@ -103,6 +114,14 @@ class NavigatorHeader extends Component {
           <C_DialogOccupazioneFilter/>
           <C_DialogStipendioFilter/>
           <C_DialogInternazionalizzazioneFilter />
+
+          <IconButton
+            color="primary"
+            onClick={this.props.emptyCourseFilters}
+          >
+            <HighlightOff />
+          </IconButton>
+
           {
             //Courses don't have student number
             //<DialogMinStudentFilter addFilter={this.addCourseFilter} />

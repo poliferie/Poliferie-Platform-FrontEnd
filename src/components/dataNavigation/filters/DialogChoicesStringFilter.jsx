@@ -200,6 +200,11 @@ class DialogChoicesStringFilter extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if(this.props[this.filterName] !== prevProps[this.filterName])
+      this.checkFilterStatus();
+  }
+
   setFilter(f) {
     this.addFilter(this.filterName, f);
   }

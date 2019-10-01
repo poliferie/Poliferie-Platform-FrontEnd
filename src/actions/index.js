@@ -48,6 +48,20 @@ export const removeUniFilter = (name) => {
   };
 };
 
+export const emptyCourseFilters = () => {
+  return {
+    type: courseFilterActions.EMPTY,
+    id: nextFilterId++
+  };
+};
+
+export const emptyUniFilters = () => {
+  return {
+    type: uniFilterActions.EMPTY,
+    id: nextFilterId++
+  };
+};
+
 //view is "uni" or "crs"
 export const toggleViewFocus = view => {
   return {

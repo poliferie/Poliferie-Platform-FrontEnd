@@ -169,6 +169,11 @@ class DialogFilteringSlider extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if(this.props[this.filterName] !== prevProps[this.filterName])
+      this.checkFilterStatus();
+  }
+
   handleChange(e) {
     if (!e.target.validity.valid) {
       // Update value for number input, but do not use it to filter. Needed to avoid dumb behaviour

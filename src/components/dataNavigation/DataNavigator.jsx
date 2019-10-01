@@ -7,7 +7,9 @@ import {
   addUniFilter,
   removeCourseFilter,
   removeUniFilter,
-  toggleViewFocus
+  toggleViewFocus,
+  emptyUniFilters,
+  emptyCourseFilters
 } from "../../actions";
 
 import NavigatorBody from "./NavigatorBody";
@@ -88,6 +90,13 @@ const mapDispatchToProps = dispatch => {
     },
     toggleViewFocus: elem => {
       dispatch(toggleViewFocus(elem));
+    },
+    //Testing
+    emptyUniFilters: () => {
+      dispatch(emptyUniFilters());
+    },
+    emptyCourseFilters: () => {
+      dispatch(emptyCourseFilters());
     }
   });
 };
@@ -96,6 +105,7 @@ const mapDispatchToProps = dispatch => {
 class DataNavigator extends Component {
   constructor(props) {
     super(props);
+    this.state = {};
   }
 
   render() {
@@ -110,6 +120,9 @@ class DataNavigator extends Component {
           addUniFilter={this.props.addUniFilter}
           removeCourseFilter={this.props.removeCourseFilter}
           removeUniFilter={this.props.removeUniFilter}
+          //FIXME Only for testing
+          emptyUniFilters={this.props.emptyUniFilters}
+          emptyCourseFilters={this.props.emptyCourseFilters}
         />
         <NavigatorBody
           viewFocus={this.props.rdxState.visibilityFilter.viewFocus}
