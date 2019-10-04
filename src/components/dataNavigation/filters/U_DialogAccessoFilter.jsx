@@ -27,8 +27,6 @@ class U_DialogAccessoFilter extends Component {
           filterType="or"
           filterAttribute="Statale"
           filterAttributePath="Info"
-          addFilter={this.props.addFilter}
-          removeFilter={this.props.removeFilter}
           humanReadableDescription="Questa filtro ti permette di scegliere tra università pubbliche o libere. Le università statali sono generalmente più economiche ed offrono la possibilità di studiare a tutti. Le università private invece hanno generalmente un maggior costo e offrono corsi di studi generalmente più specializzati."
         />
       </div>

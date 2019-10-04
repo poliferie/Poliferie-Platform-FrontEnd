@@ -23,6 +23,9 @@ import C_DialogLinguaFilter from "./filters/C_DialogLinguaFilter";
 
 import StringLookupFilter from "./filters/StringLookupFilter";
 
+import IconButton from "@material-ui/core/IconButton";
+import HighlightOff from "@material-ui/icons/HighlightOff";
+
 const STYLE_RED = {
     borderRadius:"30px",
     backgroundColor:"#EA4242",
@@ -77,10 +80,18 @@ class NavigatorHeader extends Component {
             marginTop: "0px"
           }}
         >
-          <U_DialogSoddisfazioneFilter addFilter={this.addUniFilter} removeFilter={this.removeUniFilter} /> 
-          <U_DialogRegionFilter addFilter={this.addUniFilter} removeFilter={this.removeUniFilter} />
-          <U_DialogAccessoFilter addFilter={this.addUniFilter} removeFilter={this.removeUniFilter} />
-          <U_DialogMinStudentFilter addFilter={this.addUniFilter} removeFilter={this.removeUniFilter} />
+          <U_DialogSoddisfazioneFilter /> 
+          <U_DialogRegionFilter />
+          <U_DialogAccessoFilter />
+          <U_DialogMinStudentFilter />
+
+          <IconButton
+            color="primary"
+            onClick={this.props.emptyUniFilters}
+          >
+            <HighlightOff />
+          </IconButton>
+
         </div>
       );
     } else {
@@ -96,13 +107,21 @@ class NavigatorHeader extends Component {
             marginTop: "10px"
           }}
         >
-          <C_DialogSoddisfazioneFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter} />
-          <C_DialogRegionFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter}/>
-          <C_DialogAreeDisciplinariFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter}/>
-          <C_DialogLinguaFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter}/>
-          <C_DialogOccupazioneFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter}/>
-          <C_DialogStipendioFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter}/>
-          <C_DialogInternazionalizzazioneFilter addFilter={this.addCourseFilter} removeFilter={this.removeCourseFilter} />
+          <C_DialogSoddisfazioneFilter />
+          <C_DialogRegionFilter/>
+          <C_DialogAreeDisciplinariFilter/>
+          <C_DialogLinguaFilter/>
+          <C_DialogOccupazioneFilter/>
+          <C_DialogStipendioFilter/>
+          <C_DialogInternazionalizzazioneFilter />
+
+          <IconButton
+            color="primary"
+            onClick={this.props.emptyCourseFilters}
+          >
+            <HighlightOff />
+          </IconButton>
+
           {
             //Courses don't have student number
             //<DialogMinStudentFilter addFilter={this.addCourseFilter} />

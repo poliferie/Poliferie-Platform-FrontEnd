@@ -7,7 +7,7 @@ import React, { Component } from "react";
     addCourseFilter
 */
 
-class StringLookupFilter extends Component {
+class StringLookupFilter extends Component {  
   constructor(props) {
     super(props);
 

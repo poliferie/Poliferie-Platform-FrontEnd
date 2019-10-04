@@ -19,6 +19,13 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 
+import {
+  addCourseFilter,
+  addUniFilter,
+  removeCourseFilter,
+  removeUniFilter
+} from "../../../actions";
+
 /*
   Props to pass:
   choices
@@ -85,6 +92,7 @@ const DialogActions = withStyles(theme => ({
 const mapStateToProps = (state, ownProps) => {
   let filter, localState = {};
   let allFilters = { ...state.visibilityFilter };
+  localState = {viewFocus: allFilters.viewFocus};
   let key = ownProps.filterName;
   
   if(allFilters.viewFocus === 'uni')
@@ -96,6 +104,23 @@ const mapStateToProps = (state, ownProps) => {
     localState[key] = filter;
 
   return localState;
+};
+
+const mapDispatchToProps = dispatch => {
+  return({
+    addCourseFilter: (name, elem) => {
+      dispatch(addCourseFilter(name, elem));
+    },
+    addUniFilter: (name, elem) => {
+      dispatch(addUniFilter(name, elem));
+    },
+    removeCourseFilter: (name) => {
+      dispatch(removeCourseFilter(name));
+    },
+    removeUniFilter: (name) => {
+      dispatch(removeUniFilter(name));
+    }
+  })
 };
 
 class DialogChoicesStringFilter extends Component {
@@ -159,8 +184,6 @@ class DialogChoicesStringFilter extends Component {
     this.filterTitle = this.props.filterTitle;
     this.filterType = this.props.filterType;
     this.filterAttribute = this.props.filterAttribute;
-    this.addFilter = this.props.addFilter;
-    this.removeFilter = this.props.removeFilter;
 
     this.icon = this.props.icon;
     this.humanReadableDescription = this.props.humanReadableDescription;
@@ -168,6 +191,18 @@ class DialogChoicesStringFilter extends Component {
 
   componentDidMount() {
     this.checkFilterStatus();
+    if(this.props.viewFocus === 'uni') {
+      this.addFilter = this.props.addUniFilter;
+      this.removeFilter = this.props.removeUniFilter;
+    } else {
+      this.addFilter = this.props.addCourseFilter;
+      this.removeFilter = this.props.removeCourseFilter;
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if(this.props[this.filterName] !== prevProps[this.filterName])
+      this.checkFilterStatus();
   }
 
   setFilter(f) {
@@ -394,5 +429,6 @@ class DialogChoicesStringFilter extends Component {
 }
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(DialogChoicesStringFilter);

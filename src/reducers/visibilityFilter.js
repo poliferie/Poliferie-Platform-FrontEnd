@@ -26,9 +26,21 @@ function visibilityFilter(state = { courses: {}, universities: {} }, action) {
 
     //Remove Course filter
     case courseFilterActions.REMOVE_ELEM:
-        state = { ...state };
-        let {[name]: removedCourseFilter, ...restOfCourseFilters} = state.courses;
-        state.courses = restOfCourseFilters;
+      state = { ...state };
+      let {[name]: removedCourseFilter, ...restOfCourseFilters} = state.courses;
+      state.courses = restOfCourseFilters;
+      break;
+
+    //Empty Uni filters
+    case uniFilterActions.EMPTY:
+      state = { ...state };
+      state.universities = {};
+      break;
+
+    //Empty Course filters
+    case courseFilterActions.EMPTY:
+      state = { ...state };
+      state.courses = {};
       break;
 
     //Toggle between uni/crs view
@@ -37,8 +49,6 @@ function visibilityFilter(state = { courses: {}, universities: {} }, action) {
       state.viewFocus = elem;
       break;
 
-    //TODO Add reducers to EMPTY Course and Uni filters
-      
     //Default
     default:
       break;
