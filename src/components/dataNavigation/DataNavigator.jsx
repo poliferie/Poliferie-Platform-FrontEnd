@@ -3,13 +3,7 @@ import { connect } from "react-redux";
 import {
   addCourse,
   addUniversity,
-  addCourseFilter,
-  addUniFilter,
-  removeCourseFilter,
-  removeUniFilter,
-  toggleViewFocus,
-  emptyUniFilters,
-  emptyCourseFilters
+  toggleViewFocus
 } from "../../actions";
 
 import NavigatorBody from "./NavigatorBody";
@@ -20,7 +14,7 @@ function filter(obj, predicate) {
     key;
 
   for (key in obj) {
-    if (obj.hasOwnProperty(key) && predicate(obj[key])) {
+    if (obj.hasOwnProperty(key) && typeof(predicate) === 'function' && predicate(obj[key])) {
       result[key] = obj[key];
     }
   }
@@ -30,22 +24,40 @@ function filter(obj, predicate) {
 
 /** REDUX STATE-TO-PROPS DEFINITION */
 const mapStateToProps = state => {
+  //The two variables contain all the uni/courses
   var filteredUni = { ...state.universities };
-  var filteredCourses = state.courses;
+  var filteredCourses = { ...state.courses };
 
   //Filter universities
-  for (var filterName in state.visibilityFilter.universities) {
+  for (var uniFilter in state.visibilityFilter.universities) {
     filteredUni = filter(
       filteredUni,
-      state.visibilityFilter.universities[filterName]
+      state.visibilityFilter.universities[uniFilter]
     );
   }
 
   //Filter courses
-  for (var filterName1 in state.visibilityFilter.courses) {
+  for (var courseFilter in state.visibilityFilter.courses) {
     filteredCourses = filter(
       filteredCourses,
-      state.visibilityFilter.courses[filterName1]
+      state.visibilityFilter.courses[courseFilter]
+    );
+  }
+
+  //TODO Create a single object containing all the filters from visibility/stringFilters, to avoid iterating twice
+  //Filter universities by stringFilters
+  for (var uniStringFilter in state.stringFilters.universities) {
+    filteredUni = filter(
+      filteredUni,
+      state.stringFilters.universities[uniStringFilter].filter
+    );
+  }
+
+  //Filter courses by stringFilters
+  for (var courseStringFilter in state.stringFilters.courses) {
+    filteredCourses = filter(
+      filteredCourses,
+      state.stringFilters.courses[courseStringFilter].filter
     );
   }
 
@@ -76,27 +88,8 @@ const mapDispatchToProps = dispatch => {
     addUniversity: elem => {
       dispatch(addUniversity(elem));
     },
-    addCourseFilter: (name, elem) => {
-      dispatch(addCourseFilter(name, elem));
-    },
-    addUniFilter: (name, elem) => {
-      dispatch(addUniFilter(name, elem));
-    },
-    removeCourseFilter: (name) => {
-      dispatch(removeCourseFilter(name));
-    },
-    removeUniFilter: (name) => {
-      dispatch(removeUniFilter(name));
-    },
     toggleViewFocus: elem => {
       dispatch(toggleViewFocus(elem));
-    },
-    //Testing
-    emptyUniFilters: () => {
-      dispatch(emptyUniFilters());
-    },
-    emptyCourseFilters: () => {
-      dispatch(emptyCourseFilters());
     }
   });
 };
@@ -114,15 +107,6 @@ class DataNavigator extends Component {
         <NavigatorHeader
           setViewFocus={this.props.toggleViewFocus}
           viewFocus={this.props.rdxState.visibilityFilter.viewFocus}
-          /*TODO pass dispatch functions to nested components in a better way (React context/connect())
-            using mapStateToProps and mapDispatchToProps in DialogChoices/FilteringSlider to dispatch*/
-          addCourseFilter={this.props.addCourseFilter}
-          addUniFilter={this.props.addUniFilter}
-          removeCourseFilter={this.props.removeCourseFilter}
-          removeUniFilter={this.props.removeUniFilter}
-          //FIXME Only for testing
-          emptyUniFilters={this.props.emptyUniFilters}
-          emptyCourseFilters={this.props.emptyCourseFilters}
         />
         <NavigatorBody
           viewFocus={this.props.rdxState.visibilityFilter.viewFocus}
