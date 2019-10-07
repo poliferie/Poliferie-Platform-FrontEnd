@@ -30,6 +30,9 @@ import U_StringLookupFilter from "./filters/U_StringLookupFilter";
 import C_StringLookupFilter from "./filters/C_StringLookupFilter";
 
 import FilterStatusButton from "./filters/FilterStatusButton";
+import U_FilterStatusButton from "./filters/U_FilterStatusButton";
+import C_FilterStatusButton from "./filters/C_FilterStatusButton";
+
 import ResetFiltersButton from "./filters/ResetFiltersButton";
 
 const STYLE_RED = {
@@ -79,7 +82,7 @@ class NavigatorHeader extends Component {
       return (
         <div>
           <U_StringLookupFilter nameSpace='u_navhead_string' />
-          <FilterStatusButton divId='uniIcons' />
+          <U_FilterStatusButton divId='uniIcons' />
           <div
             id="uniIcons"
             className="filterList"
@@ -106,7 +109,7 @@ class NavigatorHeader extends Component {
       return (
         <div>
           <C_StringLookupFilter nameSpace='c_navhead_string' />
-          <FilterStatusButton divId='courseIcons' />
+          <C_FilterStatusButton divId='courseIcons' />
           <div
             id="courseIcons"
             className="filterList"
