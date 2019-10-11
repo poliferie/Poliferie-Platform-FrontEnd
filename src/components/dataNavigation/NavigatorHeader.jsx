@@ -25,15 +25,16 @@ import C_DialogStipendioFilter from "./filters/C_DialogStipendioFilter";
 import C_DialogInternazionalizzazioneFilter from "./filters/C_DialogInternazionalizzazioneFilter";
 import C_DialogLinguaFilter from "./filters/C_DialogLinguaFilter";
 
-import StringLookupFilter from "./filters/StringLookupFilter";
+//import StringLookupFilter from "./filters/StringLookupFilter";
 import U_StringLookupFilter from "./filters/U_StringLookupFilter";
 import C_StringLookupFilter from "./filters/C_StringLookupFilter";
 
-import FilterStatusButton from "./filters/FilterStatusButton";
+//import FilterStatusButton from "./filters/FilterStatusButton";
 import U_FilterStatusButton from "./filters/U_FilterStatusButton";
 import C_FilterStatusButton from "./filters/C_FilterStatusButton";
 
 import ResetFiltersButton from "./filters/ResetFiltersButton";
+import { callbackify } from "util";
 
 const STYLE_RED = {
   borderRadius: "30px",
@@ -81,8 +82,15 @@ class NavigatorHeader extends Component {
     if (isUniFocus) {
       return (
         <div>
-          <U_StringLookupFilter nameSpace='u_navhead_string' />
-          <U_FilterStatusButton divId='uniIcons' />
+          <div
+            style={{
+              display: "inline-flex",
+              marginTop: 10,
+              width: "100%"
+            }}>
+            <U_StringLookupFilter nameSpace='u_navhead_string' />
+            <U_FilterStatusButton divId='uniIcons' />
+          </div>
           <div
             id="uniIcons"
             className="filterList"
@@ -108,8 +116,15 @@ class NavigatorHeader extends Component {
     } else {
       return (
         <div>
-          <C_StringLookupFilter nameSpace='c_navhead_string' />
-          <C_FilterStatusButton divId='courseIcons' />
+          <div
+            style={{
+              display: "inline-flex",
+              marginTop: 10,
+              width: "100%"
+            }}>
+            <C_StringLookupFilter nameSpace='c_navhead_string' />
+            <C_FilterStatusButton divId='courseIcons' />
+          </div>
           <div
             id="courseIcons"
             className="filterList"
@@ -119,7 +134,7 @@ class NavigatorHeader extends Component {
               flexWrap: "wrap",
               flexDirection: "row",
               maxWidth: "100%",
-              marginTop: "10px"
+              marginTop: "0px"
             }}
           >
             <C_DialogSoddisfazioneFilter />
@@ -174,4 +189,4 @@ class NavigatorHeader extends Component {
 
 export default connect(
   mapStateToProps
-) (NavigatorHeader);
+)(NavigatorHeader);
