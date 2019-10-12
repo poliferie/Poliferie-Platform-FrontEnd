@@ -62,6 +62,40 @@ export const emptyUniFilters = () => {
   };
 };
 
+export const addCourseStringFilter = (name, phrase, filter) => {
+  return {
+    type: courseStringFilterActions.ADD_ELEM,
+    elem: filter,
+    id: nextFilterId++,
+    name: name,
+    phrase: phrase
+  };
+};
+
+export const addUniStringFilter = (name, phrase, filter) => {
+  return {
+    type: uniStringFilterActions.ADD_ELEM,
+    elem: filter,
+    id: nextFilterId++,
+    name: name,
+    phrase: phrase
+  };
+};
+
+export const emptyCourseStringFilters = () => {
+  return {
+    type: courseStringFilterActions.EMPTY,
+    id: nextFilterId++
+  };
+};
+
+export const emptyUniStringFilters = () => {
+  return {
+    type: uniStringFilterActions.EMPTY,
+    id: nextFilterId++
+  };
+};
+
 //view is "uni" or "crs"
 export const toggleViewFocus = view => {
   return {
@@ -82,6 +116,16 @@ export const courseFilterActions = {
   ADD_ELEM: "course-filter-add",
   REMOVE_ELEM: "course-filter-remove",
   EMPTY: "course-filter-empty"
+};
+
+export const courseStringFilterActions = {
+  ADD_ELEM: "course-string-filter-add",
+  EMPTY: "course-string-filter-empty"
+};
+
+export const uniStringFilterActions = {
+  ADD_ELEM: "uni-string-filter-add",
+  EMPTY: "uni-string-filter-empty"
 };
 
 export const uniActions = {

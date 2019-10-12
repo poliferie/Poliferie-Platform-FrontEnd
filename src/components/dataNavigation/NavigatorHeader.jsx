@@ -1,5 +1,9 @@
+/* eslint-disable react/jsx-pascal-case */
+
 import React, { Component } from "react";
+import { connect } from "react-redux";
 //import { wrap } from "module";
+
 //import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
@@ -21,46 +25,54 @@ import C_DialogStipendioFilter from "./filters/C_DialogStipendioFilter";
 import C_DialogInternazionalizzazioneFilter from "./filters/C_DialogInternazionalizzazioneFilter";
 import C_DialogLinguaFilter from "./filters/C_DialogLinguaFilter";
 
-import StringLookupFilter from "./filters/StringLookupFilter";
+//import StringLookupFilter from "./filters/StringLookupFilter";
+import U_StringLookupFilter from "./filters/U_StringLookupFilter";
+import C_StringLookupFilter from "./filters/C_StringLookupFilter";
 
-import IconButton from "@material-ui/core/IconButton";
-import HighlightOff from "@material-ui/icons/HighlightOff";
+//import FilterStatusButton from "./filters/FilterStatusButton";
+import U_FilterStatusButton from "./filters/U_FilterStatusButton";
+import C_FilterStatusButton from "./filters/C_FilterStatusButton";
+
+import ResetFiltersButton from "./filters/ResetFiltersButton";
+import { callbackify } from "util";
 
 const STYLE_RED = {
-    borderRadius:"30px",
-    backgroundColor:"#EA4242",
-    color:"white",
-    alignContent:"left",
-    paddingLeft: "15px !important",
-    border:"0px"
+  borderRadius: "30px",
+  backgroundColor: "#EA4242",
+  color: "white",
+  alignContent: "left",
+  paddingLeft: "15px !important",
+  border: "0px"
 
 };
 
 const STYLE_WHITE_LEFT = {
-    borderTopLeftRadius: "30px",
-    borderBottomLeftRadius: "30px",
-    paddingLeft: "15px !important",
-    color: "#CCCCCC"
+  borderTopLeftRadius: "30px",
+  borderBottomLeftRadius: "30px",
+  paddingLeft: "15px !important",
+  color: "#CCCCCC"
 
 }
 
 const STYLE_WHITE_RIGHT = {
-    borderTopRightRadius: "30px",
-    borderBottomRightRadius: "30px",
-    paddingLeft: "15px !important",
-    color: "#CCCCCC"
+  borderTopRightRadius: "30px",
+  borderBottomRightRadius: "30px",
+  paddingLeft: "15px !important",
+  color: "#CCCCCC"
 
 }
+
+const mapStateToProps = (state) => {
+  let viewFocus = state.visibilityFilter.viewFocus;
+
+  return { viewFocus };
+};
 
 class NavigatorHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {};
 
-    this.addCourseFilter = this.props.addCourseFilter;
-    this.addUniFilter = this.props.addUniFilter;
-    this.removeCourseFilter = this.props.removeCourseFilter;
-    this.removeUniFilter = this.props.removeUniFilter;
     this.setViewFocus = this.props.setViewFocus;
     this.renderFilters = this.renderFilters.bind(this);
   }
@@ -69,118 +81,112 @@ class NavigatorHeader extends Component {
     //var isUniFocus = this.props.viewFocus === "uni";
     if (isUniFocus) {
       return (
-        <div
-          className="filterList"
-          // NEEDED to make the filter icons stand side-by-side, and automatically goes to new line
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            flexDirection: "row",
-            maxWidth: "100%",
-            marginTop: "0px"
-          }}
-        >
-          <U_DialogSoddisfazioneFilter /> 
-          <U_DialogRegionFilter />
-          <U_DialogAccessoFilter />
-          <U_DialogMinStudentFilter />
-
-          <IconButton
-            color="primary"
-            onClick={this.props.emptyUniFilters}
+        <div>
+          <div
+            style={{
+              display: "inline-flex",
+              marginTop: 10,
+              width: "100%"
+            }}>
+            <U_StringLookupFilter nameSpace='u_navhead_string' />
+            <U_FilterStatusButton divId='uniIcons' />
+          </div>
+          <div
+            id="uniIcons"
+            className="filterList"
+            // NEEDED to make the filter icons stand side-by-side, and automatically goes to new line
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              flexDirection: "row",
+              maxWidth: "100%",
+              marginTop: "0px"
+            }}
           >
-            <HighlightOff />
-          </IconButton>
+            <U_DialogSoddisfazioneFilter />
+            <U_DialogRegionFilter />
+            <U_DialogAccessoFilter />
+            <U_DialogMinStudentFilter />
 
+            <ResetFiltersButton />
+
+          </div>
         </div>
       );
     } else {
       return (
-        <div
-          className="filterList"
-          // NEEDED to make the filter icons stand side-by-side, and automatically goes to new line
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            flexDirection: "row",
-            maxWidth: "100%",
-            marginTop: "10px"
-          }}
-        >
-          <C_DialogSoddisfazioneFilter />
-          <C_DialogRegionFilter/>
-          <C_DialogAreeDisciplinariFilter/>
-          <C_DialogLinguaFilter/>
-          <C_DialogOccupazioneFilter/>
-          <C_DialogStipendioFilter/>
-          <C_DialogInternazionalizzazioneFilter />
-
-          <IconButton
-            color="primary"
-            onClick={this.props.emptyCourseFilters}
+        <div>
+          <div
+            style={{
+              display: "inline-flex",
+              marginTop: 10,
+              width: "100%"
+            }}>
+            <C_StringLookupFilter nameSpace='c_navhead_string' />
+            <C_FilterStatusButton divId='courseIcons' />
+          </div>
+          <div
+            id="courseIcons"
+            className="filterList"
+            // NEEDED to make the filter icons stand side-by-side, and automatically goes to new line
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              flexDirection: "row",
+              maxWidth: "100%",
+              marginTop: "0px"
+            }}
           >
-            <HighlightOff />
-          </IconButton>
+            <C_DialogSoddisfazioneFilter />
+            <C_DialogRegionFilter />
+            <C_DialogAreeDisciplinariFilter />
+            <C_DialogLinguaFilter />
+            <C_DialogOccupazioneFilter />
+            <C_DialogStipendioFilter />
+            <C_DialogInternazionalizzazioneFilter />
 
-          {
-            //Courses don't have student number
-            //<DialogMinStudentFilter addFilter={this.addCourseFilter} />
-            //Courses don't have a region yet
-            //<CourseDialogRegionFilter addFilter={this.addCourseFilter} />
-          }
+            <ResetFiltersButton />
+
+            {
+              //Courses don't have student number
+              //<DialogMinStudentFilter addFilter={this.addCourseFilter} />
+              //Courses don't have a region yet
+              //<CourseDialogRegionFilter addFilter={this.addCourseFilter} />
+            }
+          </div>
         </div>
       );
     }
   }
-
-  /*applySearch(e, isUniFocus) {
-    if (e.key !== "Enter") return;
-
-    if (isUniFocus) {
-      this.addUniFilter("navhead_string", elem => {
-        if (((e.target || {}).value || {}).length <= 0) return true;
-        //return elem.Info.NomeEsteso.indexOf((e.target || {}).value) > 0;
-        return elem.Info.NomeEsteso.includes((e.target || {}).value);
-      });
-    } else {
-      this.addCourseFilter("navhead_string", elem => {
-        if (((e.target || {}).value || {}).length <= 0) return true;
-        //return elem.Info.NomeEsteso.indexOf((e.target || {}).value) > 0;
-        return elem.Info.NomeEsteso.includes((e.target || {}).value);
-      });
-    }
-  }*/
 
   render() {
     var isUniFocus = this.props.viewFocus === "uni" ? true : false;
     return (
       <div className="NavigatorHeader">
-          <ButtonGroup fullWidth aria-label="Full width outlined button group" style={{marginTop:"10px"}}>
-              <Button
-                  disabled={isUniFocus}
-                  onClick={() => this.setViewFocus("uni")}
-                  style={isUniFocus ? { ...STYLE_RED, marginRight: "-15px" } : { ...STYLE_WHITE_LEFT, marginRight: "-15px" }}
-              >
-                  Università
+        <ButtonGroup fullWidth aria-label="Full width outlined button group" style={{ marginTop: "10px" }}>
+          <Button
+            disabled={isUniFocus}
+            onClick={() => this.setViewFocus("uni")}
+            style={isUniFocus ? { ...STYLE_RED, marginRight: "-15px" } : { ...STYLE_WHITE_LEFT, marginRight: "-15px" }}
+          >
+            Università
               </Button>
-              <Button
-                  disabled={!isUniFocus}
-                  onClick={() => this.setViewFocus("crs")}
-                  style={isUniFocus ? { ...STYLE_WHITE_RIGHT } : { ...STYLE_RED }}
-              >
-                  <span style={isUniFocus ? {paddingLeft:"10px"}:{}}>Corsi</span>
-              </Button>
-          </ButtonGroup>
-          <StringLookupFilter
-              addCourseFilter={this.addCourseFilter}
-              addUniFilter={this.addUniFilter}
-              isUniFocus={isUniFocus}
-          />
+          <Button
+            disabled={!isUniFocus}
+            onClick={() => this.setViewFocus("crs")}
+            style={isUniFocus ? { ...STYLE_WHITE_RIGHT } : { ...STYLE_RED }}
+          >
+            <span style={isUniFocus ? { paddingLeft: "10px" } : {}}>Corsi</span>
+          </Button>
+        </ButtonGroup>
 
         {this.renderFilters(isUniFocus)}
+
       </div>
     );
   }
 }
 
-export default NavigatorHeader;
+export default connect(
+  mapStateToProps
+)(NavigatorHeader);

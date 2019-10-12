@@ -15,7 +15,12 @@ const state = {
   visibilityFilter: {
     courses: {},
     universities: {},
+    //TODO Move viewFocus one level higher
     viewFocus: 'uni'
+  },
+  stringFilters: {
+    courses: {},
+    universities: {}
   }
 };
 
