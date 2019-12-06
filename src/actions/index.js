@@ -105,6 +105,54 @@ export const toggleViewFocus = view => {
   };
 };
 
+export const addCourseFilterValue = (name, value) => {
+  return {
+    type: courseFilterValueActions.ADD_ELEM,
+    value: value,
+    id: nextFilterId++,
+    name: name
+  };
+};
+
+export const addUniFilterValue = (name, value) => {
+  return {
+    type: uniFilterValueActions.ADD_ELEM,
+    value: value,
+    id: nextFilterId++,
+    name: name
+  };
+};
+
+export const removeCourseFilterValue = (name) => {
+  return {
+    type: courseFilterValueActions.REMOVE_ELEM,
+    id: nextFilterId++,
+    name: name
+  };
+};
+
+export const removeUniFilterValue = (name) => {
+  return {
+    type: uniFilterValueActions.REMOVE_ELEM,
+    id: nextFilterId++,
+    name: name
+  };
+};
+
+export const emptyCourseFilterValues = () => {
+  return {
+    type: courseFilterValueActions.EMPTY,
+    id: nextFilterId++
+  };
+};
+
+export const emptyUniFilterValues = () => {
+  return {
+    type: uniFilterValueActions.EMPTY,
+    id: nextFilterId++
+  };
+};
+
 /*****  ACTION CONSTANT DECLARATIONS */
 
 export const uniFilterActions = {
@@ -126,6 +174,18 @@ export const courseStringFilterActions = {
 export const uniStringFilterActions = {
   ADD_ELEM: "uni-string-filter-add",
   EMPTY: "uni-string-filter-empty"
+};
+
+export const uniFilterValueActions = {
+  ADD_ELEM: "uni-filter-value-add",
+  REMOVE_ELEM: "uni-filter-value-remove",
+  EMPTY: "uni-filter-value-empty"
+};
+
+export const courseFilterValueActions = {
+  ADD_ELEM: "course-filter-value-add",
+  REMOVE_ELEM: "course-filter-value-remove",
+  EMPTY: "course-filter-value-empty"
 };
 
 export const uniActions = {
