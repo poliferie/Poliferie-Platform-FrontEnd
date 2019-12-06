@@ -16,7 +16,11 @@ import {
   addCourseFilter,
   addUniFilter,
   removeCourseFilter,
-  removeUniFilter
+  removeUniFilter,
+  addCourseFilterValue,
+  addUniFilterValue,
+  removeCourseFilterValue,
+  removeUniFilterValue
 } from "../../../actions";
 
 /*
@@ -106,7 +110,19 @@ const mapDispatchToProps = dispatch => {
     },
     removeUniFilter: (name) => {
       dispatch(removeUniFilter(name));
-    }
+    },
+    addCourseFilterValue: (name, value) => {
+      dispatch(addCourseFilterValue(name, value));
+    },
+    addUniFilterValue: (name, value) => {
+      dispatch(addUniFilterValue(name, value));
+    },
+    removeCourseFilterValue: (name) => {
+      dispatch(removeCourseFilterValue(name));
+    },
+    removeUniFilterValue: (name) => {
+      dispatch(removeUniFilterValue(name));
+    },
   })
 };
 
@@ -163,9 +179,13 @@ class DialogFilteringSlider extends Component {
     if(this.props.viewFocus === 'uni') {
       this.addFilter = this.props.addUniFilter;
       this.removeFilter = this.props.removeUniFilter;
+      this.addFilterValue = this.props.addUniFilterValue;
+      this.removeFilterValue = this.props.removeUniFilterValue;
     } else {
       this.addFilter = this.props.addCourseFilter;
       this.removeFilter = this.props.removeCourseFilter;
+      this.addFilterValue = this.props.addCourseFilterValue;
+      this.removeFilterValue = this.props.removeCourseFilterValue;
     }
   }
 
@@ -236,6 +256,7 @@ class DialogFilteringSlider extends Component {
             <Button
               onClick={() => {
                 this.removeFilter(this.filterName);
+                this.removeFilterValue(this.filterName);
                 this.disableButton();
                 this.handleClose();
               }}
@@ -245,6 +266,7 @@ class DialogFilteringSlider extends Component {
             <Button
               onClick={() => {
                 this.addFilter(this.filterName, this.filteringFunction.bind(this));
+                this.addFilterValue(this.filterName, this.state.val);
                 this.enableButton();
                 this.handleClose();
               }}
