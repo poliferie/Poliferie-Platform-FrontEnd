@@ -85,29 +85,28 @@ const mapStateToProps = (state, ownProps) => {
   //Will hold the current filter's value (if set) from the state
   let filterValue;
   let allFilters = { ...state.visibilityFilter };
-  localState = {viewFocus: allFilters.viewFocus};
+  localState = { viewFocus: allFilters.viewFocus };
   let key = ownProps.filterName;
-  
-  if(allFilters.viewFocus === 'uni') {
+
+  if (allFilters.viewFocus === 'uni') {
     filter = allFilters.universities[key];
-    filterValue =  state.filterValues.universities[key];
-    console.log(filterValue);
+    filterValue = state.filterValues.universities[key];
   } else {
     filter = allFilters.courses[key];
     filterValue = state.filterValues.courses[key];
   }
 
-  if(filter)
+  if (filter)
     localState[key] = filter;
 
-  if(filterValue)
-    localState[key+"_value"] = filterValue;
+  if (filterValue)
+    localState[key + "_value"] = filterValue;
 
   return localState;
 };
 
 const mapDispatchToProps = dispatch => {
-  return({
+  return ({
     addCourseFilter: (name, elem) => {
       dispatch(addCourseFilter(name, elem));
     },
@@ -166,15 +165,15 @@ class DialogFilteringSlider extends Component {
 
   handleClose = () => {
     this.setState({
-       open: false,
-       val: this.props[this.filterValueName] || this.props.startVal,
-       numberVal: this.props[this.filterValueName] || this.props.startVal
+      open: false,
+      val: this.props[this.filterValueName] || this.props.startVal,
+      numberVal: this.props[this.filterValueName] || this.props.startVal
     });
   };
 
   checkFilterStatus = () => {
     let key = this.props.filterName;
-    if(this.props[key])
+    if (this.props[key])
       this.enableButton();
     else
       this.disableButton();
@@ -182,25 +181,30 @@ class DialogFilteringSlider extends Component {
 
   checkFilterValue = () => {
     let key = this.filterValueName;
-    if(this.props[key])
-    this.setState({
-      val: this.props[key],
-      numberVal: this.props[key]
-    });
+    if (this.props[key])
+      this.setState({
+        val: this.props[key],
+        numberVal: this.props[key]
+      });
+    else 
+      this.setState({
+        val: this.props.startVal,
+        numberVal: this.props.startVal
+      });
   };
 
   disableButton = () => {
-    this.setState({buttonStyle: 'secondary'});
+    this.setState({ buttonStyle: 'secondary' });
   };
 
   enableButton = () => {
-    this.setState({buttonStyle: 'primary'});
+    this.setState({ buttonStyle: 'primary' });
   };
 
   componentDidMount() {
     this.checkFilterStatus();
     this.checkFilterValue();
-    if(this.props.viewFocus === 'uni') {
+    if (this.props.viewFocus === 'uni') {
       this.addFilter = this.props.addUniFilter;
       this.removeFilter = this.props.removeUniFilter;
       this.addFilterValue = this.props.addUniFilterValue;
@@ -214,9 +218,9 @@ class DialogFilteringSlider extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props[this.filterName] !== prevProps[this.filterName])
+    if (this.props[this.filterName] !== prevProps[this.filterName])
       this.checkFilterStatus();
-    if(this.props[this.filterValueName] !== prevProps[this.filterValueName])
+    if (this.props[this.filterValueName] !== prevProps[this.filterValueName])
       this.checkFilterValue();
   }
 
