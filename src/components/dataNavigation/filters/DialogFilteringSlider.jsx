@@ -130,7 +130,7 @@ const mapDispatchToProps = dispatch => {
     },
     removeUniFilterValue: (name) => {
       dispatch(removeUniFilterValue(name));
-    },
+    }
   })
 };
 

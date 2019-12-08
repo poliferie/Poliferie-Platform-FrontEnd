@@ -23,7 +23,11 @@ import {
   addCourseFilter,
   addUniFilter,
   removeCourseFilter,
-  removeUniFilter
+  removeUniFilter,
+  addCourseFilterValue,
+  addUniFilterValue,
+  removeCourseFilterValue,
+  removeUniFilterValue
 } from "../../../actions";
 
 /*
@@ -91,17 +95,25 @@ const DialogActions = withStyles(theme => ({
 
 const mapStateToProps = (state, ownProps) => {
   let filter, localState = {};
+  //Will hold the current filter's value (if set) from the state
+  let filterValue;
   let allFilters = { ...state.visibilityFilter };
   localState = {viewFocus: allFilters.viewFocus};
   let key = ownProps.filterName;
   
-  if(allFilters.viewFocus === 'uni')
+  if(allFilters.viewFocus === 'uni') {
     filter = allFilters.universities[key];
-  else
+    filterValue = state.filterValues.universities[key];
+  } else {
     filter = allFilters.courses[key];
+    filterValue = state.filterValues.courses[key];
+  }
 
   if(filter)
     localState[key] = filter;
+
+  if(filterValue)
+    localState[key + "_value"] = filterValue;
 
   return localState;
 };
@@ -119,56 +131,45 @@ const mapDispatchToProps = dispatch => {
     },
     removeUniFilter: (name) => {
       dispatch(removeUniFilter(name));
+    },
+    addCourseFilterValue: (name, value) => {
+      dispatch(addCourseFilterValue(name, value));
+    },
+    addUniFilterValue: (name, value) => {
+      dispatch(addUniFilterValue(name, value));
+    },
+    removeCourseFilterValue: (name) => {
+      dispatch(removeCourseFilterValue(name));
+    },
+    removeUniFilterValue: (name) => {
+      dispatch(removeUniFilterValue(name));
     }
   })
 };
 
 class DialogChoicesStringFilter extends Component {
-  handleClickOpen = () => {
-    this.setState({
-      open: true
-    });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
-  checkFilterStatus = () => {
-    let key = this.props.filterName;
-    if(this.props[key])
-      this.enableButton();
-    else
-      this.disableButton();
-  };
-
-  disableButton = () => {
-    this.setState({buttonStyle: 'secondary'});
-  };
-
-  enableButton = () => {
-    this.setState({buttonStyle: 'primary'});
-  };
-
   constructor(props) {
     super(props);
 
     this.choices = this.props.choices;
+
+    let s = { 
+      open: false,
+      buttonStyle: 'secondary'
+    };
+
+    this.choices.forEach(choice => {
+      s[choice] = false;
+      
+    });
+
+    this.state = s;
 
     if (this.props.choicesDisplayedNames) {
       this.choicesDisplayedNames = this.props.choicesDisplayedNames;
     } else {
       this.choicesDisplayedNames = this.choices;
     }
-
-    var s = { 
-      open: false,
-      buttonStyle: 'secondary' 
-    };
-    this.choices.forEach(choice => {
-      s[choice] = false;
-    });
-    this.state = s;
 
     this.setFilter = this.setFilter.bind(this);
     this.itemClick = this.itemClick.bind(this);
@@ -181,6 +182,7 @@ class DialogChoicesStringFilter extends Component {
     this.filterAttributePath = "e." + this.props.filterAttributePath;
 
     this.filterName = this.props.filterName;
+    this.filterValueName = this.filterName + '_value';
     this.filterTitle = this.props.filterTitle;
     this.filterType = this.props.filterType;
     this.filterAttribute = this.props.filterAttribute;
@@ -189,20 +191,88 @@ class DialogChoicesStringFilter extends Component {
     this.humanReadableDescription = this.props.humanReadableDescription;
   }
 
+  handleClickOpen = () => {
+    this.setState({
+      open: true
+    });
+  };
+
+  handleClose = () => {
+    if(this.props[this.filterValueName])
+      this.copyFilterValuesIntoState(this.props[this.filterValueName]);
+    else
+      this.setDefaultFilterValues();
+
+    this.setState({ open: false });
+  };
+
+  checkFilterStatus = () => {
+    let key = this.props.filterName;
+    if(this.props[key])
+      this.enableButton();
+    else
+      this.disableButton();
+  };
+
+  checkFilterValue = () => {
+    let key = this.filterValueName;
+    if (this.props[key])
+      this.copyFilterValuesIntoState(this.props[key])
+    else 
+      this.setDefaultFilterValues();
+  };
+
+  setDefaultFilterValues = () => {
+    this.choices.forEach(choice => {
+      this.setState({ [choice]: false });
+    });
+  };
+
+  copyFilterValuesIntoState = (propsValues) => {
+    this.choices.forEach(choice => {
+      this.setState({ [choice]: propsValues[choice] });
+    });
+  };
+
+  getStateFilterValues = () => {
+    let result = {};
+
+    this.choices.forEach(choice => {
+      result[choice] = this.state[choice];
+    })
+
+    return result;
+  };
+
+  disableButton = () => {
+    this.setState({buttonStyle: 'secondary'});
+  };
+
+  enableButton = () => {
+    this.setState({buttonStyle: 'primary'});
+  };
+
   componentDidMount() {
     this.checkFilterStatus();
-    if(this.props.viewFocus === 'uni') {
+    this.checkFilterValue();
+    if (this.props.viewFocus === 'uni') {
       this.addFilter = this.props.addUniFilter;
       this.removeFilter = this.props.removeUniFilter;
+      this.addFilterValue = this.props.addUniFilterValue;
+      this.removeFilterValue = this.props.removeUniFilterValue;
     } else {
       this.addFilter = this.props.addCourseFilter;
       this.removeFilter = this.props.removeCourseFilter;
+      this.addFilterValue = this.props.addCourseFilterValue;
+      this.removeFilterValue = this.props.removeCourseFilterValue;
     }
   }
 
   componentDidUpdate(prevProps) {
     if(this.props[this.filterName] !== prevProps[this.filterName])
       this.checkFilterStatus();
+    if(this.props[this.filterValueName] !== prevProps[this.filterValueName])
+      this.checkFilterValue();
   }
 
   setFilter(f) {
@@ -316,10 +386,6 @@ class DialogChoicesStringFilter extends Component {
     //this.setUniStringFilter(e => true);
   }
 
-  /*removeFilter() {
-    this.setFilter(e => true);
-  }*/
-
   applyFilter() {
     // filters all uni elements @e by "name" attribute with state as a clause
     var filterAttributePath = this.filterAttributePath;
@@ -405,6 +471,7 @@ class DialogChoicesStringFilter extends Component {
             <Button 
               onClick={() => {
                 this.removeFilter(this.filterName);
+                this.removeFilterValue(this.filterName);
                 this.disableButton();
                 this.handleClose();
               }}
@@ -415,6 +482,7 @@ class DialogChoicesStringFilter extends Component {
             <Button
                 onClick={() => {
                   this.applyFilter();
+                  this.addFilterValue(this.filterName, this.getStateFilterValues());
                   this.enableButton();
                   this.handleClose();
                 }}
