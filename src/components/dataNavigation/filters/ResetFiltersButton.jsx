@@ -5,7 +5,9 @@ import {
   emptyCourseFilters, 
   emptyUniFilters,
   emptyCourseStringFilters,
-  emptyUniStringFilters
+  emptyUniStringFilters,
+  emptyCourseFilterValues,
+  emptyUniFilterValues
 } from "../../../actions";
 
 import IconButton from "@material-ui/core/IconButton";
@@ -30,6 +32,12 @@ const mapDispatchToProps = dispatch => {
     },
     emptyUniStringFilters: () => {
       dispatch(emptyUniStringFilters());
+    },
+    emptyCourseFilterValues: () => {
+      dispatch(emptyCourseFilterValues());
+    },
+    emptyUniFilterValues: () => {
+      dispatch(emptyUniFilterValues());
     }
   });
 };
@@ -43,10 +51,12 @@ class ResetFiltersButton extends Component {
   componentDidMount() {
     if(this.props.viewFocus === 'uni') {
       this.emptyFilters = this.props.emptyUniFilters;
+      this.emptyFilterValues = this.props.emptyUniFilterValues;
       this.emptyStringFilters = this.props.emptyUniStringFilters;
     } else {
-      this.emptyStringFilters = this.props.emptyCourseStringFilters;
       this.emptyFilters = this.props.emptyCourseFilters;
+      this.emptyFilterValues = this.props.emptyCourseFilterValues;
+      this.emptyStringFilters = this.props.emptyCourseStringFilters;
     }
   }
 
@@ -56,6 +66,7 @@ class ResetFiltersButton extends Component {
         color="primary"
         onClick = {() => {
           this.emptyFilters();
+          this.emptyFilterValues();
           //this.emptyStringFilters();
         }}
       >

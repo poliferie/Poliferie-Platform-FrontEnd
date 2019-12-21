@@ -12,13 +12,20 @@ import Courses from "./CoursesDSET";
 const state = {
   universities: Universities,
   courses: Courses,
+  //Selected filtering functions (fn() or empty)
   visibilityFilter: {
     courses: {},
     universities: {},
     //TODO Move viewFocus one level higher
     viewFocus: 'uni'
   },
+  //Search bar string filters
   stringFilters: {
+    courses: {},
+    universities: {}
+  },
+  //Selected value of each visibility filter (or default)
+  filterValues: {
     courses: {},
     universities: {}
   }
