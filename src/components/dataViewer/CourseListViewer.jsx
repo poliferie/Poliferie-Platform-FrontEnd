@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import List from "@material-ui/core/List";
 import ListItemLink from "./ListItemLink";
+import InfiniteScroll from 'react-infinite-scroller';
 
 //ICONS
 import ParentUniIcon from "@material-ui/icons/AccountBalance";
@@ -21,22 +22,48 @@ class CourseListViewer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      a:0,
-      b:50
+      a:this.props.a,
+      b:this.props.b,
+      end: Object.keys(this.props.filteredCourses).length,
+      internalNav:0
     };
   }
 
+  componentDidUpdate(prevProps, prevState) {
+
+    //console.log('componentDidUpdate')
+
+  }
+
+  shouldComponentUpdate(prevProps, prevState){
+
+    return 1
+
+  }
+
+
 
   goDown = () => {
-    console.log("goDown")
-    this.setState({ a: this.a+50, b:this.b+50 });
+    this.setState({ a: this.state.a, b:this.state.b+20 , internalNav:1});
+    /* document.getElementById('top').scrollIntoView(); */
+
   };
+
+  reset = () => {
+    console.log("reset")
+    this.setState({ internalNav:0});
+
+
+  };
+
+
+
+
 
 
   render() {
     var filteredCourses = this.props.filteredCourses;
     var filteredCoursesNumber = Object.keys(filteredCourses).length;
-
 
     function firstN(obj, a,b) {
       return Object.keys(obj) //get the keys out
@@ -48,11 +75,38 @@ class CourseListViewer extends Component {
           }, {})
     }
 
+    var a = this.state.a;
+    var b = this.state.b;
+
+    if(b>filteredCoursesNumber){
+      b=filteredCoursesNumber;
+    }
+
+
+
+    if (b>=filteredCoursesNumber) {
+      var button = "";
+    } else {
+      var button = <Button onClick={() => { this.goDown() }} style={{
+        textDecoration : "none",
+        display: "block",
+        fontSize: "16px",
+        margin: "auto",
+        width:"90%",
+        cursor: "pointer",
+        border:"2px solid red",
+        borderRadius:"50px"
+      }}> Carica altri </Button>;
+    }
+
     return (
+
       <div className="filtered-courses">
-        <h2 className="h2_titolo">Corsi : {filteredCoursesNumber>50 ? "50 di "+filteredCoursesNumber : filteredCoursesNumber}</h2>
+         <h2 className="h2_titolo">Corsi : {filteredCoursesNumber>b ? b + " di "+filteredCoursesNumber : filteredCoursesNumber}</h2>
+        {/*     <h2 className="h2_titolo">Corsi : {filteredCoursesNumber>50 ?  50+" di "+filteredCoursesNumber : filteredCoursesNumber}</h2> */}
+
         <List>
-          {Object.keys(firstN(filteredCourses,this.a,this.b)).map(id => (
+          {Object.keys(firstN(filteredCourses,a,b)).map(id => (
             <ListItemLink
               key={id}
               //icon="CourseIcon"
@@ -76,10 +130,15 @@ class CourseListViewer extends Component {
             />
           ))}
         </List>
-        <Button onClick={() => { this.goDown() }} style={{padding:"20px", border:"2px solid red"}}> DOWN </Button>
+
+        {button}
+
       </div>
 
+
+
     );
+
   }
 }
 

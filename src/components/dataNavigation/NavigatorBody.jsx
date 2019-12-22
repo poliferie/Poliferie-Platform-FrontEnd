@@ -10,11 +10,11 @@ class NavigatorBody extends Component {
 
   render() {
     return (
-      <div className="navigator-body">
+      <div className="navigator-body" style={{paddingBottom:"50px"}}>
         {this.props.viewFocus === "uni" ? (
           <UniListViewer filteredUni={this.props.filteredUni} />
         ) : (
-          <CourseListViewer filteredCourses={this.props.filteredCourses} />
+          <CourseListViewer filteredCourses={this.props.filteredCourses} a={0} b={50} />
         )}
       </div>
     );

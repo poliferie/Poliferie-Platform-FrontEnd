@@ -61,7 +61,7 @@ const mapStateToProps = state => {
     );
   }
 
-  var HOWMANY = 150,
+  /* var HOWMANY = 250,
     c = 1,
     _filteredCourses = {};
   for (var key in filteredCourses) {
@@ -69,11 +69,13 @@ const mapStateToProps = state => {
     c += 1;
     _filteredCourses[key] = filteredCourses[key];
   }
+  */
+
 
   var ret = {
     rdxState: state,
     filteredUni: filteredUni,
-    filteredCourses: _filteredCourses
+    filteredCourses: filteredCourses
   };
   return ret;
 };
@@ -103,7 +105,7 @@ class DataNavigator extends Component {
 
   render() {
     return (
-      <div className="DataNavigator">
+      <div className="DataNavigator" >
         <NavigatorHeader
           setViewFocus={this.props.toggleViewFocus}
           viewFocus={this.props.rdxState.visibilityFilter.viewFocus}

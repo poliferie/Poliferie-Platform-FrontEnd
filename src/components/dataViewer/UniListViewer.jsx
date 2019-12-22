@@ -31,6 +31,9 @@ class UniListViewer extends Component {
       );
     }
   }
+  addDefaultSrc(ev){
+    ev.target.src = ' img/logo/160/nologo_160px.png'
+  }
 
   render() {
     var filteredUni = this.props.filteredUni;
@@ -43,9 +46,9 @@ class UniListViewer extends Component {
               key={id}
               icon={
                 <div style={{ textAlign: "center", width: "4.5em" }}>
-                  <LocationIcon />
 
-                  <div>{filteredUni[id].Info.Regione}</div>
+
+                  <img style={{width:"50px"}} src={ "img/logo/160/"+filteredUni[id].Info.UniversitalyCodice+"_160px.png"} alt="Image not found" onError={this.addDefaultSrc} />
                 </div>
               }
               to={{ pathname: "university/" + id }}

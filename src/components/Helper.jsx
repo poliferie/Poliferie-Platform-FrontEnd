@@ -13,6 +13,7 @@ class Helper extends Component {
     return (
       <div
         style={{
+
           width: "90vw",
           
           position: "fixed",

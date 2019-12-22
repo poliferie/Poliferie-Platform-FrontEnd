@@ -26,8 +26,8 @@ class Navbar extends Component {
           marginBottom: "5px"
         }}
       >
-        <div style={{ maxWidth: '500px', margin: 'auto' }}>
-          <div style={{ verticalAlign: "middle", display: "flex" }}>
+        <div style={{ maxWidth: '500px', margin: 'auto' }} >
+          <div style={{ verticalAlign: "middle", display: "flex", padding:"0px 15px"}} id="top">
             <div style={{ ...STYLE_NAV_ELEM, color: "white", fontSize: "20px" }} className={"monserrat"}>
               Poliferie.io
             </div>

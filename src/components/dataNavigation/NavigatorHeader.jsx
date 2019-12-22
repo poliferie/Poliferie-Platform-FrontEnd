@@ -162,8 +162,8 @@ class NavigatorHeader extends Component {
   render() {
     var isUniFocus = this.props.viewFocus === "uni" ? true : false;
     return (
-      <div className="NavigatorHeader">
-        <ButtonGroup fullWidth aria-label="Full width outlined button group" style={{ marginTop: "10px" }}>
+      <div className="NavigatorHeader" style={{padding:"0px 10px 0px 10px"}}>
+        <ButtonGroup fullWidth aria-label="Full width outlined button group" style={{ marginTop: "10px", height:"45px" }}>
           <Button
             disabled={isUniFocus}
             onClick={() => this.setViewFocus("uni")}
